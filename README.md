@@ -1,2 +1,3 @@
 # FreeBSD-relnotes-CN
-FreeBSD 发行报告中文
+
+FreeBSD 发行说明中文
