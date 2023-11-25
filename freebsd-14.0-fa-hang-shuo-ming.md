@@ -30,16 +30,15 @@ FreeBSD 14.0-RELEASE 的这个发行版本是一个正式的发行版本。它�
 
 对于通过 EFI 引导的系统，请注意：EFI 系统分区（ESP）上有一个或多个引导加载程序的副本，由固件用于引导内核。如果根文件系统是 ZFS，则引导加载程序必须能够支持从 ZFS 引导文件系统读取。在系统升级后，但在执行 `zpool upgrade` 之前，必须更新 ESP 上的引导加载程序，否则系统可能无法引导。虽然不是强制性的，但在使用 UFS 根文件系统时也应遵循此更新过程。可以使用命令 `efibootmgr -v` 来确定正在使用的引导加载程序的位置。`BootCurrent` 显示的值应该是用于引导系统的当前引导配置的编号。输出的相应条目应该以 `+` 号开头，例如
 
-<pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 gizmo:dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>plaintext</span><button class="flex ml-auto gizmo:ml-0 gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-plaintext">+Boot0000* FreeBSD HD(1,GPT,f859c46d-19ee-4e40-8975-3ad1ab00ac09,0x800,0x82000)/File(\EFI\freebsd\loader.efi)
-                      nda0p1:/EFI/freebsd/loader.efi (null)
-</code></div></div></pre>
+```
++Boot0000* FreeBSD HD(1,GPT,f859c46d-19ee-4e40-8975-3ad1ab00ac09,0x800,0x82000)/File(\EFI\freebsd\loader.efi) nda0p1:/EFI/freebsd/loader.efi (null)
+```
 
 ESP 可能已经挂载在 **/boot/efi** 上。否则，可以手动挂载分区，使用 `efibootmgr` 输出中列出的分区（在此情况下为 `nda0p1`）：`mount_msdosfs /dev/nda0p1 /boot/efi`。有关另一个示例，请参阅 [loader.efi(8)](https://man.freebsd.org/cgi/man.cgi?query=loader.efi&sektion=8&format=html)。
 
 在 `efibootmgr -v` 输出的 `File` 字段中的值，例如 `\EFI\freebsd\loader.efi`，是 ESP 上正在使用的引导加载程序的 MS-DOS 名称。如果挂载点是 **/boot/efi**，则此文件将转换为 `/boot/efi/efi/freebsd/loader.efi`。 （在 MS-DOSFS 文件系统上大小写不敏感；FreeBSD 使用小写。）`File` 的另一个常见值可能是 `\EFI\boot\bootXXX.efi`，其中 `XXX` 是 amd64 的 `x64`、aarch64 的 `aa64` 或 riscv64 的 `riscv64`；如果未配置，则为默认引导加载程序。应通过从 **/boot/loader.efi** 复制到 **/boot/efi** 中的正确路径来更新已配置和默认的引导加载程序。
 
-|     | 仅在备份*所有*数据和配置文件后尝试升级 FreeBSD。 |
-| --- | ------------------------------------------------ |
+> 仅在备份*所有*数据和配置文件后尝试升级 FreeBSD。
 
 ## 安全性和勘误
 
