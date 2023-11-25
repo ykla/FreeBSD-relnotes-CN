@@ -451,7 +451,7 @@ EC2 实例现在在可用的情况下使用 UEFI 引导，大大加速了引导�
 
 [ netlink(4)  ](https://man.freebsd.org/cgi/man.cgi?query=netlink&sektion=4&format=html)是 RFC 3549 中定义的用户/内核通信协议，主要用于网络配置。它已经得到扩展、改进并启用了默认。已将许多网络配置工具转换为使用 netlink。[ 3091d980f581 ](https://cgit.freebsd.org/src/commit/?id=3091d980f581)
 
-已删除不推荐使用的 `NgATM`（netgraph ATM 支持）和剩余的 ATM 支持。
+已删除不推荐使用的 `NgATM`（netgraph ATM 支持）和残余的 ATM 支持。
 
 [ pf(4)  ](https://man.freebsd.org/cgi/man.cgi?query=pf&sektion=4&format=html)包过滤器现在支持使用 OpenBSD 语法和行为进行清理。如果没有 FreeBSD 清理规则，则全局参数 `set reassemble yes | no [ no-df]` 确定是否进行分组重组。清理，例如设置 tos、ttl 等，可以在匹配和传递规则中完成，这也使其具有状态。与 OpenBSD 一样，现在完全支持匹配规则，不仅适用于[ dummynet(4)  ](https://man.freebsd.org/cgi/man.cgi?query=dummynet&sektion=4&format=html)队列。[ 39282ef356db ](https://cgit.freebsd.org/src/commit/?id=39282ef356db)（由 InnoGames GmbH 赞助）
 
