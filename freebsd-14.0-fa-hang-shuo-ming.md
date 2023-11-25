@@ -1,5 +1,11 @@
 # FreeBSD 14.0-RELEASE 发行说明
 
+
+- 原文链接：<https://www.freebsd.org/releases/14.0R/relnotes/>
+- 作者：FreeBSD 项目
+- 译者：ChatGPT & Natsufumij
+
+
 ## 摘要
 
 FreeBSD 14.0-RELEASE 发行说明总结了在 14-STABLE 开发线上对 FreeBSD 基本系统所做的更改。本文列出了自上一个 RELEASE 版本以来发行的适用的安全公告，以及对 FreeBSD 内核和用户空间的重大更改。同时也提供了关于升级的简要说明。
