@@ -214,7 +214,7 @@ Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=
 
 **libfido2** 已升级到版本 1.13.0。 [ f540a43052c1 ](https://cgit.freebsd.org/src/commit/?id=f540a43052c1)​[ 3e696dfb7009 ](https://cgit.freebsd.org/src/commit/?id=3e696dfb7009)​[ 95321fff46ec ](https://cgit.freebsd.org/src/commit/?id=95321fff46ec)（由 FreeBSD 基金会赞助）
 
-** [llvm-objdump(1)](https://man.freebsd.org/cgi/man.cgi?query=llvm-objdump&sektion=1&format=html)** 工具现在始终作为[ objdump(1)  ](https://man.freebsd.org/cgi/man.cgi?query=objdump&sektion=1&format=html)安装。 [ 86edb11e7491 ](https://cgit.freebsd.org/src/commit/?id=86edb11e7491)（由 FreeBSD 基金会赞助）
+**[llvm-objdump(1)](https://man.freebsd.org/cgi/man.cgi?query=llvm-objdump&sektion=1&format=html)** 工具现在始终作为[ objdump(1)  ](https://man.freebsd.org/cgi/man.cgi?query=objdump&sektion=1&format=html)安装。 [ 86edb11e7491 ](https://cgit.freebsd.org/src/commit/?id=86edb11e7491)（由 FreeBSD 基金会赞助）
 
 **OpenSSH** 已升级到版本 9.5p1。完整的发行说明请参阅 [ https://www.openssh.com/txt/release-9.5 ](https://www.openssh.com/txt/release-9.5)。 [ 676824f5cdf9 ](https://cgit.freebsd.org/src/commit/?id=676824f5cdf9)（由 FreeBSD 基金会赞助）
 
@@ -304,9 +304,9 @@ FreeBSD 现在重新启动更快。添加了 sysctl  `kern.reboot_wait_time` 以
 
 添加了一个本机 [ timerfd(2)  ](https://man.freebsd.org/cgi/man.cgi?query=timerfd&sektion=2&format=html) 设施，以便轻松移植使用 timerfd 的 Linux 程序。以前，timerfd 仅在 Linux 仿真下可用。对于仅为 FreeBSD 编写的程序，首选使用 [ kqueue(2)  ](https://man.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2&format=html) EVFILT_TIMER 过滤器来建立任意计时器。 [ af93fea71038 ](https://cgit.freebsd.org/src/commit/?id=af93fea71038)
 
-由 `security.bsd.see_jail_proc`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 摇纹控制的进程可见性策略已经过强化，防止未经授权的用户尝试随机杀死、更改优先级或调试同一子 jail 中具有相同（实际）UID 的进程，即使这些进程对其不可见也会成功。它也可以被 MAC 策略覆盖，就像其他进程可见性策略一样。 [ 7e21c691f295 ](https://cgit.freebsd.org/src/commit/?id=7e21c691f295)​[ 63c01c18a8d3 ](https://cgit.freebsd.org/src/commit/?id=63c01c18a8d3)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
+由 `security.bsd.see_jail_proc`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 开关控制的进程可见性策略已经过加固，防止未经授权的用户尝试随机杀死、更改优先级或调试同一子 jail 中具有相同（实际）UID 的进程，即使这些进程对其不可见也会成功。它也可以被 MAC 策略覆盖，就像其他进程可见性策略一样。 [ 7e21c691f295 ](https://cgit.freebsd.org/src/commit/?id=7e21c691f295)​[ 63c01c18a8d3 ](https://cgit.freebsd.org/src/commit/?id=63c01c18a8d3)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
 
-由 `security.bsd.see_other_gids`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 摇纹控制的进程可见性策略已修复，以考虑进程的实际组而不是其有效组，以确定试图访问进程的用户是否是进程组的成员。其原理是，某些用户应该继续看到它们启动的进程，即使它们通过设置组 ID 位而获得更高的权限，而它们不应该看到由特权用户启动的临时进入用户的主组的进程。这种新行为与 `security.bsd.see_other_uids` 一直在为用户 ID 执行的操作相一致（即，考虑一些进程的实际用户 ID 而不是有效 ID）。 [ 26ff4836c888 ](https://cgit.freebsd.org/src/commit/?id=26ff4836c888)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
+由 `security.bsd.see_other_gids`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 开关控制的进程可见性策略已修复，以考虑进程的实际组而不是其有效组，以确定试图访问进程的用户是否是进程组的成员。其原理是，某些用户应该继续看到它们启动的进程，即使它们通过设置组 ID 位而获得更高的权限，而它们不应该看到由特权用户启动的临时进入用户的主组的进程。这种新行为与 `security.bsd.see_other_uids` 一直在为用户 ID 执行的操作相一致（即，考虑一些进程的实际用户 ID 而不是有效 ID）。 [ 26ff4836c888 ](https://cgit.freebsd.org/src/commit/?id=26ff4836c888)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
 
 现在已自动封堵影响 AMD Zen2 处理器的 Zenbleed 漏洞（通过 chicken bit），防止在受影响的机器上发生错误行为和数据泄漏。如果需要，可以通过 ​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html)  `machdep.mitigations.zenbleed.enable` 开关手动控制应用这种缓解措施。有关更多信息，请参阅新的 [ mitigations(7)  ](https://man.freebsd.org/cgi/man.cgi?query=mitigations&sektion=7&format=html) 手册页。 [ aea76bab1416 ](https://cgit.freebsd.org/src/commit/?id=aea76bab1416)（由 FreeBSD 基金会赞助）
 
