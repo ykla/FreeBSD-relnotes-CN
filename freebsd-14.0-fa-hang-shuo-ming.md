@@ -40,7 +40,7 @@ FreeBSD 14.0-RELEASE 的这个发行版本是一个正式的 RELEASE 版本。�
 
 ESP 可能已经挂载在 **/boot/efi** 上。如果没有，可以手动挂载分区，使用 `efibootmgr` 输出中列出的分区（在此情况下为 `nda0p1`）：`mount_msdosfs /dev/nda0p1 /boot/efi`。有关另一个示例，请参阅 [ loader.efi(8)  ](https://man.freebsd.org/cgi/man.cgi?query=loader.efi&sektion=8&format=html)。
 
-在 `efibootmgr -v` 输出的 `File` 字段中的值，例如 `\EFI\freebsd\loader.efi`，是 ESP 上正在使用的引导加载程序的 MS-DOS 名称。如果挂载点是 **/boot/efi**，则此文件将转换为 `/boot/efi/efi/freebsd/loader.efi`。 （在 MS-DOSFS 文件系统上大小写不敏感；FreeBSD 使用小写。）`File` 的另一个常见值可能是 `\EFI\boot\bootXXX.efi`，其中 `XXX` 是 amd64 的 `x64`、aarch64 的 `aa64` 或 riscv64 的 `riscv64`；如果未配置，则为默认引导加载程序。应通过从 **/boot/loader.efi** 复制到 **/boot/efi** 中的正确路径来更新已配置和默认的引导加载程序。
+在 `efibootmgr -v` 输出的 `File` 字段中的值，例如 `\EFI\freebsd\loader.efi`，是 ESP 上正在使用的引导加载程序的 MS-DOS 名称。如果挂载点是 **/boot/efi**，则此文件将转换为 `/boot/efi/efi/freebsd/loader.efi`。 （在 MS-DOSFS 文件系统上大小写不敏感；FreeBSD 使用小写。）`File` 的另一个常见值可能是 `\EFI\boot\bootXXX.efi`，其中 `XXX` 是 amd64 的 `x64`、aarch64 的 `aa64` 或 riscv64 的 `riscv64`；如果未配置，则为默认引导加载程序。应该把 **/boot/loader.efi** 复制到 **/boot/efi** 中的正确路径来更新已配置和默认的引导加载程序。
 
 > 仅在备份*所有*数据和配置文件后尝试升级 FreeBSD。
 
