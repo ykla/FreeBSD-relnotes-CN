@@ -1,6 +1,4 @@
-# FreeBSD-relnotes-CN
-
-FreeBSD 发行说明中文
+# FreeBSD 中文版发行说明翻译项目
 
 
 ## 翻译项目一览表
