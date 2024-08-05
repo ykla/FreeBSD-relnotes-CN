@@ -2,21 +2,21 @@
 
 ## 摘要
 
-FreeBSD 14.1-RELEASE 的发行说明包含了对 14-STABLE 开发线上的 FreeBSD 基础系统所做更改的摘要。本文件列出了自上次发布以来发布的适用安全公告，以及对 FreeBSD 内核和用户空间的重大更改。还简要介绍了一些升级的备注。
+FreeBSD 14.1-RELEASE 的发行说明是对由 14-STABLE 开发线衍生的 FreeBSD 基本系统所做更改的摘要。本文件列出了自上次发布以来发布的适用安全公告，以及对 FreeBSD 内核和用户空间的重大变更。还概述了部分升级备注事宜。
 
 ## 介绍
 
-本文档包含了 FreeBSD 14.1-RELEASE 的发布说明。它描述了最近添加、更改或删除的 FreeBSD 特性。还提供了有关从早期版本升级的一些注意事项。
+本文档涉及 FreeBSD 14.1-RELEASE 的发布说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还提供了从旧版本升级的一些相关注意事项。
 
-这些发布说明适用于“发布”分发版本，代表了自 14-STABLE 分支创建以来的最新点。关于这一分支上的预构建二进制“发布”分发的信息，请访问 https://www.FreeBSD.org/releases/。
+这些发布说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-这些发布说明适用于“发布”分发版本，代表了位于 14.0-RELEASE 与未来 14.2-RELEASE 之间的 14-STABLE 开发分支的一个节点。关于这一分支上的预构建二进制“发布”分发的信息，请访问 https://www.FreeBSD.org/releases/。
+这些发布说明适用于“RELEASE”分发版本，代表的节点位于 14.0-RELEASE 与后续 14.2-RELEASE 之间的 14-STABLE 开发分支。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-此 FreeBSD 14.1-RELEASE 版本是一个“发布”版本。它可以在 https://www.FreeBSD.org/releases/或其镜像中找到。有关获取此（或其他）FreeBSD“发布”版本的更多信息，请参阅 FreeBSD 手册的获取 FreeBSD 附录。
+该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和其镜像站中找到它。有关下载该（及其他）FreeBSD“RELEASE”版本的更多信息，请参阅 FreeBSD 手册的附录《获取 FreeBSD》。
 
-鼓励所有用户在安装 FreeBSD 之前查阅发行错误。错误文档将随着发布周期后期或发布后发现的“最新”信息进行更新。通常，它包含有关已知错误、安全公告和文档更正的信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新错误副本。
+建议所有用户在安装 FreeBSD 之前查阅发行错误。错误文档会在发布周期后期，随发布后发现的“最新”信息进行更新。通常涉及已知错误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新错误信息。
 
-本文档描述了自 14.0-RELEASE 以来在 FreeBSD 中最具用户可见的新特性或更改。一般来说，此处描述的更改是独特于 14-STABLE 分支的，除非明确标记为 MERGED 特性。
+本文档说明了自 14.0-RELEASE 以降，在 FreeBSD 中最具用户可见性的新特性和更改。一般来说，除非其明确标记为 MERGED 特性，否则此处所述的更改是独立于 14-STABLE 分支的。
 
 典型的发布说明项目记录了在 14.0-RELEASE 之后发布的最新安全公告，新的驱动程序或硬件支持，新的命令或选项，重大错误修复或贡献的软件升级。它们还可能列出对主要软件/包或发行工程实践的更改。显然，发布说明无法列出在不同版本之间对 FreeBSD 所做的每一项更改；该文档主要关注安全公告，用户可见的更改以及重大架构改进。
 
