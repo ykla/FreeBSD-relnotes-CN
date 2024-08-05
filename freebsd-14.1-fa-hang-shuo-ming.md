@@ -2,34 +2,34 @@
 
 ## 摘要
 
-FreeBSD 14.1-RELEASE 的发行说明概述了由 14-STABLE 开发线衍生的 FreeBSD 基本系统所做的更改。本文件列出了自上次发布以来发布的适用安全公告，以及对 FreeBSD 内核和用户空间的重大变更。还概述了部分升级备注事宜。
+FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeBSD 基本系统之变更。本文列出了自上次发行以来针对 RELEASE 的安全公告，以及 FreeBSD 内核和用户空间发生的重大变更。还概述了某些升级注意事宜。
 
 ## 介绍
 
-本文档涉及 FreeBSD 14.1-RELEASE 的发布说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还提供了从旧版本升级的一些相关注意事项。
+本文档是 FreeBSD 14.1-RELEASE 的发行说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还包含了一些旧版本升级的相关注意事项。
 
 这些发布说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-这些发布说明适用于“RELEASE”分发版本，代表的节点位于 14.0-RELEASE 与后续 14.2-RELEASE 之间的 14-STABLE 开发分支。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发布说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支 14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和其镜像站中找到它。有关下载该（及其他）FreeBSD“RELEASE”版本的更多信息，请参阅 FreeBSD 手册的附录《获取 FreeBSD》。
+该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和镜像站中找到它。更多有关下载该（及其他）FreeBSD“RELEASE”版本的信息，请参阅 FreeBSD 手册的附录《获取 FreeBSD》。
 
-建议所有用户在安装 FreeBSD 之前查阅发行错误。错误文档会在发布周期后期，随发布后发现的“最新”信息进行更新。通常涉及已知错误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新错误信息。
+在安装 FreeBSD 之前，建议所有用户都查阅一下发行勘误。勘误文档会在发布周期后期，随发布后发现的“最新”信息进行更新。通常涉及勘误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新勘误信息。
 
 本文档说明了自 14.0-RELEASE 以降，在 FreeBSD 中最具用户可见性的新特性和更改。一般来说，除非其明确标记为 MERGED 特性，否则此处所述的更改独立于 14-STABLE 分支。
 
-标准的发布说明项目记录了在 14.0-RELEASE 之后发布的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的更改。显然，发布说明无法枚举在不同版本之间对 FreeBSD 所做的所有更改；该文档主要关注安全公告，用户可见的更改及重大架构改进。
+标准的发行说明项目记载了在 14.0-RELEASE 后发布的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的更改。显然，发布说明无法枚举在不同版本之间对 FreeBSD 所做的所有更改；该文档主要关注安全公告，用户可见的更改及重大架构改进。
 
 ## 从旧版 FreeBSD 升级
 
-RELEASE 版本（以及各种安全分支的快照）间使用工具 freebsd-update(8) 进行二进制升级。请参阅特定于版本的升级过程，FreeBSD 14.1-RELEASE 升级信息，在 FreeBSD 手册的二进制升级过程中有更多详情。可更新未修改的用户空间工具，以及随官方 FreeBSD 发行版分发的未修改的 GENERIC 内核。freebsd-update(8) 工具要求要升级的主机拥有互联网连接。
+RELEASE 版本（以及各种安全分支的快照）使用工具 freebsd-update(8) 进行二进制升级。请参阅特定于版本的升级过程，FreeBSD 14.1-RELEASE 升级信息，在 FreeBSD 手册的二进制升级过程中有更多详情。可更新未修改的用户空间工具，以及随 FreeBSD 官方发行版分发的未修改的 GENERIC 内核。freebsd-update(8) 工具要求升级的主机拥有互联网连接。
 
 据 /usr/src/UPDATING 所述，还可通过源代码来升级：重新编译 FreeBSD 基本系统的源代码。
 
 |  | 仅在备份所有数据和配置文件后，才能进行 FreeBSD 升级。 |
 | -- | ---------------------------------------------------- |
 
-## 安全和勘误
+## 安全公告和勘误
 
 此部分列出了自 14.0-RELEASE 以降的所有安全公告和勘误通知。
 
@@ -51,13 +51,13 @@ RELEASE 版本（以及各种安全分支的快照）间使用工具 freebsd-upd
 
 ### 用户空间配置更改
 
-现在，有一个新的变量 kdc_restart，能用来管理daemon(8)下的 kdc(8)（krb5kdc）。在 rc.conf(5)中，设置 kdc_restart="YES"：能自动重启 kdc，来解决其异常停止问题。kdc_restart_delay="N" 设定了重启 kdc 前的延迟（秒）。abc4b3088941
+新增变量 kdc_restart，能用来管理 daemon(8) 下的 kdc(8)（krb5kdc）。在 rc.conf(5) 中，设置 kdc_restart="YES"：能自动重启 kdc，来解决其异常停止问题。kdc_restart_delay="N" 可设定在重启 kdc 前的延迟（秒）。abc4b3088941
 
-在默认情況下，电子邮件中由周期性(8)工具显示变更，为了减少输出大小，通过 daily 脚本比以前输出的上下文要少。此行为由 periodic.conf(5)中的变量 daily_diff_flags 控制。同样地，安全脚本显示的更改比以前少，由 periodic.conf(5) 中的变量 security_status_diff_flags 控制。538994626b9f, 37dc394170a5, 128e78ffb084
+在默认情況下，电子邮件中由周期性(8)工具显示变更，为了减少输出大小，通过 daily 脚本比以前的上下文输出要少。此行为由 periodic.conf(5) 中的变量 daily_diff_flags 所控制。同样地，安全脚本显示的更改亦比以前少，由 periodic.conf(5) 中的变量 security_status_diff_flags 控制。538994626b9f, 37dc394170a5, 128e78ffb084
 
 ### 用户空间工具的变更
 
-由 bsdinstall(8) 调用的工具 adduser(8)，现在将为位于 ZFS 数据集上父目录，新用户的家目录创建一个 ZFS 数据集。命令行参数可禁用此独立数据集。ZFS 加密 also 可用。516009ce8d38
+由 bsdinstall(8) 调用的工具 adduser(8)，现在将在 ZFS 数据集上的父目录，为新用户的家目录创建一个 ZFS 数据集。命令行参数可禁用此独立数据集。亦支持 ZFS 加密。516009ce8d38
 
 工具 date(1) 已支持纳秒。如： date -Ins 打印为 "2024-04-22T12:20:28,763742224+02:00"， date +%N 打印为 "415050400"。eeb04a736cb9
 
@@ -69,7 +69,7 @@ RELEASE 版本（以及各种安全分支的快照）间使用工具 freebsd-upd
 
 OpenSSH 已升级至版本 9.7p1。完整的发布说明请参见 https://www.openssh.com/txt/release-9.7 和 https://www.openssh.com/txt/release-9.6 。a25789646d71, 464fa66f639b（由 FreeBSD 基金会赞助）
 
-工具 usbconfig(8) 已支持：在可用时，从 /usr/share/misc/usb_vendors 读取 usb 供应商和产品的描述，类似于 pciconf(8) 的行为。7b9a772f9f64
+工具 usbconfig(8) 已支持：在可用时，从 /usr/share/misc/usb_vendors 读取 usb 供应商和产品描述，类似于 pciconf(8) 的行为。7b9a772f9f64
 
 ### 第三方软件
 
@@ -89,13 +89,13 @@ libutil 中的 setusercontext(3) 例程可依据一定的条件从家目录下�
 
 在 amd64 系统上可用时，C 库中的许多字符串和内存操作，都能用 SIMD（单指令多数据）进行扩展以提高性能；请参阅 simd(7)。（由 FreeBSD 基金会赞助）
 
-在受支持的平台上, math(3) 库中的 128 位 tgammal 函数实现有了更好的实现。8df6c930c151
+对于受支持的平台, math(3) 库中的 128 位 tgammal 函数实现已有更优实现。8df6c930c151
 
 ## 云端
 
 本节涉及了对云端的更改。
 
-14.1-RELEASE 支持 cloudinit，涉及 nuageinit 启动脚本和对 config-drive 分区的支持。它可兼容 OpenStack 和许多托管设施。请参阅 cloud-init 网站和提交信息，16a6da44e28d 227e7a205edf。（由 OVHCloud 赞助）
+14.1-RELEASE 已支持 cloudinit，可支持启动脚本 nuageinit 和对 config-drive 分区。能兼容 OpenStack 和许多托管设施。请参阅 cloud-init 网站和提交信息，16a6da44e28d 227e7a205edf。（由 OVHCloud 赞助）
 
 ## 内核
 
@@ -103,7 +103,7 @@ libutil 中的 setusercontext(3) 例程可依据一定的条件从家目录下�
 
 ### 通用内核更改
 
-已为 powerpc 实现了例程 fpu_kern_enter 和 fpu_kern_leave，能在使用浮点和矢量寄存器的内核中使用加密函数 ossl(4) 了。91e53779b4fc
+powerpc 已实现例程 fpu_kern_enter 和 fpu_kern_leave，能在使用浮点和矢量寄存器的内核中调用加密函数 ossl(4)。91e53779b4fc
 
 ## 设备和驱动程序
 
@@ -117,11 +117,11 @@ Intel E800 系列（ice(4) 以太网网络控制器）已有驱动程序，可�
 
 现在在 amd64 和 i386 上支持多个 PCI MCFG 区域，允许对除 0 之外的域（段）进行 PCI 配置空间访问。4b5f64408804
 
-以太网驱动程序 smsc(4) 可获取某些树莓派型号传递的 smsc95xx.macaddr 值，并将其用于 MAC 地址。即使在 EEPROM 中没有地址，它也将始终使用固定的 MAC 地址。028e4c6548e4
+以太网驱动程序 smsc(4) 能获取某些树莓派型号传递的 smsc95xx.macaddr 值，并将其用于 MAC 地址。即使在 EEPROM 中没有地址，它也将始终使用固定的 MAC 地址。028e4c6548e4
 
-声音子系统中已移除 snd_clone 框架（及相关 sysctl）。简化了系统：不再创建单个通道节点（/dev/dspX.Y），仅创建主设备（/dev/dspX）。e6c51f6db8d7（由 FreeBSD 基金会赞助）
+声音子系统已移除 snd_clone 框架（及相关 sysctl）。简化了系统：不再创建单个通道节点（/dev/dspX.Y），仅创建主设备（/dev/dspX）。e6c51f6db8d7（由 FreeBSD 基金会赞助）
 
-音频已支持异步设备分离。这极大地简化了诸如 USB 耳机之类的热插拔行为，且在需要操作系统休眠和唤醒（休眠和恢复）时，使用 PulseAudio 会更轻松。d692c314d29a（由 FreeBSD 基金会赞助）
+音频已支持异步设备分离。这极大地简化了诸如 USB 耳机之类的热插拔行为，且在操作系统需要休眠和唤醒（休眠和恢复）时，使用 PulseAudio 会更为轻松。d692c314d29a（由 FreeBSD 基金会赞助）
 
 ## 存储
 
