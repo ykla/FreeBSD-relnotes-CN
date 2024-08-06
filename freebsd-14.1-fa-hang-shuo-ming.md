@@ -52,7 +52,7 @@ RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-updat
 
 ### 用户空间配置更改
 
-新增变量 `kdc_restart`，能用来管理 daemon(8) 下的 [kdc(8)](https://man.freebsd.org/cgi/man.cgi?query=kdc&sektion=8&format=html)（`krb5kdc`）。在 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中，设置 kdc_restart="YES"：能自动重启 kdc，来解决其异常停止问题。`kdc_restart_delay="N"` 可设定在重启 kdc 前的延迟（秒）。[abc4b3088941](https://cgit.freebsd.org/src/commit/?id=abc4b3088941)
+新增变量 `kdc_restart`，能用来管理 daemon(8) 下的 [kdc(8)](https://man.freebsd.org/cgi/man.cgi?query=kdc&sektion=8&format=html)（`krb5kdc`）。在 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中，设置 `kdc_restart="YES"`：能自动重启 kdc，来解决其异常停止问题。`kdc_restart_delay="N"` 可设定在重启 kdc 前的延迟（秒）。[abc4b3088941](https://cgit.freebsd.org/src/commit/?id=abc4b3088941)
 
 在默认情況下，电子邮件中由工具 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 展现变更信息，为了减少输出大小，通过 daily 脚本比以前的上下文输出要少。此行为由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 所控制。同样地，安全脚本显示的更改亦比以前少，由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `security_status_diff_flags` 控制。[538994626b9f](https://cgit.freebsd.org/src/commit/?id=538994626b9f), [37dc394170a5](https://cgit.freebsd.org/src/commit/?id=37dc394170a5), [128e78ffb084](https://cgit.freebsd.org/src/commit/?id=128e78ffb084)
 
@@ -74,7 +74,7 @@ OpenSSH 已升级至版本 9.7p1。完整的发行说明请参见 <https://www.o
 
 ### 第三方软件
 
-One True Awk（[awk(1)](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新至第二版，新增了 -csv 和 UTF-8 支持。[daf917daba9c](https://cgit.freebsd.org/src/commit/?id=daf917daba9c)
+One True Awk（[awk(1)](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新至第二版，新增了 `-csv` 和 UTF-8 支持。[daf917daba9c](https://cgit.freebsd.org/src/commit/?id=daf917daba9c)
 
 Clang/LLVM 已升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/src/commit/?id=90a5e985e5f4)
 
