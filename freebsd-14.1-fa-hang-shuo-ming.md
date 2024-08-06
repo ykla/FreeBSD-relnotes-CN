@@ -12,7 +12,7 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 这些发行说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-这些发行说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支 14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发行说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支——14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
 该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和镜像站中找到它。更多有关下载该（及其他）FreeBSD“RELEASE”版本的信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//)的[附录《获取 FreeBSD》](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
@@ -40,7 +40,7 @@ RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-updat
 | ------------ | ------ | ------ |
 | 无公告。 |      |      |
 
-### 勘误通知
+### 勘误
 
 | 勘误     | 日期 | 主题 |
 | ---------- | ------ | ------ |
