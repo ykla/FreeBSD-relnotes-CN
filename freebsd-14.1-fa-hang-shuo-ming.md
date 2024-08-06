@@ -204,4 +204,4 @@ FreeBSD 项目可能会在 FreeBSD 15.0 发行时改变这种方法，在 15.0�
 
 ---
 
-最后修改于：2024 年 6 月 4 日，作者 Alexander Ziaee
+最后修改于：2024 年 6 月 4 日，作者 [Alexander Ziaee](https://cgit.freebsd.org/doc/commit/?id=788109b4b7)
