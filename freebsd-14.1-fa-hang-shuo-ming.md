@@ -10,9 +10,9 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 本文档是 FreeBSD 14.1-RELEASE 的发行说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还包含了一些旧版本升级的相关注意事项。
 
-这些发行说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发行说明适用于“RELEASE”发行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的发行信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-这些发行说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支——14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发行说明适用于“RELEASE”发行版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支——14-STABLE。有关基于此分支的预构建二进制“RELEASE”的发行信息，请访问 <https://www.FreeBSD.org/releases/>。
 
 该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和镜像站中找到它。更多有关下载该（及其他）FreeBSD“RELEASE”版本的信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//)的[附录《获取 FreeBSD》](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
@@ -24,7 +24,7 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 ## 从旧版 FreeBSD 升级
 
-RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 进行二进制升级。请参阅特定于版本的升级过程——[FreeBSD 14.1-RELEASE 升级信息](https://www.freebsd.org/releases/14.1R/installation/#upgrade-binary)，在 [FreeBSD 手册的二进制升级过程](https://docs.freebsd.org/en/books/handbook/cutting-edge/#freebsdupdate-upgrade)中有更多详情。可更新未修改的用户空间工具，以及随 FreeBSD 官方发行版分发的未修改的 GENERIC 内核。[freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 工具要求升级的主机拥有互联网连接。
+RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 进行二进制升级。请参阅特定于版本的升级过程——[FreeBSD 14.1-RELEASE 升级信息](https://www.freebsd.org/releases/14.1R/installation/#upgrade-binary)，在 [FreeBSD 手册的二进制升级过程](https://docs.freebsd.org/en/books/handbook/cutting-edge/#freebsdupdate-upgrade)中有更多详情。可更新未修改的用户空间工具，以及随 FreeBSD 官方发行版发行的未修改的 GENERIC 内核。[freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 工具要求升级的主机拥有互联网连接。
 
 据 /usr/src/UPDATING 所述，还可通过源代码来升级：重新编译 FreeBSD 基本系统的源代码。
 
