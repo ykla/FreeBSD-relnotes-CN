@@ -10,17 +10,17 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 本文档是 FreeBSD 14.1-RELEASE 的发行说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还包含了一些旧版本升级的相关注意事项。
 
-这些发布说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发行说明适用于“RELEASE”分行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
-这些发布说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支 14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
+这些发行说明适用于“RELEASE”分发版本，代表的节点是位于 14.0-RELEASE 与后续 14.2-RELEASE 间的开发分支 14-STABLE。有关基于此分支的预构建二进制“RELEASE”的分发信息，请访问 <https://www.FreeBSD.org/releases/>。
 
 该 FreeBSD 14.1-RELEASE 版本是个“RELEASE”版本。可以在 <https://www.FreeBSD.org/releases/> 和镜像站中找到它。更多有关下载该（及其他）FreeBSD“RELEASE”版本的信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//)的[附录《获取 FreeBSD》](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
-在安装 FreeBSD 前，建议所有用户都看一下发行勘误。勘误文档会在发布周期后期，随发布后发现的“最新”信息进行更新。通常涉及勘误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新勘误信息。
+在安装 FreeBSD 前，建议所有用户都看一下发行勘误。勘误文档会在发行周期后期，随发行后发现的“最新”信息进行更新。通常涉及勘误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新勘误信息。
 
 本文档说明了自 14.0-RELEASE 以降，在 FreeBSD 中最具用户可见性的新特性和更改。一般来说，除非其明确标记为 MERGED 特性，否则此处所述的更改独立于 14-STABLE 分支。
 
-标准的发行说明项目记载了在 14.0-RELEASE 后发布的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的更改。显然，发布说明无法枚举在不同版本之间对 FreeBSD 所做的所有更改；该文档主要关注安全公告，用户可见的更改及重大架构改进。
+标准的发行说明项目记载了在 14.0-RELEASE 后发行的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的更改。显然，发行说明无法枚举在不同版本之间对 FreeBSD 所做的所有更改；该文档主要关注安全公告，用户可见的更改及重大架构改进。
 
 ## 从旧版 FreeBSD 升级
 
@@ -68,7 +68,7 @@ RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-updat
 
 工具 [ldconfig(8)](https://man.freebsd.org/cgi/man.cgi?query=ldconfig&sektion=8&format=html) 已支持任一字节序的 hints 文件。默认格式是主机的本地字节序。[fa7b31166ddb](https://cgit.freebsd.org/src/commit/?id=fa7b31166ddb)
 
-OpenSSH 已升级至版本 9.7p1。完整的发布说明请参见 <https://www.openssh.com/txt/release-9.7> 和 <https://www.openssh.com/txt/release-9.6>。[a25789646d71](https://cgit.freebsd.org/src/commit/?id=a25789646d71), [464fa66f639b](https://cgit.freebsd.org/src/commit/?id=464fa66f639b)（由 FreeBSD 基金会赞助）
+OpenSSH 已升级至版本 9.7p1。完整的发行说明请参见 <https://www.openssh.com/txt/release-9.7> 和 <https://www.openssh.com/txt/release-9.6>。[a25789646d71](https://cgit.freebsd.org/src/commit/?id=a25789646d71), [464fa66f639b](https://cgit.freebsd.org/src/commit/?id=464fa66f639b)（由 FreeBSD 基金会赞助）
 
 工具 [usbconfig(8)](https://man.freebsd.org/cgi/man.cgi?query=usbconfig&sektion=8&format=html) 已支持：在可用时，从 `/usr/share/misc/usb_vendors` 读取 usb 的 vendor 和 products 描述，类似于 [pciconf(8)](https://man.freebsd.org/cgi/man.cgi?query=pciconf&sektion=8&format=html) 相关行为。[7b9a772f9f64](https://cgit.freebsd.org/src/commit/?id=7b9a772f9f64)
 
@@ -186,11 +186,11 @@ netgraph 模块 ng_ipfw(4) 不再将 cookie 截断为 16 位，可使用完整�
 
 新的手册页 [networking(7)](https://man.freebsd.org/cgi/man.cgi?query=networking&sektion=7&format=html) 包含了连接系统到网络（含 WiFi）的快速入门指南，并链接到了其他手册页和手册。[39f92a4c4c49](https://cgit.freebsd.org/src/commit/?id=39f92a4c4c49)
 
-## 后续 FreeBSD 版本发布的一般注意事项
+## 后续 FreeBSD 版本发行的一般注意事项
 
 预计 FreeBSD 15.0 不会支持除 armv7 以外的 32 位平台。 armv6、i386 和 powerpc 平台已被弃用并将被移除。 64 位系统仍可运行旧款 32 位二进制文件。
 
-预计我们将在 FreeBSD 15.0 及 stable/15 中，把 armv7 作为第二级架构。然而，我们也预计可能会在 FreeBSD 16.0 中移除 armv7。我们将在发布 15.0 时提供armv7 在 15.x 和 16.x 中状态的相关更新。
+预计我们将在 FreeBSD 15.0 及 stable/15 中，把 armv7 作为第二级架构。然而，我们也预计可能会在 FreeBSD 16.0 中移除 armv7。我们将在发行 15.0 时提供armv7 在 15.x 和 16.x 中状态的相关更新。
 
 对于在 64 位平台上执行 32 位二进制文件的支持（参数 COMPAT_FREEBSD32）将至少在稳定/15 和稳定/16 分支上延续。至少在稳定/15 分支上，还将继续支持使用 `cc -m32` 编译单个 32 位应用程序，其中包括 `/usr/include` 中的相应头文件和 `/usr/lib32` 中的库。
 
@@ -198,9 +198,9 @@ netgraph 模块 ng_ipfw(4) 不再将 cookie 截断为 16 位，可使用完整�
 
 FreeBSD stable/14 和更早版本分支将保留对现有的 32 位内核和系统支持。只要这些分支仍受 ports 系统支持，Ports 将保留对在 stable/14 和早期版本分支上构建 ports 和软件包的支持。但是，所有 32 位平台都是二级、三级，应该预期：个别的 ports 支持将随着上游废弃 32 位平台而降级。
 
-根据当前的生命周期，stable/14 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。stable/14 的生命周期终点标志着对包括源代码发布、预构建软件包以及从 ports 构建应用程序的弃用 32 位平台的支持结束。随着 2023 年 11 月 14.0-RELEASE 的发布，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
+根据当前的生命周期，stable/14 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。stable/14 的生命周期终点标志着对包括源代码发行、预构建软件包以及从 ports 构建应用程序的弃用 32 位平台的支持结束。随着 2023 年 11 月 14.0-RELEASE 的发行，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
 
-FreeBSD 项目可能会在 FreeBSD 15.0 发布时改变这种方法，在 15.0（或更高版本）中延长对一个（或多个）要废弃平台的支持。任何改变都将根据社区的反馈和支持这些平台的努力来决定。使用 FreeBSD 14.0-RELEASE 和后续的次发行版本，或 stable/14 分支，来迁移 32 位平台。
+FreeBSD 项目可能会在 FreeBSD 15.0 发行时改变这种方法，在 15.0（或更高版本）中延长对一个（或多个）要废弃平台的支持。任何改变都将根据社区的反馈和支持这些平台的努力来决定。使用 FreeBSD 14.0-RELEASE 和后续的次发行版本，或 stable/14 分支，来迁移 32 位平台。
 
 ---
 
