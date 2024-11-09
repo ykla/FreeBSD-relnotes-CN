@@ -204,7 +204,7 @@ Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=
 
 已添加配置以生成 armv7 发行文件，这对于在 arm64 上构建 jail 可能很有用。[ ac099daf6742 ](https://cgit.freebsd.org/src/commit/?id=ac099daf6742)
 
-### 贡献的软件更新
+### 第三方软件更新
 
 **One True Awk**（[ awk(1)  ](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新到 20210727，这是第 1 版。 （第 2 版将包含在 14.1-RELEASE 中。）现在除一个 FreeBSD 补丁外，所有的 FreeBSD 补丁都已被上游采纳或丢弃。值得注意的变化包括：不再使用地区（locale）进行范围选择；与 `gawk` 和 `mawk` 有更好的兼容性。请注意，十六进制字符串的解释与早期的 FreeBSD 版本一样被解释为数字。这将在 FreeBSD 15 中更改以符合上游和当前的 POSIX 标准。 [ f39dd6a97844 ](https://cgit.freebsd.org/src/commit/?id=f39dd6a97844)​[ 23f24377b1a9 ](https://cgit.freebsd.org/src/commit/?id=23f24377b1a9)​[ 628bd30ab5a4 ](https://cgit.freebsd.org/src/commit/?id=628bd30ab5a4)
 
