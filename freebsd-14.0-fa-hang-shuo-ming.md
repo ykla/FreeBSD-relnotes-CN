@@ -509,7 +509,7 @@ IPv4 已更改为不广播子网上的最小地址（主机 0），除非它配�
 
 删除了第 9 节中一些已过时的页面。[ d1c7405ef68a ](https://cgit.freebsd.org/src/commit/?id=d1c7405ef68a)​[ 52f9a2823c64 ](https://cgit.freebsd.org/src/commit/?id=52f9a2823c64)​[ b54391a1f831 ](https://cgit.freebsd.org/src/commit/?id=b54391a1f831)（由 FreeBSD 基金会赞助）
 
-## Ports 集合和软件包基础设施
+## Ports 和软件包基础设施
 
 该部分包括了 FreeBSD Ports、软件包基础设施以及软件包维护和安装程序的更改。
 
