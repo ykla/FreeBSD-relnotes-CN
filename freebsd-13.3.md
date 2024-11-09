@@ -39,15 +39,15 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 ### 用户空间配置更改
 
-[libtacplus(3)](https://man.freebsd.org/cgi/man.cgi?query=libtacplus&sektion=3&format=html) 库已改进，现 [tacplus.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=tacplus.conf&sektion=5&format=html) 遵循 POSIX shell 语法规则。如果共享密钥包含单引号、双引号或反斜杠字符，且未正确引用或转义，可能会导致 `TACACS+` 认证失败。该库现在允许配置最多 255 个附加 AV 配对。[5761f8a7de9f](https://cgit.freebsd.org/src/commit/?id=5761f8a7de9f)（由 Klara, Inc. 赞助）
+[libtacplus(3)](https://man.freebsd.org/cgi/man.cgi?query=libtacplus&sektion=3&format=html) 库已改进，现 [tacplus.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=tacplus.conf&sektion=5&format=html) 遵循 POSIX shell 语法规则。如果共享密钥包含单引号、双引号或反斜杠字符，且未正确引用和转义，可能会导致 `TACACS+` 认证失败。该库现在允许配置最多 255 个附加 AV 配对。[5761f8a7de9f](https://cgit.freebsd.org/src/commit/?id=5761f8a7de9f)（由 Klara, Inc. 赞助）
 
-像 [login(1)](https://man.freebsd.org/cgi/man.cgi?query=login&sektion=1&format=html) 这样的程序，使用 [setusercontext(3)](https://man.freebsd.org/cgi/man.cgi?query=setusercontext&sektion=3&format=html)，现在能根据凭据从 `~/.login_conf` 文件中设置进程优先级。此外，优先级可以在 [login.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=login.conf&sektion=5&format=html) 中指定为 `inherit`，表示进程优先级将继承自父进程。同样，`umask` 值现在也可以指定为 `inherit`。[8b359002747a](https://cgit.freebsd.org/src/commit/?id=8b359002747a) [e074746fec21](https://cgit.freebsd.org/src/commit/?id=e074746fec21) [16e02df98ad6](https://cgit.freebsd.org/src/commit/?id=16e02df98ad6)（由 Kumacom SAS 赞助）
+像 [login(1)](https://man.freebsd.org/cgi/man.cgi?query=login&sektion=1&format=html) 这样的程序，使用 [setusercontext(3)](https://man.freebsd.org/cgi/man.cgi?query=setusercontext&sektion=3&format=html)，现在能根据凭据从 `~/.login_conf` 文件中设置进程优先级。此外，可以在 [login.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=login.conf&sektion=5&format=html) 中，将优先级指定为 `inherit`，表示进程优先级将继承自父进程。同样，现在也可以将 `umask` 值指定为 `inherit`。[8b359002747a](https://cgit.freebsd.org/src/commit/?id=8b359002747a) [e074746fec21](https://cgit.freebsd.org/src/commit/?id=e074746fec21) [16e02df98ad6](https://cgit.freebsd.org/src/commit/?id=16e02df98ad6)（由 Kumacom SAS 赞助）
 
-通过 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 生成的配置文件和安全输出报告（发送给系统管理员）现在使用简化的上下文，以减少无关内容。生成每日输出时，传递给 [diff(1)](https://man.freebsd.org/cgi/man.cgi?query=diff&sektion=1&format=html) 的选项可以通过 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 进行控制；安全脚本所用的 [diff(1)](https://man.freebsd.org/cgi/man.cgi?query=diff&sektion=1&format=html) 参数由 `security_status_diff_flags` 控制。[4c14a3a6aebe](https://cgit.freebsd.org/src/commit/?id=4c14a3a6aebe) [6d9195b5f763](https://cgit.freebsd.org/src/commit/?id=6d9195b5f763)
+通过 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 生成的配置文件和安全输出报告（发送给系统管理员）现在使用了简化的上下文，以减少无关内容。生成每日输出时，传给 [diff(1)](https://man.freebsd.org/cgi/man.cgi?query=diff&sektion=1&format=html) 的参数，可以通过 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 进行控制；安全脚本所用的 [diff(1)](https://man.freebsd.org/cgi/man.cgi?query=diff&sektion=1&format=html) 参数由 `security_status_diff_flags` 控制。[4c14a3a6aebe](https://cgit.freebsd.org/src/commit/?id=4c14a3a6aebe) [6d9195b5f763](https://cgit.freebsd.org/src/commit/?id=6d9195b5f763)
 
 用于下载闰秒信息的默认链接已更新为使用标准源，因为旧链接已经失效。[d19b59cfe594](https://cgit.freebsd.org/src/commit/?id=d19b59cfe594)
 
-在 arm64 `RPI` 系统的树莓派设备上，默认启用了守护进程 [powerd(8)](https://man.freebsd.org/cgi/man.cgi?query=powerd&sektion=8&format=html)，这样系统可以在需要时全速运行。非默认睿频设置的用户也许需要禁用之。[e889b5a892b6](https://cgit.freebsd.org/src/commit/?id=e889b5a892b6)
+在使用 arm64 `RPI` 系统的树莓派设备上，默认启用了守护进程 [powerd(8)](https://man.freebsd.org/cgi/man.cgi?query=powerd&sektion=8&format=html)，这样系统可以在需要时全速运行。非默认睿频设置的用户也许需要禁用之。[e889b5a892b6](https://cgit.freebsd.org/src/commit/?id=e889b5a892b6)
 
 现在，可以通过 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中的变量 `<服务>_umask` 为某个服务指定 `umask`，其中 `<服务>` 是服务名称。[2d6a03dd43c7](https://cgit.freebsd.org/src/commit/?id=2d6a03dd43c7)
 
@@ -61,7 +61,7 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 
 
-### 贡献软件
+### 第三方软件
 
 `expat` 已升级至 2.6.0 版本。
 
@@ -87,7 +87,7 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 ## 内核
 
-本节涵盖了内核配置、系统调优以及未分类的系统控制参数的更改。
+本节涉及内核配置、系统调优以及未分类的系统控制参数的更改。
 
 ### 一般内核更改
 
@@ -107,9 +107,9 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 [Realtek 无线 PCI 接口的 rtw88(4) 驱动](https://man.freebsd.org/cgi/man.cgi?query=rtw88&sektion=4&format=html) 已更新。
 
-对本地和基于 LinuxKPI 的无线驱动程序进行了许多稳定性修复。（由 FreeBSD 基金会赞助）
+对原生和基于 LinuxKPI 的无线驱动程序进行了诸多稳定性修复。（由 FreeBSD 基金会赞助）
 
-[smsc(4)](https://man.freebsd.org/cgi/man.cgi?query=smsc&sektion=4&format=html) USB 以太网适配器驱动现在将在树莓派设备中从 `bootargs` 获取 MAC 地址，如果没有提供，则回退到使用 [ether_gen_addr(9)](https://man.freebsd.org/cgi/man.cgi?query=ether_gen_addr&sektion=9&format=html) 生成稳定的 MAC 地址。[3d96ee7c7dcc](https://cgit.freebsd.org/src/commit/?id=3d96ee7c7dcc)
+USB 以太网适配器驱动 [smsc(4)](https://man.freebsd.org/cgi/man.cgi?query=smsc&sektion=4&format=html) 现在将在树莓派设备中从 `bootargs` 获取 MAC 地址，如果没有提供，则回退到使用 [ether_gen_addr(9)](https://man.freebsd.org/cgi/man.cgi?query=ether_gen_addr&sektion=9&format=html) 生成固定的 MAC 地址。[3d96ee7c7dcc](https://cgit.freebsd.org/src/commit/?id=3d96ee7c7dcc)
 
 ## 存储
 
@@ -123,7 +123,7 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 NFS 服务器（[nfsd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsd&sektion=8&format=html)、[nfsuserd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsuserd&sektion=8&format=html)、[mountd(8)](https://man.freebsd.org/cgi/man.cgi?query=mountd&sektion=8&format=html)、[gssd(8)](https://man.freebsd.org/cgi/man.cgi?query=gssd&sektion=8&format=html)、和 [rpc.tlsservd(8)](https://man.freebsd.org/cgi/man.cgi?query=rpc.tlsservd&sektion=8&format=html)) 现在可以在适当配置的 vnet jail 中运行。vnet jail 必须位于独立的文件系统上，设置了 jail 参数 `allow.nfsd`，并且 `enforce_statfs` 不能设置为 `0`。不允许使用 UDP 和 pNFS 服务器配置。请参见 [jail(8)](https://man.freebsd.org/cgi/man.cgi?query=jail&sektion=8&format=html)、[nfsd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsd&sektion=8&format=html) 和 [mountd(8)](https://man.freebsd.org/cgi/man.cgi?query=mountd&sektion=8&format=html)。[b4805d577787](https://cgit.freebsd.org/src/commit/?id=b4805d577787)
 
-现在有了一个新的 `syskrb5` 挂载参数。能在没有 Kerberos 凭据（TGT 或 keytab）的情况下进行 Kerberized NFSv4.1/4.2 挂载。请参见 [mount_nfs(8)](https://man.freebsd.org/cgi/man.cgi?query=mount_nfs&sektion=8&format=html)。[0644746d5091](https://cgit.freebsd.org/src/commit/?id=0644746d5091)
+现在有了一个新的挂载参数 `syskrb5`。能在没有 Kerberos 凭据（TGT 或 keytab）的情况下进行 Kerberized NFSv4.1/4.2 挂载。请参见 [mount_nfs(8)](https://man.freebsd.org/cgi/man.cgi?query=mount_nfs&sektion=8&format=html)。[0644746d5091](https://cgit.freebsd.org/src/commit/?id=0644746d5091)
 
 ### ZFS 更改
 
@@ -161,15 +161,15 @@ BeagleBone Black（armv7）不再受支持；它与当前的启动文件（DTB�
 
 ## 关于后续 FreeBSD 版本的一般说明
 
-预计 FreeBSD 15.0 不会再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已被弃用，并将在未来移除。64 位系统仍然能够运行较旧的 32 位二进制文件。
+预计 FreeBSD 15.0 不会再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已被弃用，并会在以后移除。64 位系统仍然能够运行较旧的 32 位二进制文件。
 
-我们预计在 FreeBSD 15.0 和 stable/15 版本中，armv7 将作为二级架构（Tier 2）继续得到支持。然而，我们也预见到 armv7 可能会在 FreeBSD 16.0 中被移除。我们将在 15.0 版本发布时，提供关于 armv7 在 15.x 和 16.x 中状态的更新。
+我们预计在 FreeBSD 15.0 和 stable/15 版本中，armv7 将作为二级架构继续得到支持。然而，我们也预见到 armv7 可能会在 FreeBSD 16.0 中被移除。我们将在 15.0 版本发布时，提供有关 armv7 在 15.x 和 16.x 中状态的更新。
 
 通过参数 `COMPAT_FREEBSD32` 在 64 位平台上执行 32 位二进制文件的支持将至少在 stable/15 和 stable/16 分支中持续。通过 `cc -m32` 编译单个 32 位应用程序的支持也将至少在 stable/15 分支中继续，该分支包括适当的头文件（`/usr/include`）和库文件（`/usr/lib32`）。
 
-对于 FreeBSD 15.0 及以后的版本，Ports 将不再支持已弃用的 32 位平台。这些未来版本将不包含二进制包，也不再支持为已弃用的 32 位平台从 port 构建包。
+对于 FreeBSD 15.0 及后续版本，Ports 将不再支持已弃用的 32 位平台。这些后续版本将不包含二进制包，也不再支持为已弃用的 32 位平台从 port 构建包。
 
-FreeBSD stable/14 及以前的分支将继续保留现有的 32 位内核和世界环境支持。只要这些分支得到 Ports 系统的支持，Ports 将继续支持为 32 位系统构建 port 和包。然而，所有 32 位平台将被视为二级或三级平台，随着上游对 32 位平台的弃用，单个 Port 的支持可能会逐渐下降。
+FreeBSD stable/14 及以前的分支将继续保留对现有的 32 位内核和世界环境的支持。只要这些分支得到 Ports 系统的支持，Ports 将继续支持为 32 位系统构建 port 和包。然而，所有 32 位平台将被视为二级/三级平台，随着上游对 32 位平台的弃用，单个 Port 的支持可能会逐渐下降。
 
 根据当前的支持计划，stable/14 将在 FreeBSD 14.0-RELEASE 发布后的 5 年内达到生命周期结束（EOL）。stable/14 的 EOL 将标志着对已弃用 32 位平台的支持结束，包括源代码发布、预构建包以及从 port 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对已弃用 32 位平台的支持将在 2028 年 11 月结束。
 
