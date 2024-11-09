@@ -96,7 +96,7 @@ IPv4（子）网的最小地址（主机 0）的处理方式已更改，以便�
 
 现在可以使用 `defaultrouter_fibN` 和 `ipv6_defaultrouter_fibN`​[ rc.conf(5)  ](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 变量为非主要 FIB 添加默认路由，。[ 30659d1dcbcc ](https://cgit.freebsd.org/src/commit/?id=30659d1dcbcc)（由 ScaleEngine Inc. 赞助）
 
-[ bhyve(8)  ](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 工具增加了 virtio-input 设备仿真支持。这可用于将键盘/鼠标输入事件注入到客户机中。命令行语法为：`-s <slot>,virtio-input,/dev/input/eventX`。[ 054accac71e0 ](https://cgit.freebsd.org/src/commit/?id=054accac71e0)
+[ bhyve(8)  ](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 工具增加了 virtio-input 设备仿真支持。这可用于将键盘/鼠标输入事件注入到虚拟机中。命令行语法为：`-s <slot>,virtio-input,/dev/input/eventX`。[ 054accac71e0 ](https://cgit.freebsd.org/src/commit/?id=054accac71e0)
 
 [ kdump(1)  ](https://man.freebsd.org/cgi/man.cgi?query=kdump&sektion=1&format=html) 工具增加了对解码 Linux 系统调用的支持。
 
@@ -154,7 +154,7 @@ root 用户的默认 shell 现在是 [ sh(1)  ](https://man.freebsd.org/cgi/man.
 
 添加了工具 [ base64(1)  ](https://man.freebsd.org/cgi/man.cgi?query=base64&sektion=1&format=html) 。 [ 540a99289bb1 ](https://cgit.freebsd.org/src/commit/?id=540a99289bb1)
 
-[ bhyve(8)  ](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 虚拟化程序现在支持可选的 TPM（可信平台模块）直通支持。这不是直接访问，而是将来自客户机的命令转发到物理 TPM。 [ 67c26eb2a57c ](https://cgit.freebsd.org/src/commit/?id=67c26eb2a57c)
+[ bhyve(8)  ](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 虚拟化程序现在支持可选的 TPM（可信平台模块）直通支持。这不是直接访问，而是将来自虚拟机的命令转发到物理 TPM。 [ 67c26eb2a57c ](https://cgit.freebsd.org/src/commit/?id=67c26eb2a57c)
 
 [ bhyve(8)  ](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 中的 GPU 直通已经在 AMD 和 Intel GPU 上得到改进。这是一个正在进行中的工作；直通在所有情况下都不起作用，配置尚未记录。
 
