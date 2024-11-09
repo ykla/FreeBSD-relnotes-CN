@@ -1,4 +1,4 @@
-# FreeBSD 13.3 发行说明
+# FreeBSD 13.3-RELEASE 发行说明
 
 - 原文地址：[FreeBSD 13.3-RELEASE Release Notes](https://www.freebsd.org/releases/13.3R/relnotes/)
 
