@@ -2,11 +2,11 @@
 
 > 原文链接 [FreeBSD 13.1-RELEASE Release Notes](https://www.freebsd.org/releases/13.1R/relnotes/)
 
-#### 摘要
+## 摘要
 
 FreeBSD 13.1-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeBSD 基本系统所做修改的摘要。这份文件列出了自上次发布以来所发布的相关安全公告，以及对 FreeBSD 内核和用户空间的重大修改。同时还介绍了一些关于升级的简要说明。
 
-#### 简介
+## 简介
 
 这份文件包含了 FreeBSD 13.1-RELEASE 的发行说明。它描述了 FreeBSD 最近增加、改变或删除的功能。它还提供了一些关于从以前版本的 FreeBSD 升级的说明。
 
@@ -22,7 +22,7 @@ FreeBSD 13.1-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeB
 
 典型的发布说明记录了在 13.0-RELEASE 之后发布的安全公告，新的驱动或硬件支持，新的命令或选项，主要的错误修正，或贡献的软件升级。他们也可能列出主要的 port/包的变化或发布工程实践。显然，发行说明不可能列出 FreeBSD 在不同版本之间的每一个变化； 这份文件主要关注安全公告、 用户可见的变化，以及主要的架构改进。
 
-#### 从以前的 FreeBSD 版本升级
+## 从以前的 FreeBSD 版本升级
 
 使用 freebsd-update(8) 工具可以在 RELEASE 版本 (以及各种安全分支的快照) 之间进行二进制升级。二进制升级过程将更新未修改的用户空间工具，以及作为官方 FreeBSD 发行版一部分的未修改的 GENERIC 内核。freebsd-update(8) 工具要求被升级的主机有互联网连接。
 
@@ -34,7 +34,7 @@ FreeBSD 13.1-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeB
 
 > **升级之后，sshd (来自 OpenSSH 8.8p1) 将不接受新的连接，直到它被重新启动。在安装了新的用户空间之后，要么重新启动(按照源码升级程序中的规定)，要么执行 service sshd 重启。**
 
-#### 用户空间
+## 用户空间
 
 本节涵盖了对用户空间应用程序、贡献的软件和系统实用程序的更改和添加。
 
@@ -68,7 +68,7 @@ mpsutil(8) 扩展到了显示适配器信息和控制 NCQ。395bc3598b47
 
 在 bsdinstall(8) 中为变量磁盘名称的脚本分区编辑器增加了一种新模式。如果磁盘参数 DEFAULT 被设置为代替实际的设备名称，或没有为 PARTITIONS 参数指定磁盘，则安装程序将遵循自动分区模式中使用的逻辑，即如果有几个磁盘，它将为其中一个提供选择对话框，或在只有一个磁盘时自动选择。这简化了为具有不同磁盘名称的硬件或虚拟机创建全自动安装媒体的工作。5ec4eb443e81
 
-#### 贡献的软件
+## 贡献的软件
 
 在所有 powerpc 架构上都启用了 LLDB 的构建，cb1bee9bd34
 
@@ -98,7 +98,7 @@ scp(1) 实验性地支持使用 SFTP 协议进行传输，以取代传统上使�
 
 在 ssh 中启用了对 FIDO/U2F 硬件认证器的使用，并使用了新的公钥类型 ecdsa-sk 和 ed25519-sk 以及相应的证书类型。对 FIDO/U2F 的支持在 https://www.openssh.com/txt/release-8.2 中有所描述，a613d68fff9a (由 FreeBSD 基金会 赞助)
 
-#### 运行时库和 API
+## 运行时库和 API
 
 在 powerpc、powerpc64 和 powerpc64le 上增加了 OpenSSL 的汇编优化代码，ce35a3bc852
 
@@ -110,7 +110,7 @@ OFED 库现已在 riscv64 和 riscv64sf 上构建。2b978245733
 
 OPENMP 库现在已在 riscv64 和 riscv64sf 上构建，aaf56e35569
 
-#### 内核
+## 内核
 
 本节涵盖了对内核配置、系统调校和系统控制参数的改变，这些改变没有其他分类。
 
@@ -124,7 +124,7 @@ OPENMP 库现在已在 riscv64 和 riscv64sf 上构建，aaf56e35569
 
 在 arm64 上为 32 位 ARM 二进制文件添加了 HWCAP/HWCAP2 辅助参数支持。这修正了在 COMPAT32 仿真环境下 golang 的构建/运行。28e22482279f (由 Rubicon Communications, LLC (`Netgate`)赞助)
 
-#### 设备和驱动
+## 设备和驱动
 
 本节涵盖了自 13.0-RELEASE 以来对设备和设备驱动的变化和补充。
 
@@ -158,7 +158,7 @@ ice(4) 驱动程序已经更新到了 1.34.2-k，增加了固件日志和初始 
 
 增加了对 HiFive Unmatched RISC-V 板的支持。
 
-#### 存储系统
+## 存储系统
 
 本节涵盖了对文件系统和其他存储子系统（包括本地和网络）的改变和补充。
 
@@ -180,7 +180,7 @@ ZFS 的变化 ZFS 已经升级到 OpenZFS 2.1.4 版本。OpenZFS 的发行说明
 
 继 5cc52631b3b8 之后，fsck\_ffs(8) 在 preen 模式下对后台 fsck 不起作用，在该模式下 UFS 被调整为没有软更新日志的软更新。修正: fb2feceac34c
 
-#### 引导加载器的变化
+## 引导加载器的变化
 
 本节涵盖了启动加载器、启动菜单以及其他与启动相关的变化。
 
@@ -190,7 +190,7 @@ UEFI 启动对 amd64 进行了改进。装载器检测加载的内核是否可�
 
 boot1 和 loader 在 powerpc64le 上得到了修正。8a62b07bce7
 
-#### 其他启动方面的改动
+## 其他启动方面的改动
 
 对 loader(8)、 nvme(4)、 random(4)、 rtsold(8) 和 x86 时钟校准进行了性能改进，这使得系统启动时间明显加快了。EC2 平台上的配置变化提供了额外的好处，使 13.1-RELEASE 的启动速度是 13.0-RELEASE 的两倍以上。(由 https://www.patreon.com/cperciva 赞助)
 
@@ -198,7 +198,7 @@ EC2 镜像现在被默认构建为使用 UEFI 而不是传统 BIOS 启动。请�
 
 增加了对在 AWS 系统管理器参数库中记录 EC2 AMI Ids 的支持。FreeBSD 将使用公共前缀 `/aws/service/freebsd`，导致参数名称看起来像`/aws/service/freebsd/amd64/base/ufs/13.1/RELEASE`。242d1c32e42c (Sponsored by https://www.patreon.com/cperciva)
 
-#### 联网
+## 联网
 
 这一节说明了影响 FreeBSD 网络的变化。
 
@@ -208,7 +208,7 @@ EC2 镜像现在被默认构建为使用 UEFI 而不是传统 BIOS 启动。请�
 
 ### 关于未来 FreeBSD 发行版的一般说明
 
-#### 默认 CPUTYPE 的变化
+## 默认 CPUTYPE 的变化
 
 从 FreeBSD-13.0 开始，i386 架构的默认 CPUTYPE 将从 486 变为 686。
 
