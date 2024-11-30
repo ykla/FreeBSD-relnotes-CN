@@ -15,7 +15,7 @@ FreeBSD 14.2-RELEASE 发行说明总结了在 14-STABLE 开发分支上 FreeBSD 
 
 这些发行说明适用于“RELEASE”发行版，该版本代表了 14-STABLE 开发分支中的一个节点，位于 14.1-RELEASE 和后续的 14.3-RELEASE 之间。有关该分支中预编译的二进制“RELEASE”发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 和其有关镜像下载。有关获取此版本（及其他版本）FreeBSD 的更多信息，请参阅 [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook//) 的 [Obtaining FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
+FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 和其有关镜像下载。有关获取此版本（及其他版本）FreeBSD 的更多信息，请参阅 [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook//) 的 [FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
 建议在安装 FreeBSD 之前，用户先查阅下发行勘误文档。该文档包含在发行周期后期及发行后发现的“最新”信息，通常涵盖已知错误、安全公告以及文档修正。可在 FreeBSD 网站上找到最新的 FreeBSD 14.2-RELEASE 勘误文档。
 
@@ -107,7 +107,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - `nuageinit` 启动脚本现在支持 OpenStack 网络配置。[ea310d18b222](https://cgit.freebsd.org/src/commit/?id=ea310d18b222)（由 OVHCloud 赞助）  
 - FreeBSD 项目现在可发布符合 OCI 标准的容器镜像。[8a688fcc242e](https://cgit.freebsd.org/src/commit/?id=8a688fcc242e)  
 - Amazon EC2 云环境中的 `shutdown` 和 `reboot` API 现在可支持 arm64 实例。升级至 FreeBSD 14.2-RELEASE 的旧实例需要在 `/boot/loader.conf` 中设置 `debug.acpi.quirks="8"`。[28b881840df7](https://cgit.freebsd.org/src/commit/?id=28b881840df7)（由 Amazon 赞助）  
-- FreeBSD 项目现在发布了“精简版（small）”的 EC2 镜像。精简版镜像在“基础版（base）”中移除了调试符号、测试、32 位库、LLDB 调试器、Amazon SSM Agent 和 AWS CLI。[953142d6baf3](https://cgit.freebsd.org/src/commit/?id=953142d6baf3)（由 Amazon 赞助）
+- FreeBSD 项目现在发布了“精简版（small）”的 EC2 镜像。精简版镜像在“基础版（base）”中移除了调试符号、测试、32 位库、LLDB 调试器、Amazon SSM Agent 和 AWS CLI。[953142d6baf3](https://cgit.freebsd.org/src/commit/?id=953142d6baf3)（由亚马逊赞助）
 
 ## 设备与驱动程序
 
@@ -120,13 +120,13 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - `ice` 驱动已升级至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由 Intel Corporation 赞助）  
 - `ice_ddp` 已升级至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由 Intel Corporation 赞助）  
 - [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 驱动新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)  
-- 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由 Amazon 赞助） 
+- 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
 - 已在所有架构上启用 [nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html) 和 [nvmecontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&sektion=8&format=html)。[24687a65dd7f](https://cgit.freebsd.org/src/commit/?id=24687a65dd7f)，[aba2d7f89dcf](https://cgit.freebsd.org/src/commit/?id=aba2d7f89dcf)（由 Chelsio Communications 和 Netflix 赞助）  
 
 
 ### 弃用和删除的驱动程序
 
-- 计划在 FreeBSD 15.0 中删除 [agp(4)](https://man.freebsd.org/cgi/man.cgi?query=agp&sektion=4&format=html) ，且手册页已标注为弃用。[92af7c97e197](https://cgit.freebsd.org/src/commit/?id=92af7c97e197)  
+- 计划在 FreeBSD 15.0 中删除 [agp(4)](https://man.freebsd.org/cgi/man.cgi?query=agp&sektion=4&format=html) ，手册页已标注为弃用。[92af7c97e197](https://cgit.freebsd.org/src/commit/?id=92af7c97e197)  
 - 计划在后续版本中删除 [syscons(4)](https://man.freebsd.org/cgi/man.cgi?query=syscons&sektion=4&format=html) ，手册页已标注为弃用，建议用户迁移至 [vt(4)](https://man.freebsd.org/cgi/man.cgi?query=vt&sektion=4&format=html)。[2bc5b1d60512](https://cgit.freebsd.org/src/commit/?id=2bc5b1d60512)（由 FreeBSD 基金会赞助）  
 
 
