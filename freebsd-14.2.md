@@ -5,11 +5,11 @@
 
 ## 概述
 
-FreeBSD 14.2-RELEASE 发行说明总结了在 14-STABLE 开发分支上 FreeBSD 基本系统发生的变更。本文档列出了自上次发布以来 RELEASE 适用的安全公告，以及对 FreeBSD 内核和用户空间的重大变更。同时还附带了有关升级的简要说明。
+FreeBSD 14.2-RELEASE 发行说明总结了在 14-STABLE 开发分支上 FreeBSD 基本系统发生的变更。本文档列出了自上次发布以来 RELEASE 适用的安全公告，以及对 FreeBSD 内核和用户空间的重大变更。同时还附带了有关更新的简要说明。
 
 ## 引言
 
-本文档为 FreeBSD 14.2-RELEASE 的发行说明，概述了 FreeBSD 最近新增、修改和删除的功能，并附带了有关从旧版本升级的说明。
+本文档为 FreeBSD 14.2-RELEASE 的发行说明，概述了 FreeBSD 最近新增、修改和删除的功能，并附带了有关从旧版本更新的说明。
 
 本发行说明适用于自 14-STABLE 开发分支创建以来的最新版本信息。有关该分支中预编译的二进制“RELEASE”发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
@@ -21,16 +21,16 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 本文档总结了自 14.1-RELEASE 以来 FreeBSD 中对用户最为可见的新增和更改功能。一般来说，这些变更是 14-STABLE 分支的独有内容，除非特别标记为 MERGED 功能。
 
-一般的发行说明内容包括自 14.1-RELEASE 之后发布的安全公告、新增的驱动程序/硬件支持、新命令/参数、主要的错误修复/外部软件升级。还可能列出主要 Ports/软件包和发行工程实践的更改。显然，发行说明无法详尽列出两个 FreeBSD 版本之间所做的每项更改；本文档主要聚焦于安全公告、用户可见的更改和重大架构改进。
+一般的发行说明内容包括自 14.1-RELEASE 之后发布的安全公告、新增的驱动程序/硬件支持、新命令/参数、主要的错误修复/外部软件更新。还可能列出主要 Ports/软件包和发行工程实践的更改。显然，发行说明无法详尽列出两个 FreeBSD 版本之间所做的每项更改；本文档主要聚焦于安全公告、用户可见的更改和重大架构改进。
 
 
-### 从旧版 FreeBSD 升级
+### 从旧版 FreeBSD 更新
 
-使用工具 **freebsd-update(8)** 能在 RELEASE 版本（及各安全分支快照）间进行二进制升级。请参阅特定版本的升级程序，例如 FreeBSD 14.2-RELEASE 的升级信息，并在 FreeBSD 手册中查阅关于二进制升级的详细说明。此工具会更新未经修改的用户空间工具，以及在官方 FreeBSD RELEASE 分发的未经修改的 GENERIC 内核。工具 **freebsd-update(8)** 要求升级的主机能够连接互联网。
+使用工具 **freebsd-update(8)** 能在 RELEASE 版本（及各安全分支快照）间进行二进制更新。请参阅特定版本的更新程序，例如 FreeBSD 14.2-RELEASE 的更新信息，并在 FreeBSD 手册中查阅关于二进制更新的详细说明。此工具会更新未经修改的用户空间工具，以及在官方 FreeBSD RELEASE 分发的未经修改的 GENERIC 内核。工具 **freebsd-update(8)** 要求更新的主机能够连接互联网。
 
-可以按照 **/usr/src/UPDATING** 中的说明从以前的版本进行基于源代码的升级（通过重新编译 FreeBSD 基本系统进行升级）。
+可以按照 **/usr/src/UPDATING** 中的说明从以前的版本进行基于源代码的更新（通过重新编译 FreeBSD 基本系统进行更新）。
 
-在升级 FreeBSD 之前，应先备份所有数据和配置文件。
+在更新 FreeBSD 之前，应先备份所有数据和配置文件。
 
 
 ### 安全与勘误
@@ -85,13 +85,13 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ### 第三方应用程序
 
-- `bc` 已升级至 7.0.2。[90ea553a0d30](https://cgit.freebsd.org/src/commit/?id=90ea553a0d30)  
-- `libarchive` 已升级至 3.7.7。[2ae238160f20](https://cgit.freebsd.org/src/commit/?id=2ae238160f20)  
-- `libcxxrt` 已升级至供应商快照 6f2fdfebcd62。[d0dcee46d971](https://cgit.freebsd.org/src/commit/?id=d0dcee46d971)  
-- `libpcap` 已升级至 1.10.5。[26f21a6494b4](https://cgit.freebsd.org/src/commit/?id=26f21a6494b4)（由 FreeBSD 基金会赞助）  
-- `tcpdump` 已升级至 4.99.5。[ec3da16d8bc1](https://cgit.freebsd.org/src/commit/?id=ec3da16d8bc1)（由 FreeBSD 基金会赞助）  
-- `openssl` 已升级至 3.0.15。[cc43f991ab3e](https://cgit.freebsd.org/src/commit/?id=cc43f991ab3e)  
-- `unbound` 已升级至 1.22.0。[0a096a7b3ae8](https://cgit.freebsd.org/src/commit/?id=0a096a7b3ae8)  
+- `bc` 已更新至 7.0.2。[90ea553a0d30](https://cgit.freebsd.org/src/commit/?id=90ea553a0d30)  
+- `libarchive` 已更新至 3.7.7。[2ae238160f20](https://cgit.freebsd.org/src/commit/?id=2ae238160f20)  
+- `libcxxrt` 已更新至供应商快照 6f2fdfebcd62。[d0dcee46d971](https://cgit.freebsd.org/src/commit/?id=d0dcee46d971)  
+- `libpcap` 已更新至 1.10.5。[26f21a6494b4](https://cgit.freebsd.org/src/commit/?id=26f21a6494b4)（由 FreeBSD 基金会赞助）  
+- `tcpdump` 已更新至 4.99.5。[ec3da16d8bc1](https://cgit.freebsd.org/src/commit/?id=ec3da16d8bc1)（由 FreeBSD 基金会赞助）  
+- `openssl` 已更新至 3.0.15。[cc43f991ab3e](https://cgit.freebsd.org/src/commit/?id=cc43f991ab3e)  
+- `unbound` 已更新至 1.22.0。[0a096a7b3ae8](https://cgit.freebsd.org/src/commit/?id=0a096a7b3ae8)  
 
 
 ### 已弃用应用程序
@@ -106,7 +106,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 - `nuageinit` 启动脚本现在支持 OpenStack 网络配置。[ea310d18b222](https://cgit.freebsd.org/src/commit/?id=ea310d18b222)（由 OVHCloud 赞助）  
 - FreeBSD 项目现在可发布符合 OCI 标准的容器镜像。[8a688fcc242e](https://cgit.freebsd.org/src/commit/?id=8a688fcc242e)  
-- Amazon EC2 云环境中的 `shutdown` 和 `reboot` API 现在可支持 arm64 实例。升级至 FreeBSD 14.2-RELEASE 的旧实例需要在 `/boot/loader.conf` 中设置 `debug.acpi.quirks="8"`。[28b881840df7](https://cgit.freebsd.org/src/commit/?id=28b881840df7)（由亚马逊赞助）  
+- Amazon EC2 云环境中的 `shutdown` 和 `reboot` API 现在可支持 arm64 实例。更新至 FreeBSD 14.2-RELEASE 的旧实例需要在 `/boot/loader.conf` 中设置 `debug.acpi.quirks="8"`。[28b881840df7](https://cgit.freebsd.org/src/commit/?id=28b881840df7)（由亚马逊赞助）  
 - FreeBSD 项目现在发布了“精简版（small）”的 EC2 镜像。精简版镜像在“基础版（base）”中移除了调试符号、测试、32 位库、LLDB 调试器、Amazon SSM Agent 和 AWS CLI。[953142d6baf3](https://cgit.freebsd.org/src/commit/?id=953142d6baf3)（由亚马逊赞助）
 
 ## 设备与驱动程序
@@ -116,9 +116,9 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ### 设备驱动程序
 
-- `ena` 驱动已升级至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
-- `ice` 驱动已升级至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
-- `ice_ddp` 已升级至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）  
+- `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
+- `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
+- `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）  
 - [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 驱动新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)  
 - 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
 - 已在所有架构上启用 [nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html) 和 [nvmecontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&sektion=8&format=html)。[24687a65dd7f](https://cgit.freebsd.org/src/commit/?id=24687a65dd7f)，[aba2d7f89dcf](https://cgit.freebsd.org/src/commit/?id=aba2d7f89dcf)（由 Chelsio Communications 和奈飞赞助）  
@@ -137,7 +137,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ### ZFS
 
-OpenZFS 已升级至版本 2.2.6。[755e773877e9](https://cgit.freebsd.org/src/commit/?id=755e773877e9)  
+OpenZFS 已更新至版本 2.2.6。[755e773877e9](https://cgit.freebsd.org/src/commit/?id=755e773877e9)  
 
 
 
