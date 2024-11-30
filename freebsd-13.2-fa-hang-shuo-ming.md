@@ -2,11 +2,11 @@
 
 > 原文链接 [FreeBSD 13.2-RELEASE Release Notes](https://www.freebsd.org/releases/13.2R/relnotes/)
 
-#### 摘要
+## 摘要
 
 FreeBSD 13.2-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeBSD 基本系统所做修改的摘要。这份文件列出了自上次发布以来所发布的相关安全公告， 以及对 FreeBSD 内核和用户区的重大修改。同时还介绍了一些关于升级的简要说明。
 
-#### 简介
+## 简介
 
 这份文件包含了 FreeBSD 13.2-RELEASE 的发行说明。它说明了 FreeBSD 最近新增、变化或删除的功能。它还提供了一些关于从旧版 FreeBSD 的升级说明。
 
@@ -22,7 +22,7 @@ FreeBSD 13.2-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeB
 
 典型的发布说明记录了在 13.1-RELEASE 之后发布的安全公告， 新的驱动或硬件支持，新的命令或选项，主要的错误修正，或贡献的软件升级。它们也可能列出主要的 port/包的变化或发布工程实践。显然，发行说明不可能列出 FreeBSD 在不同版本之间的每一个变化；这份文件主要关注安全公告、用户可见的变化， 以及主要的架构改进。
 
-#### 从旧版 FreeBSD 升级
+## 从旧版 FreeBSD 升级
 
 使用 freebsd-update(8) 工具可以在 RELEASE 版本 (以及各种安全分支的快照) 之间进行二进制升级。二进制升级过程将更新未修改的用户区工具， 以及作为官方 FreeBSD 发行版一部分的未修改的 GENERIC 内核。freebsd-update(8) 工具要求被升级的主机有互联网连接。
 
@@ -34,7 +34,7 @@ FreeBSD 13.2-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeB
 
 > _在安装了新的用户级软件之后，运行的守护程序仍然是以前的版本。在通过第二次调用 freebsd-update 来安装用户级组件后，或者通过 `installworld` 从源代码升级后，系统应该重新启动，以便用新的软件启动一切。例如，旧版本的 sshd 在安装了新的 /usr/sbin/sshd 后，无法正确处理传入的连接；重启后会启动新的 sshd 和其他守护程序。_
 
-#### 用户空间
+## 用户空间
 
 这部分介绍了一些对用户应用程序、贡献软件和系统工具的更改和添加。
 
@@ -80,7 +80,7 @@ FreeBSD 13.2-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeB
 * 软件 xz-embedded 软件已经升级到了 3f438e15109229bb14ab45f285f4bff5412a9542 版本。
 * 软件 zlib 已经升级到了 1.2.13 版本。
 
-#### 运行时库和 API
+## 运行时库和 API
 
 libmd 现在支持 SHA-512/224。此功能由 Klara, Inc. 赞助。
 
@@ -88,7 +88,7 @@ libmd 现在支持 SHA-512/224。此功能由 Klara, Inc. 赞助。
 
 本机 pthread 库函数现在可以支持 Linux 语义。
 
-#### 内核
+## 内核
 
 此部分包括了对内核配置、系统调整和系统控制参数的更改，这些更改没有分类到其他部分。
 
@@ -128,13 +128,13 @@ linux（4）ABI 中的 vDSO（虚拟动态共享对象）支持已经接近完�
 * 添加了驱动程序 rtw88(4)，以支持多个 Realtek 无线 PCI 接口。目前仅限于 802.11 a / b / g 操作。请参阅 [https://wiki.freebsd.org/WiFi/Rtw88](https://wiki.freebsd.org/WiFi/Rtw88) 获取更多信息。
 * 对于支持 Linux 设备驱动程序的 KPI 进行了许多添加和改进。（由 FreeBSD 基金会赞助）
 
-#### 支持的平台
+## 支持的平台
 
-#### 存储
+## 存储
 
 本节介绍了本地和网络文件系统以及其他存储子系统的更改和添加。
 
-#### 通用存储
+## 通用存储
 
 **ZFS 更改**
 
@@ -158,7 +158,7 @@ teken.fg\_color 和 teken.bg\_color loader.conf（5）变量现在接受亮或�
 
 已修复了 loader（8）中的几个错误，导致视频控制台输出消失。这些错误似乎是在引导加载程序启动内核后出现的挂起。（由 Netflix 赞助）
 
-#### 其他启动更改
+## 其他启动更改
 
 **网络**
 
@@ -178,7 +178,7 @@ teken.fg\_color 和 teken.bg\_color loader.conf（5）变量现在接受亮或�
 
 TCP 和 SCTP 中有大量的 bug 修复。
 
-#### 通用注释——后续 FreeBSD 版本的注意事项：
+## 通用注释——后续 FreeBSD 版本的注意事项：
 
 OPIE 已弃用并将在 FreeBSD 14.0 中删除。
 
