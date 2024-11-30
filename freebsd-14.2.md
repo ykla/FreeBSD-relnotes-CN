@@ -184,7 +184,7 @@ BIOS 启动加载程序现在支持 gzip 和 bzip2 格式，但不支持图形�
 ### 虚拟化支持
 
 - 现在可识别 NVMM 虚拟机管理程序。[34f40baca641](https://cgit.freebsd.org/src/commit/?id=34f40baca641)  
-- 在 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 的 VNC 服务器中使用 [www/novnc](https://cgit.freebsd.org/ports/tree/www/novnc/) 客户端时，颜色显示已修复。[f9e09dc5b1d5](https://cgit.freebsd.org/src/commit/?id=f9e09dc5b1d5)  
+- 在 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 的 VNC 服务器中使用 [www/novnc](https://cgit.freebsd.org/ports/tree/www/novnc/) 客户端时，色彩显示已修复。[f9e09dc5b1d5](https://cgit.freebsd.org/src/commit/?id=f9e09dc5b1d5)  
 
 
 
