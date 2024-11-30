@@ -174,7 +174,7 @@ BIOS 启动加载程序现在支持 gzip 和 bzip2 格式，但不支持图形�
 
 本节介绍了对物理设备、虚拟化环境和硬件的一般支持，以及不属于其他章节的硬件更新。
 
-请查看 [14.2-RELEASE 支持的硬件列表](https://www.freebsd.org/releases/14.2R/hardware)以及[平台页面](https://www.freebsd.org/platforms/)以了解完整的支持 CPU 架构列表。
+请查看 [14.2-RELEASE 硬件支持列表](https://www.freebsd.org/releases/14.2R/hardware)以及[平台页面](https://www.freebsd.org/platforms/)以了解完整的支持 CPU 架构列表。
 
 
 ### 处理器支持
