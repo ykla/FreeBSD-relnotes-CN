@@ -83,7 +83,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 
 
-### 贡献软件
+### 第三方应用程序
 
 - `bc` 已升级至 7.0.2。[90ea553a0d30](https://cgit.freebsd.org/src/commit/?id=90ea553a0d30)  
 - `libarchive` 已升级至 3.7.7。[2ae238160f20](https://cgit.freebsd.org/src/commit/?id=2ae238160f20)  
