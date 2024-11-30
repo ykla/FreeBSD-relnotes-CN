@@ -96,7 +96,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ### 已弃用应用程序
 
-[fdisk(8)](https://man.freebsd.org/cgi/man.cgi?query=fdisk&sektion=8&format=html) 已长期被 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 取代，但尚未删除。运行此应用程序时，会显示迁移到 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 的警告。[3958be5c29da](https://cgit.freebsd.org/src/commit/?id=3958be5c29da)（由 FreeBSD 基金会赞助）
+[gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 已经取代 [fdisk(8)](https://man.freebsd.org/cgi/man.cgi?query=fdisk&sektion=8&format=html) 很久了，但后者未被删除。运行此应用程序时，将显示迁移到 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 的警告。[3958be5c29da](https://cgit.freebsd.org/src/commit/?id=3958be5c29da)（由 FreeBSD 基金会赞助）
 
 
 
