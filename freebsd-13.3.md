@@ -12,7 +12,7 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 本次发布的分行版代表了自 13-STABLE 创建以来，13-STABLE 开发分支的最新位置。有关该分支上预构建二进制发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-本文档所适用的发布分发版代表了 13-STABLE 开发分支中 13.2-RELEASE 与未来的 13.4-RELEASE 之间的一个点。有关该分支上预构建二进制发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
+本文档所适用的 RELEASE 版本代表了 13-STABLE 开发分支中的一个节点，位于 13.2-RELEASE 和后续的 13.4-RELEASE 之间。有关该分支上预构建二进制发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
 此 FreeBSD 13.3-RELEASE 版本是 RELEASE 分行版。它可以在 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 和任何镜像站点找到。有关获取此版本或其他版本的更多信息，请参见 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//) 中的附录[获取 FreeBSD](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
