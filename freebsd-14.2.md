@@ -124,8 +124,8 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
 - `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
 - `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）
-- 对 Tiger Lake-H 的支持已添加到驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html)。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
-- 对 Meteor Lake 的支持已添加到驱动程序 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html)。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
+- 驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html) 新增了对 Tiger Lake-H 的支持。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
+- 驱动程序 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
 - 驱动 [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
 - 一款支持部分 Realtek 芯片组的新无线驱动已可用：[rtw89(4)](https://man.freebsd.org/cgi/man.cgi?query=rtw89&sektion=4&format=html)。[a2d1e07f6451](https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451)（由 FreeBSD 基金会赞助）
 - 对 Realtek 8156/8156B 的支持已从 [cdce(4)](https://man.freebsd.org/cgi/man.cgi?query=cdce&sektion=4&format=html) 迁移至 [ure(4)](https://man.freebsd.org/cgi/man.cgi?query=ure&sektion=4&format=html)，以提升性能和可靠性。[630077a84186](https://cgit.freebsd.org/src/commit/?id=630077a84186)（由 FreeBSD 基金会赞助）
@@ -177,7 +177,7 @@ BIOS 引导加载程序重新添加了对 gzip 和 bzip2 的支持，但默认�
 ### 一般网络
 
 - 为驱动 [igc(4)](https://man.freebsd.org/cgi/man.cgi?query=igc&sektion=4&format=html) 新增了 AIM（Adaptive Interrupt Moderation，自适应中断调节/中断裁决）支持。[472a0ccf847a](https://cgit.freebsd.org/src/commit/?id=472a0ccf847a)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助）  
-- 此功能也已添加到驱动程序 [lem(4)](https://man.freebsd.org/cgi/man.cgi?query=lem&sektion=4&format=html)、[em(4)](https://man.freebsd.org/cgi/man.cgi?query=em&sektion=4&format=html) 和 [igb(4)](https://man.freebsd.org/cgi/man.cgi?query=igb&sektion=4&format=html) 中。FreeBSD 12.0 中引入的 UDP 性能严重下降问题（包括基于 UDP 的 NFS）预计已通过此变更得到修复。。[49f12d5b38f6](https://cgit.freebsd.org/src/commit/?id=49f12d5b38f6)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助） 
+- 此功能也已添加到了驱动程序 [lem(4)](https://man.freebsd.org/cgi/man.cgi?query=lem&sektion=4&format=html)、[em(4)](https://man.freebsd.org/cgi/man.cgi?query=em&sektion=4&format=html) 和 [igb(4)](https://man.freebsd.org/cgi/man.cgi?query=igb&sektion=4&format=html) 中。FreeBSD 12.0 中引入的 UDP 性能严重下降问题（包括基于 UDP 的 NFS）预计已通过此变更得到修复。。[49f12d5b38f6](https://cgit.freebsd.org/src/commit/?id=49f12d5b38f6)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助） 
 
 ### 无线网络
 
