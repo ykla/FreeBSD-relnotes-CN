@@ -1,7 +1,7 @@
 # FreeBSD 14.2-RELEASE 发行说明
 
 - 原文地址：[FreeBSD 14.2-RELEASE Release Notes](https://www.freebsd.org/releases/14.2R/relnotes/)
-- 最后修改：[John Baldwin](https://cgit.freebsd.org/doc/commit/?id=25d6ca8f29) 于 2024 年 11 月 30 日
+- 最后修改：[John Baldwin](https://cgit.freebsd.org/doc/commit/?id=25d6ca8f29) 于 2024 年 12 月 2 日
 
 ## 概述
 
@@ -12,8 +12,6 @@ FreeBSD 14.2-RELEASE 发行说明总结了在 14-STABLE 开发分支上 FreeBSD 
 本文档为 FreeBSD 14.2-RELEASE 的发行说明，概述了 FreeBSD 最近新增、修改和删除的功能，并附带了有关从旧版本更新的说明。
 
 本发行说明适用于自 14-STABLE 开发分支创建以来的最新版本信息。有关该分支中预编译的二进制“RELEASE”发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
-
-这些发行说明适用于“RELEASE”发行版，该版本代表了 14-STABLE 开发分支中的一个节点，位于 14.1-RELEASE 和后续的 14.3-RELEASE 之间。有关该分支中预编译的二进制“RELEASE”发行版的信息，请参见 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
 FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 和其有关镜像下载。有关获取此版本（及其他版本）FreeBSD 的更多信息，请参阅 [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook//) 的 [FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
@@ -86,11 +84,14 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 ### 第三方应用程序
 
 - `bc` 已更新至 7.0.2。[90ea553a0d30](https://cgit.freebsd.org/src/commit/?id=90ea553a0d30)  
-- `libarchive` 已更新至 3.7.7。[2ae238160f20](https://cgit.freebsd.org/src/commit/?id=2ae238160f20)  
-- `libcxxrt` 已更新至供应商快照 6f2fdfebcd62。[d0dcee46d971](https://cgit.freebsd.org/src/commit/?id=d0dcee46d971)  
-- `libpcap` 已更新至 1.10.5。[26f21a6494b4](https://cgit.freebsd.org/src/commit/?id=26f21a6494b4)（由 FreeBSD 基金会赞助）  
+- `libarchive` 已更新至 3.7.7。[2ae238160f20](https://cgit.freebsd.org/src/commit/?id=2ae238160f20)
+- `libcbor` 已更新至 0.11.0。[1755b9daa693](https://cgit.freebsd.org/src/commit/?id=1755b9daa693)（由 FreeBSD 基金会赞助）
+- `libcxxrt` 已更新至供应商快照 6f2fdfebcd62。[d0dcee46d971](https://cgit.freebsd.org/src/commit/?id=d0dcee46d971)
+- `libfido2` 已更新至 1.14.0。[128bace5102e](https://cgit.freebsd.org/src/commit/?id=128bace5102e)（由 FreeBSD 基金会赞助）
+- `libpcap` 已更新至 1.10.5。[26f21a6494b4](https://cgit.freebsd.org/src/commit/?id=26f21a6494b4)（由 FreeBSD 基金会赞助）
+- `llvm` 已更新至 18.1.6。[f1e3279983d6](https://cgit.freebsd.org/src/commit/?id=f1e3279983d6)
+- `openssl` 已更新至 3.0.15。[cc43f991ab3e](https://cgit.freebsd.org/src/commit/?id=cc43f991ab3e)
 - `tcpdump` 已更新至 4.99.5。[ec3da16d8bc1](https://cgit.freebsd.org/src/commit/?id=ec3da16d8bc1)（由 FreeBSD 基金会赞助）  
-- `openssl` 已更新至 3.0.15。[cc43f991ab3e](https://cgit.freebsd.org/src/commit/?id=cc43f991ab3e)  
 - `unbound` 已更新至 1.22.0。[0a096a7b3ae8](https://cgit.freebsd.org/src/commit/?id=0a096a7b3ae8)  
 
 
@@ -98,7 +99,11 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 已经取代 [fdisk(8)](https://man.freebsd.org/cgi/man.cgi?query=fdisk&sektion=8&format=html) 很久了，但后者未被删除。运行此应用程序时，将显示迁移到 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 的警告。[3958be5c29da](https://cgit.freebsd.org/src/commit/?id=3958be5c29da)（由 FreeBSD 基金会赞助）
 
+### 运行时库和 API
 
+[fma(3)](https://man.freebsd.org/cgi/man.cgi?query=fma&sektion=3&format=html) 现在在处理某些较小输入时（如在 Python 测试套件中观察到的情况），能够正确返回符号为零的结果。[dc39004bc670](https://cgit.freebsd.org/src/commit/?id=dc39004bc670)（由 FreeBSD 基金会赞助）
+
+新增函数 `cap_rights_is_empty`，用于判断 `cap_rights_t` 是否未设置任何权限。[e77813f7e4a3](https://cgit.freebsd.org/src/commit/?id=e77813f7e4a3)（由 FreeBSD 基金会赞助）
 
 ## 云端支持
 
@@ -118,8 +123,12 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 - `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
 - `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
-- `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）  
-- [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 驱动新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)  
+- `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）
+- 对 Tiger Lake-H 的支持已添加到 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html) 驱动程序中。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
+- 对 Meteor Lake 的支持已添加到 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html) 驱动程序中。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
+- [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 驱动新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
+- 一款支持部分 Realtek 芯片组的新无线驱动已可用：[rtw89(4)](https://man.freebsd.org/cgi/man.cgi?query=rtw89&sektion=4&format=html)。[a2d1e07f6451](https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451)（由 FreeBSD 基金会赞助）
+- 对 Realtek 8156/8156B 的支持已从 [cdce(4)](https://man.freebsd.org/cgi/man.cgi?query=cdce&sektion=4&format=html) 迁移至 [ure(4)](https://man.freebsd.org/cgi/man.cgi?query=ure&sektion=4&format=html)，以提升性能和可靠性。[630077a84186](https://cgit.freebsd.org/src/commit/?id=630077a84186)（由 FreeBSD 基金会赞助）
 - 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
 - 已在所有架构上启用 [nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html) 和 [nvmecontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&sektion=8&format=html)。[24687a65dd7f](https://cgit.freebsd.org/src/commit/?id=24687a65dd7f)，[aba2d7f89dcf](https://cgit.freebsd.org/src/commit/?id=aba2d7f89dcf)（由 Chelsio Communications 和奈飞赞助）  
 
@@ -149,7 +158,8 @@ OpenZFS 已更新至版本 2.2.6。[755e773877e9](https://cgit.freebsd.org/src/c
 
 ### 启动加载程序的更改
 
-BIOS 启动加载程序现在支持 gzip 和 bzip2 格式，但不支持图形模式。（EFI 启动加载程序保持不变，所有这些格式都支持。）[4d3b05a8530e](https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e)（由奈飞赞助）  
+BIOS 引导加载程序重新添加了对 gzip 和 bzip2 的支持，但默认情况下移除了图形模式的支持，以解决大小问题。（EFI 引导加载程序未受影响，仍支持所有这些功能。）[4d3b05a8530e](https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e)（由奈飞赞助）
+
 
 ## 网络
 
@@ -162,13 +172,16 @@ BIOS 启动加载程序现在支持 gzip 和 bzip2 格式，但不支持图形�
 对网络栈进行了大量改进，涉及性能提升以及对 [sctp(4)](https://man.freebsd.org/cgi/man.cgi?query=sctp&sektion=4&format=html) 栈的错误修复。
 
 
+通过 [sctp_peeloff(2)](https://man.freebsd.org/cgi/man.cgi?query=sctp_peeloff&sektion=2&format=html) 返回的描述符现在会继承父套接字的权限。[ae3d7e27abc9](https://cgit.freebsd.org/src/commit/?id=ae3d7e27abc9)（由 FreeBSD 基金会赞助）
 
 ### 一般网络
 
 - 为驱动 [igc(4)](https://man.freebsd.org/cgi/man.cgi?query=igc&sektion=4&format=html) 新增了 AIM（Adaptive Interrupt Moderation，自适应中断调节/中断裁决）支持。[472a0ccf847a](https://cgit.freebsd.org/src/commit/?id=472a0ccf847a)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助）  
-- 此功能还添加到了驱动 [lem(4)](https://man.freebsd.org/cgi/man.cgi?query=lem&sektion=4&format=html) 和 [em(4)](https://man.freebsd.org/cgi/man.cgi?query=em&sektion=4&format=html) 中。[49f12d5b38f6](https://cgit.freebsd.org/src/commit/?id=49f12d5b38f6)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助）  
+- 此功能也已添加到驱动程序 [lem(4)](https://man.freebsd.org/cgi/man.cgi?query=lem&sektion=4&format=html)、[em(4)](https://man.freebsd.org/cgi/man.cgi?query=em&sektion=4&format=html) 和 [igb(4)](https://man.freebsd.org/cgi/man.cgi?query=igb&sektion=4&format=html) 中。FreeBSD 12.0 中引入的 UDP 性能严重下降问题（包括基于 UDP 的 NFS）预计已通过此变更得到修复。。[49f12d5b38f6](https://cgit.freebsd.org/src/commit/?id=49f12d5b38f6)（由 Rubicon Communications, LLC ("Netgate") 和 BBOX.io 赞助） 
 
+### 无线网络
 
+LinuxKPI（尤其是针对 802.11）的功能已增强（如 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&sektion=4&format=html)），提高了无线驱动程序的稳定性。（由 FreeBSD 基金会赞助）
 
 ## 硬件支持
 
@@ -179,14 +192,23 @@ BIOS 启动加载程序现在支持 gzip 和 bzip2 格式，但不支持图形�
 
 ### 处理器支持
 
+IOAPIC ID 最大值已增加至 255，修复了某些高核心数 AMD CPU 启动失败的问题。[18119e711f1c](https://cgit.freebsd.org/src/commit/?id=18119e711f1c)（由 FreeBSD 基金会赞助）
+
 新增对 POWER10 和 POWER11 的初步支持。[f9f006df1535](https://cgit.freebsd.org/src/commit/?id=f9f006df1535)  
 
 ### 虚拟化支持
 
 - 现在可识别 NVMM 虚拟机管理程序。[34f40baca641](https://cgit.freebsd.org/src/commit/?id=34f40baca641)  
-- 在 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 的 VNC 服务器中使用 [www/novnc](https://cgit.freebsd.org/ports/tree/www/novnc/) 客户端时，色彩显示已修复。[f9e09dc5b1d5](https://cgit.freebsd.org/src/commit/?id=f9e09dc5b1d5)  
+- 在 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 的 VNC 服务器中使用 [www/novnc](https://cgit.freebsd.org/ports/tree/www/novnc/) 客户端时，色彩显示已修复。[f9e09dc5b1d5](https://cgit.freebsd.org/src/commit/?id=f9e09dc5b1d5)
+- 在 Hyper-V 环境下，现在通过超调用（hypercalls）（而非 IPI）执行 TLB 刷新，这使 TLB 性能有了至高 40% 的提升。[7ece5993b787](https://cgit.freebsd.org/src/commit/?id=7ece5993b787)（由微软赞助）
 
+### Linux 二进制兼容层
 
+现在，Linux 二进制兼容层所有的 `stat()` 及其衍生都将忽略参数 `AT_NO_AUTOMOUNT`——因为该参数指定的行为已经与 FreeBSD 的行为一致，这提高了 Linux 应用程序的兼容性。[99d3ce80ba07](https://cgit.freebsd.org/src/commit/?id=99d3ce80ba07)（由 FreeBSD 基金会赞助）
+
+### 多媒体
+
+对音频堆栈进行了许多改进，包括支持 [mixer(8)](https://man.freebsd.org/cgi/man.cgi?query=mixer&sektion=8&format=html) 中的热插拔功能，以及新增了工具 [mididump(1)](https://man.freebsd.org/cgi/man.cgi?query=mididump&sektion=1&format=html)。[cf9d2fb18433](https://cgit.freebsd.org/src/commit/?id=cf9d2fb18433)（由 FreeBSD 基金会赞助） [7224e9f2d4af](https://cgit.freebsd.org/src/commit/?id=7224e9f2d4af)（由 FreeBSD 基金会赞助）
 
 ## Ports 与软件包基础设施
 
