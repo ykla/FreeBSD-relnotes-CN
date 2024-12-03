@@ -121,7 +121,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ### 设备驱动程序
 
-- `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
+- `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由亚马逊赞助）  
 - `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
 - `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）
 - 驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html) （**译者注：man 页面没有 hda(4)，可能指 [snd_hda(4)](https://man.freebsd.org/cgi/man.cgi?snd_hda(4))**）新增了对 Tiger Lake-H 的支持。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
@@ -158,7 +158,7 @@ OpenZFS 已更新至版本 2.2.6。[755e773877e9](https://cgit.freebsd.org/src/c
 
 ### 启动加载程序的更改
 
-BIOS 引导加载程序重新添加了对 gzip 和 bzip2 的支持，但默认情况下移除了图形模式的支持，以解决大小问题。（EFI 引导加载程序未受影响，仍支持所有这些功能。）[4d3b05a8530e](https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e)（由奈飞赞助）
+BIOS 引导加载程序重新添加了对 gzip 和 bzip2 的支持，但默认情况下移除了图形模式的支持，以解决大小问题。（EFI 引导加载程序未受影响，仍支持上述所有功能。）[4d3b05a8530e](https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e)（由奈飞赞助）
 
 
 ## 网络
@@ -241,4 +241,4 @@ FreeBSD stable/14 及更早分支将保留现有的 32 位内核和系统支持�
 
 按照当前的支持计划，stable/14 的生命周期将在 FreeBSD 14.0-RELEASE 发布后约 5 年结束。stable/14 的生命周期结束（EOL）将标志着被弃用的 32 位平台支持的终结，包括源代码发布、预构建软件包和通过 Ports 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对被弃用的 32 位平台的支持将于 2028 年 11 月结束。
 
-当 FreeBSD 15.0 发布时，FreeBSD 项目可能选择通过延续某些弃用平台的支持，调整这一计划。所有变更将根据社区反馈以及持续支持这些平台的努力来决定。
+当 FreeBSD 15.0 发布时，FreeBSD 项目可能选择通过延续某些弃用平台的支持，调整这一计划。所有变更将根据社区反馈以及持续支持平台的努力来决定。
