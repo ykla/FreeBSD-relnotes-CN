@@ -124,9 +124,9 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由 Amazon, Inc. 赞助）  
 - `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
 - `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）
-- 对 Tiger Lake-H 的支持已添加到 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html) 驱动程序中。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
-- 对 Meteor Lake 的支持已添加到 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html) 驱动程序中。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
-- [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 驱动新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
+- 对 Tiger Lake-H 的支持已添加到驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html)。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
+- 对 Meteor Lake 的支持已添加到驱动程序 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html)。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
+- 驱动 [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
 - 一款支持部分 Realtek 芯片组的新无线驱动已可用：[rtw89(4)](https://man.freebsd.org/cgi/man.cgi?query=rtw89&sektion=4&format=html)。[a2d1e07f6451](https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451)（由 FreeBSD 基金会赞助）
 - 对 Realtek 8156/8156B 的支持已从 [cdce(4)](https://man.freebsd.org/cgi/man.cgi?query=cdce&sektion=4&format=html) 迁移至 [ure(4)](https://man.freebsd.org/cgi/man.cgi?query=ure&sektion=4&format=html)，以提升性能和可靠性。[630077a84186](https://cgit.freebsd.org/src/commit/?id=630077a84186)（由 FreeBSD 基金会赞助）
 - 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
