@@ -1,7 +1,7 @@
 # FreeBSD 14.2-RELEASE 发行说明
 
 - 原文地址：[FreeBSD 14.2-RELEASE Release Notes](https://www.freebsd.org/releases/14.2R/relnotes/)
-- 最后修改：[Gordon Bergling](https://cgit.freebsd.org/doc/commit/?id=681530a758) 于 2024 年 12 月 32 日
+- 最后修改：[Gordon Bergling](https://cgit.freebsd.org/doc/commit/?id=681530a758) 于 2024 年 12 月 3 日
 
 ## 概述
 
