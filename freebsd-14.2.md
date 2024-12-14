@@ -1,7 +1,7 @@
 # FreeBSD 14.2-RELEASE 发行说明
 
 - 原文地址：[FreeBSD 14.2-RELEASE Release Notes](https://www.freebsd.org/releases/14.2R/relnotes/)
-- 最后修改：[Gordon Bergling](https://cgit.freebsd.org/doc/commit/?id=681530a758) 于 2024 年 12 月 3 日
+- 最后修改：[Dave Cottlehuber](https://cgit.freebsd.org/doc/commit/?id=f232709d21) 于 2024 年 12 月 4 日
 
 ## 概述
 
@@ -99,6 +99,8 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 已经取代 [fdisk(8)](https://man.freebsd.org/cgi/man.cgi?query=fdisk&sektion=8&format=html) 很久了，但后者未被删除。运行此应用程序时，将显示迁移到 [gpart(8)](https://man.freebsd.org/cgi/man.cgi?query=gpart&sektion=8&format=html) 的警告。[3958be5c29da](https://cgit.freebsd.org/src/commit/?id=3958be5c29da)（由 FreeBSD 基金会赞助）
 
+[asinf(3)](https://man.freebsd.org/cgi/man.cgi?query=asinf&sektion=3&format=html) 和 [acosf(3)](https://man.freebsd.org/cgi/man.cgi?query=acosf&sektion=3&format=html) 的精度得到提高。[33c82f11c267](https://cgit.freebsd.org/src/commit/?id=33c82f11c267)
+
 ### 运行时库和 API
 
 [fma(3)](https://man.freebsd.org/cgi/man.cgi?query=fma&sektion=3&format=html) 现在在处理某些较小输入时（如在 Python 测试套件中观察到的情况），能够正确返回符号为零的结果。[dc39004bc670](https://cgit.freebsd.org/src/commit/?id=dc39004bc670)（由 FreeBSD 基金会赞助）
@@ -110,7 +112,8 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 本节介绍云环境支持方面的变化。
 
 - `nuageinit` 启动脚本现在支持 OpenStack 网络配置。[ea310d18b222](https://cgit.freebsd.org/src/commit/?id=ea310d18b222)（由 OVHCloud 赞助）  
-- FreeBSD 项目现在可发布符合 OCI 标准的容器镜像。[8a688fcc242e](https://cgit.freebsd.org/src/commit/?id=8a688fcc242e)  
+- FreeBSD 项目现在可发布符合 OCI 标准的容器镜像。[8a688fcc242e](https://cgit.freebsd.org/src/commit/?id=8a688fcc242e)
+- FreeBSD 项目现已发布 Oracle Cloud Infrastructure 镜像。更多信息请参见 [Oracle Cloud Infrastructure FreeBSD 列表](https://cloudmarketplace.oracle.com/marketplace/app/freebsd-release)。[77b296a2582b](https://cgit.freebsd.org/src/commit/?id=77b296a2582b)
 - Amazon EC2 云环境中的 `shutdown` 和 `reboot` API 现在可支持 arm64 实例。更新至 FreeBSD 14.2-RELEASE 的旧实例需要在 `/boot/loader.conf` 中设置 `debug.acpi.quirks="8"`。[28b881840df7](https://cgit.freebsd.org/src/commit/?id=28b881840df7)（由亚马逊赞助）  
 - FreeBSD 项目现在发布了“精简版（small）”的 EC2 镜像。精简版镜像在“基础版（base）”中移除了调试符号、测试、32 位库、LLDB 调试器、Amazon SSM Agent 和 AWS CLI。[953142d6baf3](https://cgit.freebsd.org/src/commit/?id=953142d6baf3)（由亚马逊赞助）
 
