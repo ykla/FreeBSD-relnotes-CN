@@ -8,6 +8,7 @@
 * [FreeBSD 13.3-RELEASE 发行说明](freebsd-13.3.md)
 * [FreeBSD 13.2-RELEASE 发行说明](freebsd-13.2-fa-hang-shuo-ming.md)
 * [FreeBSD 13.1-RELEASE 发行说明](freebsd-13.1-fa-hang-shuo-ming.md)
+* [FreeBSD 3.1-RELEASE 发行说明（1999 年 2 月）](3.1.md)
 * [FreeBSD 3.0-RELEASE 发行说明（1998 年 10 月）](3.0.md)
 * [FreeBSD 2.2.8-RELEASE 发行说明（1998 年 12 月）](2.2.8.md)
 * [FreeBSD 2.2.7-RELEASE 发行说明（1998 年 7 月）](2.2.7.md)
