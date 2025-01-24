@@ -12,9 +12,9 @@ FreeBSD 13.1-RELEASE 的发行说明总结了在 13-STABLE 开发分支中对 Fr
 
 本发行说明适用于 FreeBSD 13-STABLE 开发分支中自创建以来的最新节点。有关此分支上预构建的二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-本发行说明所涵盖的发行版，位于 13-STABLE 开发分支中 13.0-RELEASE 和未来 13.2-RELEASE 之间的某一节点。有关此分支上预构建的二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
+本发行说明所涉的发行版，位于 13-STABLE 开发分支中 13.0-RELEASE 和未来 13.2-RELEASE 之间的某一节点。有关此分支上预构建的二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-FreeBSD 13.1-RELEASE 是一个发行版，可以从 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 或其任一镜像站下载。关于获取此版本（或其他版本）发行版的更多信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//mirrors) 中的 [获取 FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
+FreeBSD 13.1-RELEASE 是个 RELEASE 发行版，可以从 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 或其任一镜像站下载。关于获取此版本（或其他版本）发行版的更多信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//mirrors) 中的 [获取 FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
 建议所有用户在安装 FreeBSD 之前，查阅发行版的勘误表。勘误表包含在发行周期后期或发行后发现的“最新信息”，通常包括已知错误、安全公告以及文档修订的相关内容。可在 FreeBSD 网站上找到 FreeBSD 13.1-RELEASE 的最新勘误表副本。
 
@@ -32,7 +32,7 @@ FreeBSD 13.1-RELEASE 是一个发行版，可以从 [https://www.FreeBSD.org/rel
 
 > 在尝试升级 FreeBSD 之前，务必备份 **所有** 数据和配置文件。
 
->升级后，sshd（来自 OpenSSH 8.8p1）在重新启动之前不会接受新的连接。在安装新用户空间后，要么按照源代码升级程序的要求重启系统，要么执行 `service sshd restart` 来重启 sshd 服务。 
+>升级后，sshd（来自 OpenSSH 8.8p1）在重新启动之前不会接受新的连接。在安装新用户空间后，要么按照源代码升级程序的要求重启系统，要么执行 `service sshd restart` 来重启 `sshd` 服务。 
 
 ## 用户空间
 
@@ -141,7 +141,7 @@ CAS 已更改为支持 Radix MMU。[cc8e726c85b](https://cgit.freebsd.org/src/co
 
 修复了驱动 [virtio_random(8)](https://man.freebsd.org/cgi/man.cgi?query=virtio_random&sektion=8&format=html) 阻止虚拟机客户机关机或重启的问题。[fa67c45842bb](https://cgit.freebsd.org/src/commit/?id=fa67c45842bb)
 
-更新了驱动 [ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sektion=4&format=html) 至 1.34.2-k，增加了固件日志记录功能和初步的 DCB 支持。[a0cdf45ea1d1](https://cgit.freebsd.org/src/commit/?id=a0cdf45ea1d1)（由 Intel Corporation 赞助）
+更新了驱动 [ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sektion=4&format=html) 至 1.34.2-k，增加了固件日志记录功能和初步的 DCB 支持。[a0cdf45ea1d1](https://cgit.freebsd.org/src/commit/?id=a0cdf45ea1d1)（由英特尔公司赞助）
 
 添加了网络接口驱动程序 [mgb(4)](https://man.freebsd.org/cgi/man.cgi?query=mgb&sektion=4&format=html) ，支持 Microchip 的 LAN7430 PCIe 千兆以太网控制器（带 PHY）和 LAN7431 PCIe 千兆以太网控制器（带 RGMII 接口）。尽管该驱动仍存在一些限制，但功能已可用。[e0262ffbc6ae](https://cgit.freebsd.org/src/commit/?id=e0262ffbc6ae)（由 FreeBSD 基金会赞助）
 
@@ -227,7 +227,7 @@ ZFS 已升级至 OpenZFS 2.1.4 版本。OpenZFS 的发行说明可参阅 [https:
 
 作出这一更改考虑了多个因素。例如，i486 不支持 64 位原子操作（atomics），虽然内核可以模拟这些操作，但在用户态（userland）中无法实现。此外，32 位 amd64 库自开始以来便已采用 i686。
 
-大多数 32 位测试由开发者通过在 64 位硬件上使用内核中的选项 `COMPAT_FREEBSD32` 和 lib32 库完成。此更改可提供更好的覆盖范围和用户体验，同时与大多数 Linux® 发行版的长期做法保持一致。
+大多数 32 位测试由开发者通过在 64 位硬件上使用内核中的选项 `COMPAT_FREEBSD32` 和 lib32 库完成。此更改可提供更好的覆盖范围和用户体验，同时符合大多数 Linux® 发行版的长期做法。
 
 这预计将是 i386 架构中默认 `CPUTYPE` 的最后一次升级。
 
