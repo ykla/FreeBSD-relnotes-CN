@@ -8,6 +8,7 @@
 * [FreeBSD 13.3-RELEASE 发行说明](freebsd-13.3.md)
 * [FreeBSD 13.2-RELEASE 发行说明](freebsd-13.2-fa-hang-shuo-ming.md)
 * [FreeBSD 13.1-RELEASE 发行说明](freebsd-13.1-fa-hang-shuo-ming.md)
+* [FreeBSD 4.7 RELEASE i386 发行公告（2002 年 10 月 10 日）](4.7-i386.md)
 * [FreeBSD 4.6.2 RELEASE i386 发行公告（2002 年 8 月 15 日）](4.6.2-i386.md)
 * [FreeBSD 4.6 RELEASE i386 发行公告（2002 年 6 月 15 日）](4.6-i386.md)
 * [FreeBSD 4.5 RELEASE i386 发行公告（2002 年 1 月 29 日）](4.5-i386.md)
