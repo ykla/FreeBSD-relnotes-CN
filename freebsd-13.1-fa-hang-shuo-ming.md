@@ -1,225 +1,234 @@
-# FreeBSD 13.1 发行说明
+# FreeBSD 13.1-RELEASE 发行说明
 
-> 原文链接 [FreeBSD 13.1-RELEASE Release Notes](https://www.freebsd.org/releases/13.1R/relnotes/)
+- 原文链接 [FreeBSD 13.1-RELEASE Release Notes](https://www.freebsd.org/releases/13.1R/relnotes/)
 
 ## 摘要
 
-FreeBSD 13.1-RELEASE 的发行说明包含了在 13-STABLE 开发线上对 FreeBSD 基本系统所做修改的摘要。这份文件列出了自上次发布以来所发布的相关安全公告，以及对 FreeBSD 内核和用户空间的重大修改。同时还介绍了一些关于升级的简要说明。
+FreeBSD 13.1-RELEASE 的发行说明总结了在 13-STABLE 开发分支中对 FreeBSD 基础系统所作的更改。本文件列出了自上次发行以来发布的适用安全公告，以及对 FreeBSD 内核和用户空间的重大更改。此外，还简要介绍了升级相关的注意事项。
 
-## 简介
+## 引言
 
-这份文件包含了 FreeBSD 13.1-RELEASE 的发行说明。它描述了 FreeBSD 最近增加、改变或删除的功能。它还提供了一些关于从以前版本的 FreeBSD 升级的说明。
+本文件包含 FreeBSD 13.1-RELEASE 的发行说明，描述了最近添加、更改或删除的功能，同时提供了从 FreeBSD 早期版本升级的相关说明。
 
-这些发行说明所适用的发行版，代表了自 13-STABLE 创建以来沿 13-STABLE 开发分支的最新进展。有关这个分支的预编译二进制发行版的信息，可以在 https://www.FreeBSD.org/releases/ 找到。
+本发行说明适用于 FreeBSD 13-STABLE 开发分支中自创建以来的最新节点。有关此分支上预构建的二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-这些发行说明所适用的发行版本代表了 13-STABLE 开发分支中介于 13.0-RELEASE 和未来的 13.2-RELEASE 之间的一个点。关于这个分支的预编译二进制发行版的信息，可以在 https://www.FreeBSD.org/releases/ 找到。
+本发行说明所涵盖的发行版，位于 13-STABLE 开发分支中 13.0-RELEASE 和未来 13.2-RELEASE 之间的某一节点。有关此分支上预构建的二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
-这个 FreeBSD 13.1-RELEASE 的发行版是一个发布版。它可以在 https://www.FreeBSD.org/releases/ 或其任何一个镜像中找到。关于获得这个(或其他) FreeBSD 发行版的更多信息，可以在 FreeBSD 手册的附录中找到。
+FreeBSD 13.1-RELEASE 是一个发行版，可以从 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 或其任一镜像站下载。关于获取此版本（或其他版本）发行版的更多信息，请参阅 [FreeBSD 手册](https://docs.freebsd.org/en/books/handbook//mirrors) 中的 [获取 FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
-我们鼓励所有用户在安装 FreeBSD 之前参考发行勘误表。勘误表文件会根据发布周期晚期或发布后发现的“迟发”信息进行更新。通常情况下，它包括已知的错误，安全公告，以及对文档的修正。FreeBSD 13.1-RELEASE 的勘误表的最新版本可以在 FreeBSD 网站上找到。
+建议所有用户在安装 FreeBSD 之前，查阅发行版的勘误表。勘误表包含在发行周期后期或发行后发现的“最新信息”，通常包括已知错误、安全公告以及文档修订的相关内容。可在 FreeBSD 网站上找到 FreeBSD 13.1-RELEASE 的最新勘误表副本。
 
-这份文件描述了自 13.0-RELEASE 以来 FreeBSD 中最容易被用户看到的新功能或变化。一般来说，这里描述的变化都是 13-STABLE 分支所特有的，除非特别标注为合并的特性。
+本文件描述了自 13.0-RELEASE 以来，FreeBSD 中对用户最显著的新功能或更改。一般而言，本文中提到的更改是 13-STABLE 分支所独有的，除非明确标记为已合并功能。
 
-典型的发布说明记录了在 13.0-RELEASE 之后发布的安全公告，新的驱动或硬件支持，新的命令或选项，主要的错误修正，或第三方软件升级。他们也可能列出主要的 port/包的变化或发布工程实践。显然，发行说明不可能列出 FreeBSD 在不同版本之间的每一个变化； 这份文件主要关注安全公告、 用户可见的变化，以及主要的架构改进。
+发行说明通常记录自 13.0-RELEASE 以来发布的安全公告、新驱动程序或硬件支持、新命令或选项、重大错误修复或第三方软件升级。此外，还可能列出主要的 Port/软件包更改或发行工程实践的更新。显然，发行说明无法列出两个版本之间 FreeBSD 的每一处更改；本文件主要关注安全公告、用户可见的更改以及主要的架构改进。
 
-## 从以前的 FreeBSD 版本升级
+## 从旧版 FreeBSD 升级
 
-使用 freebsd-update(8) 工具可以在 RELEASE 版本 (以及各种安全分支的快照) 之间进行二进制升级。二进制升级过程将更新未修改的用户空间工具，以及作为官方 FreeBSD 发行版一部分的未修改的 GENERIC 内核。freebsd-update(8) 工具要求被升级的主机有互联网连接。
+通过 [freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 工具，可以在不同 RELEASE 版本之间（包括各安全分支的快照版本）进行二进制升级。该工具将更新未修改的用户空间工具，以及官方 FreeBSD 发行版中包含的未修改的 GENERIC 内核。使用 [freebsd-update(8)](https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&sektion=8&format=html) 工具要求待升级的主机具备互联网连接。
 
-根据 /usr/src/UPDATING 中的说明，可以支持基于源代码的升级 (那些基于从源代码重新编译 FreeBSD 基本系统的升级)。
+基于源代码的升级（通过重新编译 FreeBSD 基础系统的源代码进行升级）也受到支持，具体请按照 `/usr/src/UPDATING` 中的说明操作。
 
-所有 powerpc 架构的用户，在成功安装内核和 world 之后，需要手动运行 `kldxref /boot/kernel`。
+对于所有 powerpc 架构的用户，在成功安装内核和世界后，需要手动运行 `kldxref /boot/kernel`。
 
-> **只有在备份了所有数据和配置文件之后，才能尝试升级 FreeBSD。**
+> 在尝试升级 FreeBSD 之前，务必备份 **所有** 数据和配置文件。
 
-> **升级之后，sshd (来自 OpenSSH 8.8p1) 将不接受新的连接，直到它被重新启动。在安装了新的用户空间之后，要么重新启动(按照源码升级程序中的规定)，要么执行 service sshd 重启。**
+>升级后，sshd（来自 OpenSSH 8.8p1）在重新启动之前不会接受新的连接。在安装新用户空间后，要么按照源代码升级程序的要求重启系统，要么执行 `service sshd restart` 来重启 sshd 服务。 
 
 ## 用户空间
 
-本节涵盖了对用户空间应用程序、第三方软件和系统实用程序的更改和添加。
+本节涵盖对用户空间应用程序、贡献软件以及系统实用工具的更改和新增内容。
 
-**用户空间配置的变化**
+### 用户空间配置变更
 
-在 /etc/defaults/rc.conf 中的 rtsol(8) 和 rtsold(8) 默认加入了 `-i` 标志，a0fc5094bf4c (由 https://www.patreon.com/cperciva 赞助)
+参数 `-i` 现在默认添加了到 `/etc/defaults/rc.conf` 中的 [rtsol(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsol&sektion=8&format=html) 和 [rtsold(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsold&sektion=8&format=html)。更改详情见 [a0fc5094bf4c](https://cgit.freebsd.org/src/commit/?id=a0fc5094bf4c)（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）。
 
-用户空间应用程序的变化 在 rtsol(8) 和 rtsold(8) 中加入了 `-i` 选项，以禁用零到一秒之间的随机延迟，从而加快了启动过程。8056b73ea163 (由 https://www.patreon.com/cperciva 赞助)
+### 用户空间应用程序更改
 
-对于 64 位架构，基本系统在构建时默认启用了位置独立可执行文件 (PIE) 支持。你可以使用 `WITHOUT_PIE` 参数来禁用它。这需要一个干净的构建环境。396e9f259d96
+在 [rtsol(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsol&sektion=8&format=html) 和 [rtsold(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsold&sektion=8&format=html) 中添加了 `-i` 选项，用于禁用 0 到 1 秒的随机延迟，从而加快启动过程。[8056b73ea163](https://cgit.freebsd.org/src/commit/?id=8056b73ea163)（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
-有一个新的 zfskeys rc(8) 服务脚本，它允许在启动时自动解密用 ZFS 本地加密的 ZFS 数据集。请参阅 rc.conf(5) 手册以了解更多信息。33ff39796ffe, 8719e8a951b7 (由 Modirum 和 Klara Inc.赞助)
+对于 64 位架构，基础系统现在默认启用位置无关可执行文件（PIE）支持。可以通过开关 `WITHOUT_PIE` 禁用该功能，需要进行完全重新编译。[396e9f259d96](https://cgit.freebsd.org/src/commit/?id=396e9f259d96)
 
-bhyve(8)中的 NVMe 模拟已经升级到 NVMe 规范的 1.4 版本，b7a2cf0d9102 - eae02d959363
+新增了 `zfskeys` [rc(8)](https://man.freebsd.org/cgi/man.cgi?query=rc&sektion=8&format=html) 服务脚本，允许在启动过程中自动解密使用 ZFS 原生加密的 ZFS 数据集。更多信息请参考 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 手册。[33ff39796ffe](https://cgit.freebsd.org/src/commit/?id=33ff39796ffe)、[8719e8a951b7](https://cgit.freebsd.org/src/commit/?id=8719e8a951b7)（由 Modirum 和 Klara Inc. 赞助）
 
-bhyve(8) 中针对大型 IO 的 NVMe iovec 结构已被修复。这个问题是由 Rocky Linux 8.4 中包含的 UEFI 驱动程序暴露的。
+[bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 的 NVMe 仿真已升级至 NVMe 规范的 1.4 版本。[b7a2cf0d9102](https://cgit.freebsd.org/src/commit/?id=b7a2cf0d9102) [eae02d959363](https://cgit.freebsd.org/src/commit/?id=eae02d959363)
 
-为巴西葡萄牙语 ABNT2 键盘增加了额外的 Alt Gr 映射。310623908c20
+修复了 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 中构建大 IO 的 NVMe iovec 的问题，该问题由 Rocky Linux 8.4 附带的 UEFI 驱动暴露出来。[a7761d19dacd](https://cgit.freebsd.org/src/commit/?id=a7761d19dacd)
 
-chroot 工具现在支持非特权操作了，chroot(8) 程序现在有了 `-n` 选项来启用它。460b4b550dc9 (由 EPSRC 赞助)
+为巴西葡萄牙语 ABNT2 键盘添加了额外的 Alt Gr 映射。[310623908c20](https://cgit.freebsd.org/src/commit/?id=310623908c20)
 
-对 CAM 库进行了修改，以便在解析设备名称之前对其使用 realpath(3)，这使得诸如 camcontrol(8) 和 smartctl(8) 等工具在使用符号链接时能够更加友好，e32acf95ea25
+`chroot` 现在支持非特权操作，[chroot(8)](https://man.freebsd.org/cgi/man.cgi?query=chroot&sektion=8&format=html) 程序增加了 `-n` 选项以启用该功能。[460b4b550dc9](https://cgit.freebsd.org/src/commit/?id=460b4b550dc9)（由 EPSRC 赞助）
 
-md5sum(1) 和类似的消息加密程序与 Linux 上的程序兼容，如果程序名称以 sum 结尾，则让相应的 BSD 程序以 `-r` 选项运行，c0d5665be0dc (由 Netflix 赞助)
+修改了 CAM 库以在解析设备名称之前使用 [realpath(3)](https://man.freebsd.org/cgi/man.cgi?query=realpath&sektion=3&format=html)，从而允许诸如 [camcontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=camcontrol&sektion=8&format=html) 和 [smartctl(8)](https://man.freebsd.org/cgi/man.cgi?query=smartctl&sektion=8&format=html) 之类的工具在使用符号链接时更加友好。[e32acf95ea25](https://cgit.freebsd.org/src/commit/?id=e32acf95ea25)
 
-默认情况下，svnlite(1) 在联编过程中被禁用，a4f99b3c2384
+通过在程序名称以 `sum` 结尾时让相应的 BSD 程序运行 `-r` 选项，添加了兼容 Linux 的 [md5sum(1)](https://man.freebsd.org/cgi/man.cgi?query=md5sum&sektion=1&format=html) 和类似的消息摘要程序。[c0d5665be0dc](https://cgit.freebsd.org/src/commit/?id=c0d5665be0dc)（由 Netflix 赞助）
 
-mpsutil(8) 扩展到了显示适配器信息和控制 NCQ。395bc3598b47
+[svnlite(1)](https://man.freebsd.org/cgi/man.cgi?query=svnlite&sektion=1&format=html) 默认在构建中禁用。[a4f99b3c2384](https://cgit.freebsd.org/src/commit/?id=a4f99b3c2384)
 
-使用 camcontrol(8) 将固件下载到设备后出现的问题，通过在固件下载后强制重新扫描 LUN 得到了修复。327da43602cc (由 Netflix 赞助)
+[mpsutil(8)](https://man.freebsd.org/cgi/man.cgi?query=mpsutil&sektion=8&format=html) 扩展以显示适配器信息并控制 NCQ。[395bc3598b47](https://cgit.freebsd.org/src/commit/?id=395bc3598b47)
 
-在 bsdinstall(8) 中为变量磁盘名称的脚本分区编辑器增加了一种新模式。如果磁盘参数 DEFAULT 被设置为代替实际的设备名称，或没有为 PARTITIONS 参数指定磁盘，则安装程序将遵循自动分区模式中使用的逻辑，即如果有几个磁盘，它将为其中一个提供选择对话框，或在只有一个磁盘时自动选择。这简化了为具有不同磁盘名称的硬件或虚拟机创建全自动安装媒体的工作。5ec4eb443e81
+修复了使用 [camcontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=camcontrol&sektion=8&format=html) 下载固件后设备出现的问题，方法是在下载固件后强制重新扫描 LUN。[327da43602cc](https://cgit.freebsd.org/src/commit/?id=327da43602cc)（由 Netflix 赞助）
 
-## 第三方软件
+### 第三方软件
 
-在所有 powerpc 架构上都启用了 LLDB 的构建，cb1bee9bd34
+在所有 PowerPC 架构上已启用 LLDB 的构建支持。[cb1bee9bd34](https://cgit.freebsd.org/src/commit/?id=cb1bee9bd34)
 
-一个 True Awk 已经更新到了上游的最新版本 (20210215)。除了一个补丁之外，所有的 FreeBSD 补丁现在都已经被上传到了上游或被抛弃了。值得注意的变化包括：
+- One True Awk 已更新为上游的最新版本（20210215）。除了一个补丁外，FreeBSD 的所有补丁已被上游接纳或移除。主要更改包括：
+  - 范围不再使用区域设置。
+  - 修复了各种错误。
+  - 提高了与 `gawk` 和 `mawk` 的兼容性。
+  剩下的一个 FreeBSD 修改可能会在 FreeBSD 14 中移除，目前依然允许将以 `0x` 为前缀的十六进制数解析并解释为十六进制数，而其他 awk 实现（现在包括 One True Awk）将其解释为 `0`，符合 awk 的历史行为。
 
-* 区域划分不再用于范围
-* 修复了各种错误
-* 与 gawk 和 mawk 有更好的兼容性
+- `zlib` 升级到版本 1.2.12。
 
-剩下的一个 FreeBSD 变化，可能会在 FreeBSD 14 中被删除，就是我们仍然允许以`0x`为前缀的十六进制数字被解析和解释为十六进制数字，而所有其他 awk（现在包括 One True Awk）都将它们解释为 0，这与 awk 的历史行为一致。
+- `libarchive` 升级到版本 3.6.0，并包含即将发布的修补程序版本中的额外错误和安全修复。发布说明可在 [https://github.com/libarchive/libarchive/releases](https://github.com/libarchive/libarchive/releases) 查看。
 
-zlib 升级到了 1.2.12 版。
+- `ssh` 包已更新为 OpenSSH v8.8p1，包含安全更新和错误修复。其他更新包括以下更改：
+  - [ssh(1)](https://man.freebsd.org/cgi/man.cgi?query=ssh&sektion=1&format=html)：在提示是否记录新主机密钥时，接受该密钥的指纹作为“yes”的同义词。
+  - [ssh-keygen(1)](https://man.freebsd.org/cgi/man.cgi?query=ssh-keygen&sektion=1&format=html)：作为 CA 并使用 RSA 密钥签署证书时，默认使用 `rsa-sha2-512` 签名算法。
+  - [ssh(1)](https://man.freebsd.org/cgi/man.cgi?query=ssh&sektion=1&format=html)：默认启用 `UpdateHostkeys`，但受到一些保守条件的限制。
+  - [scp(1)](https://man.freebsd.org/cgi/man.cgi?query=scp&sektion=1&format=html)：远程到远程复制（如 `scp host-a:/path host-b:`）的行为已更改，默认通过本地主机传输。
+  - [scp(1)](https://man.freebsd.org/cgi/man.cgi?query=scp&sektion=1&format=html)：实验性支持使用 SFTP 协议进行传输，以替代传统的 SCP/RCP 协议。
 
-libarchive 升级到了 3.6.0 版，在即将发布的补丁级别中增加了错误和安全修复。发布说明可以在 https://github.com/libarchive/libarchive/releases 找到。
+在 `ssh` 中启用了对 FIDO/U2F 硬件认证器的支持，新增了 `ecdsa-sk` 和 `ed25519-sk` 公钥类型以及相应的证书类型。有关 FIDO/U2F 支持的描述请参考 [https://www.openssh.com/txt/release-8.2](https://www.openssh.com/txt/release-8.2)。[a613d68fff9a](https://cgit.freebsd.org/src/commit/?id=a613d68fff9a)（由 FreeBSD 基金会赞助）
 
-ssh 软件包已经更新到 OpenSSH v8.8p1，包括安全更新和错误修复。其他的更新包括这些变化。
+[bsdinstall(8)](https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&sektion=8&format=html) 的脚本分区编辑器新增了一种新模式，用于支持变体磁盘名称。如果 `DEFAULT` 被设置为磁盘参数，或者在 `PARTITIONS` 参数中未指定设备名称，安装程序将遵循自动分区模式的逻辑。如果存在多个磁盘，将提供选择对话框；如果只有一个磁盘，则会自动选择。这简化了为硬件或虚拟机创建全自动安装介质的过程。[5ec4eb443e81](https://cgit.freebsd.org/src/commit/?id=5ec4eb443e81)
 
-ssh(1)。当提示是否记录一个新的主机密钥时，接受该密钥的指纹作为"Yes"的同义词。
+### 运行时库与 API
 
-ssh-keygen(1)。当作为 CA 并用 RSA 密钥签署证书时，默认使用 rsa-sha2-512 签名算法。
+为 powerpc、powerpc64 和 powerpc64le 添加了 OpenSSL 的汇编优化代码。[ce35a3bc852](https://cgit.freebsd.org/src/commit/?id=ce35a3bc852)
 
-ssh(1): 默认启用 UpdateHostkeys，但需要满足一些保守的前提条件。
+修复了对 ARMv7 和 ARM64 加速加密操作的 CPU 特性检测，大幅提升了 `aes-256-gcm` 和 `sha256` 的性能。[32a2fed6e71f](https://cgit.freebsd.org/src/commit/?id=32a2fed6e71f)（由 Ampere Computing LLC 和 Klara Inc. 赞助）
 
-scp(1)。远程拷贝到远程的行为 (例如 scp host-a:/path host-b:) 被修改为默认通过本地主机传输。
+启用了 riscv64 和 riscv64sf 平台上的 ASAN 和 UBSAN 库的构建支持。[8c56b338da7](https://cgit.freebsd.org/src/commit/?id=8c56b338da7)
 
-scp(1) 实验性地支持使用 SFTP 协议进行传输，以取代传统上使用的古老的 SCP/RCP 协议。
+在 riscv64 和 riscv64sf 平台上构建了 OFED 库。[2b978245733](https://cgit.freebsd.org/src/commit/?id=2b978245733)
 
-在 ssh 中启用了对 FIDO/U2F 硬件认证器的使用，并使用了新的公钥类型 ecdsa-sk 和 ed25519-sk 以及相应的证书类型。对 FIDO/U2F 的支持在 https://www.openssh.com/txt/release-8.2 中有所描述，a613d68fff9a (由 FreeBSD 基金会 赞助)
+在 riscv64 和 riscv64sf 平台上构建了 OPENMP 库。[aaf56e35569](https://cgit.freebsd.org/src/commit/?id=aaf56e35569)
 
-## 运行时库和 API
 
-在 powerpc、powerpc64 和 powerpc64le 上增加了 OpenSSL 的汇编优化代码，ce35a3bc852
-
-修复了对加速 ARMv7 和 ARM64 的加密操作的 CPU 特性的检测，大大加快了 aes-256-gcm 和 sha256 的速度。32a2fed6e71f（由 Ampere Computing LLC 和 Klara Inc.赞助）
-
-在 riscv64 和 riscv64sf 上启用了构建 ASAN 和 UBSAN 库。8c56b338da7
-
-OFED 库现已在 riscv64 和 riscv64sf 上构建。2b978245733
-
-OPENMP 库现在已在 riscv64 和 riscv64sf 上构建，aaf56e35569
 
 ## 内核
 
-本节涵盖了对内核配置、系统调校和系统控制参数的改变，这些改变没有其他分类。
+本部分涵盖了内核配置、系统调优以及未分类的系统控制参数的更改。
 
-内核的一般变化 powerpc64 上串行控制台的输出损坏已经被修复。
+### 通用内核更改
 
-更改了 CAS 以支持 Radix MMU。
+修复了 powerpc64 平台上串行控制台的输出损坏问题。[dca829138ca](https://cgit.freebsd.org/src/commit/?id=dca829138ca)
 
-在使用 TCG 的 QEMU 上运行启用了 HPT 超级页的 FreeBSD，在 powerpc64(le) 上得到了修正。
+CAS 已更改为支持 Radix MMU。[cc8e726c85b](https://cgit.freebsd.org/src/commit/?id=cc8e726c85b)
 
-在 powerpc64(le) 上的 pmap\_mincore 增加了对超级缓存的支持。32b50b8520d
+修复了在 QEMU 的 TCG 模式下运行启用了 HPT 超页的 FreeBSD 于 powerpc64(le) 平台的问题。[f05174ed354](https://cgit.freebsd.org/src/commit/?id=f05174ed354)
 
-在 arm64 上为 32 位 ARM 二进制文件添加了 HWCAP/HWCAP2 辅助参数支持。这修正了在 COMPAT32 仿真环境下 golang 的构建/运行。28e22482279f (由 Rubicon Communications, LLC (`Netgate`)赞助)
+在 powerpc64(le) 平台上的 `pmap_mincore` 添加了对超页的支持。[32b50b8520d](https://cgit.freebsd.org/src/commit/?id=32b50b8520d)
 
-## 设备和驱动
+在 arm64 平台上为 32 位 ARM 二进制文件添加了 HWCAP/HWCAP2 辅助参数支持。这修复了在 `COMPAT32` 仿真下构建/运行 Golang 的问题。[28e22482279f](https://cgit.freebsd.org/src/commit/?id=28e22482279f)（由 Rubicon Communications, LLC ("Netgate") 赞助）
 
-本节涵盖了自 13.0-RELEASE 以来对设备和设备驱动的变化和补充。
+## 设备与驱动
 
-**设备驱动程序**
+本部分介绍了自 13.0-RELEASE 以来，设备和设备驱动的更改和新增内容。
 
-igc(4) 驱动程序是为英特尔 I225 以太网控制器引入的。这个控制器支持 2.5G/1G/100Mb/10Mb 的速度，并允许 tx/rx 校验和卸载、 TSO、 LRO 和多队列操作，d7388d33b4dd (由 Rubicon Communications, LLC (`Netgate`) 赞助)
+### 设备驱动
 
-在 powerpc64(le) 的启动过程中，增加了对带有 AST2500 的 VGA/HDMI 控制台的修复，c41d129485e
+引入了 [igc(4)](https://man.freebsd.org/cgi/man.cgi?query=igc&sektion=4&format=html) 驱动程序，用于支持 Intel I225 以太网控制器。该控制器支持 2.5G/1G/100Mb/10Mb 速度，并支持 tx/rx 校验和卸载、TSO、LRO 和多队列操作。[d7388d33b4dd](https://cgit.freebsd.org/src/commit/?id=d7388d33b4dd)（由 Rubicon Communications, LLC ("Netgate") 赞助）
 
-在 virtio(4) 中的大 endian 目标上修复了 PCI 通用读/写功能。7e583075a41, 8d589845881
+修复了 powerpc64(le) 平台在启动过程中使用 AST2500 时，VGA/HDMI 控制台的问题。[c41d129485e](https://cgit.freebsd.org/src/commit/?id=c41d129485e)
 
-在 mpr(4) 中加入了对大 endian 的支持。7d45bf699dc, 2954aedb8e5, c80a1c1072d
+修复了 [virtio(4)](https://man.freebsd.org/cgi/man.cgi?query=virtio&sektion=4&format=html) 驱动中大端目标设备的 PCI 通用读写功能。[7e583075a41](https://cgit.freebsd.org/src/commit/?id=7e583075a41), [8d589845881](https://cgit.freebsd.org/src/commit/?id=8d589845881)
 
-减少了最大 I/O 大小，以避免 aacraid(4) 中的 DMA 问题。572e3575dba
+为驱动 [mpr(4)](https://man.freebsd.org/cgi/man.cgi?query=mpr&sektion=4&format=html) 添加了大端支持。[7d45bf699dc](https://cgit.freebsd.org/src/commit/?id=7d45bf699dc), [2954aedb8e5](https://cgit.freebsd.org/src/commit/?id=2954aedb8e5), [c80a1c1072d](https://cgit.freebsd.org/src/commit/?id=c80a1c1072d)
 
-修正了一个阻止使用 virtio\_random(8) 的虚拟用户关闭或重启的 bug，fa67c45842bb
+降低了驱动 [aacraid(4)](https://man.freebsd.org/cgi/man.cgi?query=aacraid&sektion=4&format=html) 的最大 I/O 大小以避免 DMA 问题。[572e3575dba](https://cgit.freebsd.org/src/commit/?id=572e3575dba)
 
-ice(4) 驱动程序已经更新到了 1.34.2-k，增加了固件日志和初始 DCB 支持，a0cdf45ea1d1 (由 Intel 公司赞助)
+修复了驱动 [virtio_random(8)](https://man.freebsd.org/cgi/man.cgi?query=virtio_random&sektion=8&format=html) 阻止虚拟机客户机关机或重启的问题。[fa67c45842bb](https://cgit.freebsd.org/src/commit/?id=fa67c45842bb)
 
-新增了 mgb(4) 网络接口驱动程序，它支持带有 PHY 的 Microchip 设备 LAN7430 PCIe 千兆以太网控制器和带有 RGMII 接口的 LAN7431 PCIe 千兆以太网控制器。e0262ffbc6ae (由 FreeBSD 基金会赞助)
+更新了驱动 [ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sektion=4&format=html) 至 1.34.2-k，增加了固件日志记录功能和初步的 DCB 支持。[a0cdf45ea1d1](https://cgit.freebsd.org/src/commit/?id=a0cdf45ea1d1)（由 Intel Corporation 赞助）
 
-新增了对 cdce(4) 设备的链接状态、 媒体和 VLAN MTU 的支持。973fb85188ea
+添加了网络接口驱动程序 [mgb(4)](https://man.freebsd.org/cgi/man.cgi?query=mgb&sektion=4&format=html) ，支持 Microchip 的 LAN7430 PCIe 千兆以太网控制器（带 PHY）和 LAN7431 PCIe 千兆以太网控制器（带 RGMII 接口）。尽管该驱动仍存在一些限制，但功能已可用。[e0262ffbc6ae](https://cgit.freebsd.org/src/commit/?id=e0262ffbc6ae)（由 FreeBSD 基金会赞助）
 
-新增了 iwlwifi(4) 驱动程序和 LinuxKPI 802.11 兼容性层，以补充 iwm(4) 对较新的 Intel 无线芯片组的支持。(由 FreeBSD 基金会 赞助)
+为 [cdce(4)](https://man.freebsd.org/cgi/man.cgi?query=cdce&sektion=4&format=html) 设备添加了链路状态、媒体类型和 VLAN MTU 的支持。[973fb85188ea](https://cgit.freebsd.org/src/commit/?id=973fb85188ea)
 
-当内核被配置为 MMCCAM 选项时，内核崩溃转储现在可以通过 dwmmc 控制器保存在 SD 卡和 eMMC 模块上了。79c3478e76c3
+添加了 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&sektion=4&format=html) 驱动和一个 LinuxKPI 802.11 兼容层，用于支持较新的 Intel 无线芯片组，以补充 [iwm(4)](https://man.freebsd.org/cgi/man.cgi?query=iwm&sektion=4&format=html) 驱动。（由 FreeBSD 基金会赞助）
 
-当内核被配置为 MMCCAM 选项时，现在可以使用 sdhci 控制器在 SD 卡上保存内核崩溃数据。8934d3e7b9b9
+当内核使用 `MMCCAM` 选项配置时，现在可以使用 `dwmmc` 控制器将内核崩溃转储保存到 SD 卡和 eMMC 模块。[79c3478e76c3](https://cgit.freebsd.org/src/commit/?id=79c3478e76c3)
 
-**支持的平台**
+当内核使用 `MMCCAM` 选项配置时，现在可以使用 `sdhci` 控制器将内核崩溃转储保存到 SD 卡。[8934d3e7b9b9](https://cgit.freebsd.org/src/commit/?id=8934d3e7b9b9)
 
-增加了对 HiFive Unmatched RISC-V 板的支持。
+### 支持的平台
 
-## 存储系统
+新增对 HiFive Unmatched RISC-V 开发板的支持。
 
-本节涵盖了对文件系统和其他存储子系统（包括本地和网络）的改变和补充。
+## 存储
 
-**一般存储**
+本部分涵盖文件系统及其他存储子系统（包括本地和网络存储）的更改与新增内容。
 
-ZFS 的变化 ZFS 已经升级到 OpenZFS 2.1.4 版本。OpenZFS 的发行说明可以在 https://github.com/openzfs/zfs/releases 找到。
+### 通用存储
 
-**NFS 的变化**
+暂无具体更改说明。
 
-两个新的守护进程 rpc.tlsclntd(8) 和 rpc.tlsservd(8)，现在已经默认在 amd64 和 arm64 上建立了。它们提供了对 NFS-over-TLS 的支持，这在题为“实现远程过程调用默认加密”的互联网草案中有所描述。这些守护进程是在指定 WITH\_OPENSSL\_KTLS 的情况下建立的。它们使用 KTLS 来加密/解密所有的 NFS RPC 消息流量，并通过 X.509 证书提供可选的机器身份验证。2c76eebca71b 59f6f5e23c1a
+### ZFS 更改
 
-用于 NFSv4 挂载的默认次要版本已被修改为 NFSv4 服务器支持的最高次要版本。这个默认值可以通过使用 minorversion mount 选项来覆盖。8a04edfdcbd2
+ZFS 已升级至 OpenZFS 2.1.4 版本。OpenZFS 的发行说明可参阅 [https://github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases)。
 
-增加了一个新的 NFSv4.1/4.2 挂载选项 nconnect，可以用来指定挂载时使用的 TCP 连接数，最多为 16 个。第一个（默认）TCP 连接将被用于所有由小型 RPC 消息组成的 RPC。由大型 RPC 消息组成的 RPC(Read/Readdir/ReaddirPlus/Write)将以轮流方式在其他 TCP 连接上发送。如果 NFS 客户端或 NFS 服务器有多个网络接口聚合在一起，或者有一个使用多个队列的网络接口，这可以提高挂载的 NFS 性能。9ec7dbf46b0a
+### NFS 更改
 
-增加了一个名为`vfs.nfsd.srvmaxio`的 sysctl 设置项，可以用来将 NFS 服务器的最大 I/O 大小从 128Kbytes 增加到 2 的任何幂数，直至 1Mbyte。它只能在 nfsd 线程未运行时进行设置，并且通常需要将 kern.ipc.maxsockbuf 增加到至少是首次尝试设置 `vfs.nfsd.srvmaxio` 时生成的控制台日志消息所建议的值。9fb6e613373c
+- 默认在 **amd64** 和 **arm64** 架构上构建了两个新的守护程序 [rpc.tlsclntd(8)](https://man.freebsd.org/cgi/man.cgi?query=rpc.tlsclntd&sektion=8&format=html) 和 [rpc.tlsservd(8)](https://man.freebsd.org/cgi/man.cgi?query=rpc.tlsservd&sektion=8&format=html)。它们提供了对基于 TLS 的 NFS 加密支持，该功能描述于《Towards Remote Procedure Call Encryption By Default》草案中。这些守护程序在指定 `WITH_OPENSSL_KTLS` 时构建，使用 KTLS 加密/解密所有 NFS RPC 消息流量，并可选择通过 X.509 证书验证设备身份。[2c76eebca71b](https://cgit.freebsd.org/src/commit/?id=2c76eebca71b) [59f6f5e23c1a](https://cgit.freebsd.org/src/commit/?id=59f6f5e23c1a)
 
-**UFS 更改**
+- 默认的 NFSv4 挂载次版本号已更改为 NFSv4 服务器所支持的最高次版本号。用户可通过挂载选项 `minorversion` 手动覆盖此默认值。[8a04edfdcbd2](https://cgit.freebsd.org/src/commit/?id=8a04edfdcbd2)
 
-继 5cc52631b3b8 之后，fsck\_ffs(8) 在 preen 模式下对后台 fsck 不起作用，在该模式下 UFS 被调整为没有软更新日志的软更新。修正: fb2feceac34c
+- 新增了 NFSv4.1/4.2 的挂载选项 `nconnect`，用于指定挂载所使用的 TCP 连接数量（最多 16 个）。默认的第一个 TCP 连接将用于所有小型 RPC 消息，而可能包含大型 RPC 消息的操作（如 Read、Readdir、ReaddirPlus、Write）将在额外的 TCP 连接上以轮询方式发送。如果 NFS 客户端或服务器具有多个聚合的网络接口或支持多队列的网络接口，则此功能可以提高 NFS 的性能。[9ec7dbf46b0a](https://cgit.freebsd.org/src/commit/?id=9ec7dbf46b0a)
 
-## 引导加载器的变化
+- 添加了 sysctl 配置项 `vfs.nfsd.srvmaxio`，用于将 NFS 服务器的最大 I/O 大小从 128KB 增加到任意 2 的幂值（最高 1MB）。该选项只能在 nfsd 线程未运行时设置，且通常需要将 `kern.ipc.maxsockbuf` 增加至控制台日志中建议的值。[9fb6e613373c](https://cgit.freebsd.org/src/commit/?id=9fb6e613373c)
 
-本节涵盖了启动加载器、启动菜单以及其他与启动相关的变化。
+### UFS 更改
 
-**引导加载器的变化**
+修复了 [fsck_ffs(8)](https://man.freebsd.org/cgi/man.cgi?query=fsck_ffs&sektion=8&format=html) 工具在预检模式下处理启用软更新（但未启用软更新日志）的 UFS 时无法正常运行的问题。[fb2feceac34c](https://cgit.freebsd.org/src/commit/?id=fb2feceac34c)
 
-UEFI 启动对 amd64 进行了改进。装载器检测加载的内核是否可以处理原地暂存区（非复制模式）。默认是 copy\_staging auto。自动检测可以被覆盖，例如：在 copy\_staging enable 下，加载器将无条件地把暂存区复制到 2M，而不管内核的能力如何。另外，增长暂存区的代码更加健壮；为了增长，不再需要手工调整和重新编译加载器。(由 FreeBSD 基金会赞助)
+## 引导加载程序的更改
 
-boot1 和 loader 在 powerpc64le 上得到了修正。8a62b07bce7
+本部分涵盖引导加载程序、引导菜单和其他引导相关的更改内容。
 
-## 其他启动方面的改动
+### 引导加载程序的更改
 
-对 loader(8)、 nvme(4)、 random(4)、 rtsold(8) 和 x86 时钟校准进行了性能改进，这使得系统启动时间明显加快了。EC2 平台上的配置变化提供了额外的好处，使 13.1-RELEASE 的启动速度是 13.0-RELEASE 的两倍以上。(由 https://www.patreon.com/cperciva 赞助)
+- **UEFI 引导改进（amd64）**：  
+  针对 amd64 架构改进了 UEFI 引导。加载器会检测所加载的内核是否支持原位暂存区（非复制模式）。默认设置为 `copy_staging auto`。用户可以通过手动覆盖自动检测，例如：设置 `copy_staging enable` 时，加载器会无条件将暂存区复制到 2M 地址，无论内核是否支持。此外，扩展暂存区的代码更为稳健，用户无需手动调整和重新编译加载器即可完成扩展。（由 [The FreeBSD Foundation](https://www.freebsdfoundation.org/) 赞助）
 
-EC2 镜像现在被默认构建为使用 UEFI 而不是传统 BIOS 启动。请注意，基于 Xen 的 EC2 实例或“裸机” EC2 实例不支持 UEFI。65f22ccf8247 (由 https://www.patreon.com/cperciva 赞助)
+- **修复 `boot1` 和 `loader` 在 powerpc64le 架构上的问题**：[8a62b07bce7](https://cgit.freebsd.org/src/commit/?id=8a62b07bce7)
 
-增加了对在 AWS 系统管理器参数库中记录 EC2 AMI Ids 的支持。FreeBSD 将使用公共前缀 `/aws/service/freebsd`，导致参数名称看起来像`/aws/service/freebsd/amd64/base/ufs/13.1/RELEASE`。242d1c32e42c (Sponsored by https://www.patreon.com/cperciva)
+### 其他引导更改
 
-## 联网
+- **性能改进**：对 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html)、[nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html)、[random(4)](https://man.freebsd.org/cgi/man.cgi?query=random&sektion=4&format=html)、[rtsold(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsold&sektion=8&format=html) 和 x86 时钟校准的性能进行了优化，这显著缩短了系统引导时间。此外，EC2 平台的配置更改进一步提高了性能，使得 13.1-RELEASE 的引导速度比 13.0-RELEASE 快了两倍以上。（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
-这一节说明了影响 FreeBSD 网络的变化。
+- **EC2 镜像默认使用 UEFI 引导**：  
+  EC2 镜像现在默认使用 UEFI 引导而非传统的 BIOS 引导。不过，基于 Xen 的 EC2 实例或 "bare metal" EC2 实例仍不支持 UEFI。[65f22ccf8247](https://cgit.freebsd.org/src/commit/?id=65f22ccf8247) （由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
-**一般网络**
+- **支持在 AWS Systems Manager 参数存储中记录 EC2 AMI ID**：  
+  FreeBSD 在 AWS Systems Manager 参数存储中使用公共前缀 `/aws/service/freebsd`，生成类似 `/aws/service/freebsd/amd64/base/ufs/13.1/RELEASE` 的参数名称。[242d1c32e42c](https://cgit.freebsd.org/src/commit/?id=242d1c32e42c) （由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
-对 IPv4 (sub) net (host 0) 上的最低地址的处理方式进行了修改，使得除非这个地址被设置为广播地址，否则数据包不会以广播方式发送。这使得最低的地址对主机来说是可用的。旧的行为可以通过 `net.inet.ip.broadcast_lowest` sysctl 来恢复。请参阅 https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/ 了解背景信息。3ee882bf21af
+## 网络
 
-### 关于未来 FreeBSD 发行版的一般说明
+本部分描述了 FreeBSD 中影响网络功能的更改。
 
-## 默认 CPUTYPE 的变化
+### 通用网络
 
-从 FreeBSD-13.0 开始，i386 架构的默认 CPUTYPE 将从 486 变为 686。
+- **IPv4 子网最低地址的处理变更**：  
+  IPv4（子）网的最低地址（主机 0）的处理方式发生了变化，只有在该地址被设置为广播地址时，才会将数据包作为广播发送。这一更改使最低地址可用于主机。如果需要恢复旧行为，可以通过 sysctl 选项 `net.inet.ip.broadcast_lowest` 完成。背景信息参见 [https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/](https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/)。[3ee882bf21af](https://cgit.freebsd.org/src/commit/?id=3ee882bf21af)
 
-这意味着，在默认情况下，所生产的二进制文件将需要一个 686 级的 CPU，包括但不限于由 FreeBSD 发行工程团队提供的二进制文件。FreeBSD 13.0 将继续支持更老的 CPU，然而需要这一功能的用户需要建立自己的官方支持版本。
+## 关于未来 FreeBSD 版本的说明
 
-由于 i486 和 i586 CPU 的主要用途一般是在嵌入式市场，一般最终用户的影响预计是最小的，因为采用这些 CPU 类型的新硬件早已淡出，而且据统计，这些系统的大部分部署基础已经接近退休年龄了。
+暂无具体变更内容。
 
-这一变化有几个因素被考虑在内。例如，i486 没有 64 位原子，虽然它们可以在内核中被模拟，但不能在用户空间被模拟。此外，32 位的 amd64 库从一开始就是 i686 的。
+### 默认 `CPUTYPE` 更改
 
-由于大部分的 32 位测试是由开发人员在 64 位硬件上使用 lib32 库，并在内核中使用 `COMPAT_FREEBSD32` 选项来完成，所以这种改变可以确保更好的覆盖率和用户体验。这也与大多数 Linux® 发行版已经做了相当长一段时间的工作相一致。
+从 FreeBSD-13.0 开始，i386 架构的默认 `CPUTYPE` 将从 `486` 更改为 `686`。
 
-预计这将是 i386 中默认 CPUTYPE 的最后一次改变。
+这意味着默认生成的二进制文件将需要支持 686 级别的 CPU，包括但不限于由 FreeBSD 发布工程团队提供的二进制文件。尽管 FreeBSD 13.0 仍将支持较旧的 CPU，但需要此功能的用户需自行构建其专属版本以获得官方支持。
 
-> **这一变化并不影响 FreeBSD 12.x 系列的发布。**
+由于 i486 和 i586 CPU 的主要应用通常在嵌入式市场，普通终端用户受此更改的影响预计会非常有限。新硬件中这些类型的 CPU 早已不常见，而大部分现有系统的硬件也接近使用寿命的尾声。
+
+作出这一更改考虑了多个因素。例如，i486 不支持 64 位原子操作（atomics），虽然内核可以模拟这些操作，但在用户态（userland）中无法实现。此外，32 位 amd64 库自开始以来便已采用 i686。
+
+大多数 32 位测试由开发者通过在 64 位硬件上使用内核中的选项 `COMPAT_FREEBSD32` 和 lib32 库完成。此更改可提供更好的覆盖范围和用户体验，同时与大多数 Linux® 发行版的长期做法保持一致。
+
+这预计将是 i386 架构中默认 `CPUTYPE` 的最后一次升级。
+
+>此更改不影响 FreeBSD 12.x 系列版本。 
