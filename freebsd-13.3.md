@@ -1,4 +1,4 @@
-# FreeBSD 13.3-RELEASE 发行说明
+# FreeBSD 13.3-RELEASE 发行说明（2024 年 5 月 5 日）
 
 - 原文地址：[FreeBSD 13.3-RELEASE Release Notes](https://www.freebsd.org/releases/13.3R/relnotes/)
 
