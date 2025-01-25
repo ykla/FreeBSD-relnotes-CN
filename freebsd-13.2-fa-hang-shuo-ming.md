@@ -4,11 +4,11 @@
 
 ## 摘要
 
-FreeBSD 13.2-RELEASE 的发布说明包含了自 13-STABLE 开发线以来对 FreeBSD 基本系统所做更改的摘要。本文件列出了自上次发布以来发布的相关安全通告，以及对 FreeBSD 内核和用户态的重大更改。此外，还提供了有关升级的一些简要说明。
+FreeBSD 13.2-RELEASE 的发布说明包含了自 13-STABLE 开发线以来对 FreeBSD 基本系统所做变更的摘要。本文件列出了自上次发布以来发布的相关安全通告，以及对 FreeBSD 内核和用户态的重大变更。此外，还提供了有关升级的一些简要说明。
 
 ## 介绍
 
-本文档包含 FreeBSD 13.2-RELEASE 的发布说明。它描述了最近添加、更改或删除的 FreeBSD 特性，并提供了一些关于从之前版本升级的说明。
+本文档包含 FreeBSD 13.2-RELEASE 的发布说明。它介绍了最近添加、变更或删除的 FreeBSD 特性，并提供了一些关于从之前版本升级的说明。
 
 这些发布说明适用于自 13-STABLE 创建以来，13-STABLE 开发分支上的最新版本。有关该分支上的预构建二进制发行版的信息，请访问 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/)。
 
@@ -18,9 +18,9 @@ FreeBSD 13.2-RELEASE 的发布说明包含了自 13-STABLE 开发线以来对 Fr
 
 所有用户在安装 FreeBSD 之前都应查阅发布错误文档。错误文档会更新一些在发布周期末期或发布后发现的“突发”信息。通常，它包含已知的漏洞、安全通告以及文档的修正。FreeBSD 13.2-RELEASE 的最新错误文档可以在 FreeBSD 网站上找到。
 
-本文档描述了自 13.1-RELEASE 以来 FreeBSD 中最具用户可见性的新增或更改功能。一般来说，本文所述的更改是 13-STABLE 分支的特有更改，除非特别标记为已合并特性。
+本文档介绍了自 13.1-RELEASE 以来 FreeBSD 中最具用户可见性的新增或变更功能。一般来说，本文所述的变更是 13-STABLE 分支的特有变更，除非特别标记为已合并特性。
 
-典型的发布说明项包括发布后的安全通告、新的驱动程序或硬件支持、新命令或选项、重大错误修复或贡献的软件升级。它们也可能列出对主要 Port/软件包或发布工程实践的更改。显然，发布说明无法列出两个版本之间对 FreeBSD 所做的每个更改；本文件主要关注安全通告、用户可见的更改以及重大架构改进。
+典型的发布说明项包括发布后的安全通告、新的驱动程序或硬件支持、新命令或选项、重大错误修复或贡献的软件升级。它们也可能列出对主要 Port/软件包或发布工程实践的变更。显然，发布说明无法列出两个版本之间对 FreeBSD 所做的每个变更；本文件主要关注安全通告、用户可见的变更以及重大架构改进。
 
 ## 从先前版本升级 FreeBSD
 
@@ -37,21 +37,21 @@ FreeBSD 13.2-RELEASE 的发布说明包含了自 13-STABLE 开发线以来对 Fr
 
 ## 用户态
 
-本节涵盖对用户态应用程序、贡献软件和系统工具的更改和新增内容。
+本节涉及对用户态应用程序、贡献软件和系统工具的变更和新增内容。
 
-### 用户态配置更改
+### 用户态配置变更
 
 [growfs(7)](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html) 启动脚本现在将在扩展根文件系统时添加交换分区（如果可能），且如果之前未存在交换分区。这在使用原始映像安装到 SD 卡时尤其有用。新增了 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 变量 `growfs_swap_size`，可以根据需要控制交换分区的添加。详细信息请参见 [growfs(7)](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html)。
 
 `zfskeys` 启动脚本支持自动加载存储在 ZFS 上的密钥。[2411090f6940](https://cgit.freebsd.org/src/commit/?id=2411090f6940)（由 Klara Inc. 赞助）
 
-新增了一个 RC 脚本 `zpoolreguid`，用于为一个或多个 zpool 分配新的 GUID，在虚拟化环境中共享数据集时非常有用。
+新增了 RC 脚本 `zpoolreguid`，用于为一个或多个 zpool 分配新的 GUID，在虚拟化环境中共享数据集时非常有用。
 
 `hostid` 启动脚本现在将在没有 `/etc/hostid` 文件且硬件没有有效 UUID 时生成一个随机（版本 4）UUID。此外，如果没有 `/etc/machine-id` 文件，`hostid_save` 脚本将把一个压缩版的 hostid（没有连字符的版本）存储在 `/etc/machine-id` 中。此文件由 GLib 等库使用。[17333d92643d](https://cgit.freebsd.org/src/commit/?id=17333d92643d) [a379d5c5efb2](https://cgit.freebsd.org/src/commit/?id=a379d5c5efb2) [71d88613d129](https://cgit.freebsd.org/src/commit/?id=71d88613d129)
 
 现在可以通过使用变量 `defaultrouter_fibN` 和 `ipv6_defaultrouter_fibN` [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) ，为除主路由表外的其他 FIB 添加默认路由。[c6ec1b441ad3](https://cgit.freebsd.org/src/commit/?id=c6ec1b441ad3)（由 ScaleEngine Inc. 赞助）
 
-### 用户态应用程序更改
+### 用户态应用程序变更
 
 工具 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 新增了 virtio-input 设备仿真支持。这将用于将键盘/鼠标输入事件注入到客户机中。命令行语法为：`-s <slot>,virtio-input,/dev/input/eventX`。[6192776124c5](https://cgit.freebsd.org/src/commit/?id=6192776124c5)
 
@@ -71,7 +71,7 @@ FreeBSD 13.2-RELEASE 的发布说明包含了自 13-STABLE 开发线以来对 Fr
 
 MSS clamping 在 [ppp(8)](https://man.freebsd.org/cgi/man.cgi?query=ppp&sektion=8&format=html) 中得到了改进。[301bff9bdd62](https://cgit.freebsd.org/src/commit/?id=301bff9bdd62)
 
-在 [prometheus_sysctl_exporter(8)](https://man.freebsd.org/cgi/man.cgi?query=prometheus_sysctl_exporter&sektion=8&format=html) 中更改了指标别名，以避免由于冲突的指标名称而混淆 Prometheus 服务器。UMA 区域 `tcp_log_bucket` 已重命名为 `tcp_log_id_bucket`，`tcp_log_node` 被重命名为 `tcp_log_id_node` 以保持一致性。不再导出描述中带有 `(LEGACY)` 的 sysctl 变量，这些变量是由  sysctl ZFS 替换的，许多已别名为相同的 Prometheus 指标名称（如 `vfs.zfs.arc_max` 和 `vfs.zfs.arc.max`）。[e4f508d5a211](https://cgit.freebsd.org/src/commit/?id=e4f508d5a211)（由 Axcient 赞助）
+在 [prometheus_sysctl_exporter(8)](https://man.freebsd.org/cgi/man.cgi?query=prometheus_sysctl_exporter&sektion=8&format=html) 中变更了指标别名，以避免由于冲突的指标名称而混淆 Prometheus 服务器。UMA 区域 `tcp_log_bucket` 已重命名为 `tcp_log_id_bucket`，`tcp_log_node` 被重命名为 `tcp_log_id_node` 以保持一致性。不再导出描述中带有 `(LEGACY)` 的 sysctl 变量，这些变量是由  sysctl ZFS 替换的，许多已别名为相同的 Prometheus 指标名称（如 `vfs.zfs.arc_max` 和 `vfs.zfs.arc.max`）。[e4f508d5a211](https://cgit.freebsd.org/src/commit/?id=e4f508d5a211)（由 Axcient 赞助）
 
 [uuidgen(1)](https://man.freebsd.org/cgi/man.cgi?query=uuidgen&sektion=1&format=html) 工具新增了 `-r` 选项，用于生成随机 UUID，版本 4。[8fd1953b7eb2](https://cgit.freebsd.org/src/commit/?id=8fd1953b7eb2)
 
@@ -127,16 +127,16 @@ Gavin Howard 的 `bc` 已升级到版本 6.2.4。
 
 ## 内核
 
-本节涵盖了内核配置、系统调优以及未分类的系统控制参数的更改。
+本节涉及内核配置、系统调优以及未分类的系统控制参数的变更。
 
 
-### 一般内核更改
+### 一般内核变更
 
 [bhyve(8)](https://man.freebsd.org/cgi/man.cgi?query=bhyve&sektion=8&format=html) 虚拟机监控器和内核模块 [vmm(4)](https://man.freebsd.org/cgi/man.cgi?query=vmm&sektion=4&format=html) 现在支持在虚拟机中使用超过 16 个 vCPU。默认情况下，bhyve 允许每个虚拟机创建与主机物理 CPU 数量相同的 vCPU。此限制可以通过加载器调节选项 `hw.vmm.maxcpu` 来调整。[3e02f8809aec](https://cgit.freebsd.org/src/commit/?id=3e02f8809aec)
 
 默认启用了 64 位可执行文件的地址空间布局随机化（ASLR）。如果应用程序出现意外故障（例如，段错误），可以根据需要禁用 ASLR。要禁用单次调用，可以使用 [proccontrol(1)](https://man.freebsd.org/cgi/man.cgi?query=proccontrol&sektion=1&format=html) 命令：`proccontrol -m aslr -s disable command`。要禁用所有二进制文件的 ASLR 调用，可以使用 [elfctl(1)](https://man.freebsd.org/cgi/man.cgi?query=elfctl&sektion=1&format=html) 命令：`elfctl -e +noaslr file`。问题应通过问题报告系统 [https://bugs.freebsd.org](https://bugs.freebsd.org/) 提交，或通过 `freebsd-stable@FreeBSD.org` 邮件列表报告。[10192e77cfac](https://cgit.freebsd.org/src/commit/?id=10192e77cfac)（由 Stormshield 赞助）
 
-已实现针对 Intel Alder Lake（第十二代）和 Raptor Lake（第十三代）混合 CPU 的硬件页面失效问题的解决方法。该漏洞可能导致 UFS 和 MSDOSFS 文件系统损坏，并可能导致其他内存损坏。通过此解决方法，较慢的核心（E 核心）会自动使用较慢的页面失效方法。[567cc4e6bfd9](https://cgit.freebsd.org/src/commit/?id=567cc4e6bfd9)（由 FreeBSD 基金会赞助）
+已实现针对 Intel Alder Lake（第十二代）和 Raptor Lake（第十三代）混合 CPU 的硬件页面失效问题的解决方法。该漏洞可能导致 UFS 和 MSDOSFS 文件系统损坏，并可能导致其他内存损坏。通过此解决方法，小核（E 核心）会自动使用较慢的页面失效方法。[567cc4e6bfd9](https://cgit.freebsd.org/src/commit/?id=567cc4e6bfd9)（由 FreeBSD 基金会赞助）
 
 新增内核配置选项 `SPLIT_KERNEL_DEBUG`，用于控制将内核和模块的调试数据分割成独立的文件。该选项与选项 `WITHOUT_KERNEL_SYMBOLS` 相互作用，后者的操作方式与 13.0-RELEASE 和 13.1-RELEASE 中不同，但与早期版本相似；它现在仅控制调试数据的安装。默认情况下为 `WITH_KERNEL_SYMBOLS` 和 `WITH_SPLIT_KERNEL_DEBUG`，允许将不含调试数据的内核和模块安装在 /boot 中，将独立的调试文件安装在 `/usr/lib/debug` 中，这与 13.0-RELEASE 之前的版本相同。使用 `WITHOUT_KERNEL_SYMBOLS` 和 `WITH_SPLIT_KERNEL_DEBUG` 时，生成独立的调试文件，但不安装，类似于早期版本中使用 `WITHOUT_KERNEL_SYMBOLS` 的情况。最后，使用 `WITHOUT_KERNEL_SYMBOLS` 和 `WITHOUT_SPLIT_KERNEL_DEBUG` 时，将内核和模块与内置调试信息一起安装到 `/boot` 中，这与 13.1-RELEASE 中使用 `WITHOUT_KERNEL_SYMBOLS` 的情况相同。[0c4d13c521aa](https://cgit.freebsd.org/src/commit/?id=0c4d13c521aa)（由 FreeBSD 基金会赞助）
 
@@ -154,7 +154,7 @@ arm64 上的 [linux(4)](https://man.freebsd.org/cgi/man.cgi?query=linux&sektion=
 
 ## 设备和驱动程序
 
-本节介绍了自 13.1-RELEASE 以来，设备和设备驱动程序的更改和新增内容。
+本节介绍了自 13.1-RELEASE 以来，设备和设备驱动程序的变更和新增内容。
 
 ### 设备驱动程序
 
@@ -178,21 +178,21 @@ arm64 上的 [linux(4)](https://man.freebsd.org/cgi/man.cgi?query=linux&sektion=
 
 ## 存储
 
-本节介绍了文件系统和其他存储子系统（本地和网络存储）的更改和新增内容。
+本节介绍了文件系统和其他存储子系统（本地和网络存储）的变更和新增内容。
 
-### NFS 更改
+### NFS 变更
 
 已修复导致 NFS 服务器挂起的问题；该问题是由 TCP 中 SACK 处理的 bug 引起的。
 
-### UFS 更改
+### UFS 变更
 
 现在可以在运行启用了日志软更新的 UFS 文件系统上进行快照。因此，现在可以在运行日志软更新的在线文件系统上执行后台转储。通过使用 `-L` 参数来请求后台转储：[dump(8)](https://man.freebsd.org/cgi/man.cgi?query=dump&sektion=8&format=html)。在以前的版本中，UFS 快照与日志软更新不兼容。[3f908eed27b4](https://cgit.freebsd.org/src/commit/?id=3f908eed27b4)（由 FreeBSD 基金会赞助）
 
-## 启动加载器更改
+## 启动加载器变更
 
-本节介绍了启动加载器、启动菜单和其他启动相关的更改。
+本节介绍了启动加载器、启动菜单和其他启动相关的变更。
 
-### 启动加载器更改
+### 启动加载器变更
 
 变量 `teken.fg_color` 和 `teken.bg_color` [loader.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=loader.conf&sektion=5&format=html) 现在接受 `bright` 或 `light` 前缀（以及颜色号 8 到 15）来选择亮色。[1dcb6002c500](https://cgit.freebsd.org/src/commit/?id=1dcb6002c500)（由 FreeBSD 基金会赞助）。另见 [233ab015c0d7](https://cgit.freebsd.org/src/commit/?id=233ab015c0d7)
 
@@ -200,7 +200,7 @@ arm64 上的 [linux(4)](https://man.freebsd.org/cgi/man.cgi?query=linux&sektion=
 
 ## 网络
 
-本节介绍了影响 FreeBSD 网络功能的更改。
+本节介绍了影响 FreeBSD 网络功能的变更。
 
 ### 一般网络
 
@@ -218,17 +218,17 @@ TCP 和 SCTP 中有多个 bug 修复。
 
 ## 关于后续 FreeBSD 版本的一般说明
 
-已弃用 `OPIE` ，并将在 FreeBSD 14.0 中移除。
+已弃用 `OPIE`，并将在 FreeBSD 14.0 中移除。
 
 已弃用同步串行驱动程序 [ce(4)](https://man.freebsd.org/cgi/man.cgi?query=ce&sektion=4&format=html) 和 [cp(4)](https://man.freebsd.org/cgi/man.cgi?query=cp&sektion=4&format=html) ，并将在 FreeBSD 14.0 中移除。
 
-ISA 声卡的驱动程序已被弃用，并将在 FreeBSD 14.0 中移除。[d7620b6ec941](https://cgit.freebsd.org/src/commit/?id=d7620b6ec941)（由 FreeBSD 基金会赞助）
+ISA 声卡的驱动程序已弃用，并将在 FreeBSD 14.0 中移除。[d7620b6ec941](https://cgit.freebsd.org/src/commit/?id=d7620b6ec941)（由 FreeBSD 基金会赞助）
 
 已弃用工具 [mergemaster(8)](https://man.freebsd.org/cgi/man.cgi?query=mergemaster&sektion=8&format=html)，并将在 FreeBSD 14.0 中移除。它的替代工具是 [etcupdate(8)](https://man.freebsd.org/cgi/man.cgi?query=etcupdate&sektion=8&format=html)。[5fa16e3c50c5](https://cgit.freebsd.org/src/commit/?id=5fa16e3c50c5)（由 FreeBSD 基金会赞助）
 
 已弃用工具 [minigzip(1)](https://man.freebsd.org/cgi/man.cgi?query=minigzip&sektion=1&format=html) ，并将在 FreeBSD 14.0 中移除。[84d3fc26e3a2](https://cgit.freebsd.org/src/commit/?id=84d3fc26e3a2)
 
-在 netgraph 中，ATM 的剩余组件（NgATM）已被弃用，并将在 FreeBSD 14.0 中移除。已移除对 ATM NIC 的支持。
+在 netgraph 中，ATM 的剩余组件（NgATM）已弃用，并将在 FreeBSD 14.0 中移除。已移除对 ATM NIC 的支持。
 
 已弃用 Telnet 守护进程 [telnetd(8)](https://man.freebsd.org/cgi/man.cgi?query=telnetd&sektion=8&format=html) ，并将在 FreeBSD 14.0 中移除。Telnet 客户端不受影响。
 
@@ -236,16 +236,16 @@ ISA 声卡的驱动程序已被弃用，并将在 FreeBSD 14.0 中移除。[d762
 
 ### 默认 `CPUTYPE` 变更
 
-从 FreeBSD-13.0 开始，i386 架构的默认 `CPUTYPE` 将从 `486` 更改为 `686`。
+从 FreeBSD-13.0 开始，i386 架构的默认 `CPUTYPE` 将从 `486` 变更为 `686`。
 
 这意味着，默认情况下，生成的二进制文件将要求 686 类 CPU，包括但不限于 FreeBSD 发布工程团队提供的二进制文件。FreeBSD 13.x 仍将继续支持旧的 CPU，但需要此功能的用户将需要为官方支持自行构建发行版。
 
 由于 i486 和 i586 CPU 主要用于嵌入式市场，因此预计对普通用户的影响将是最小的，因为这些 CPU 类型的新硬件早已不再使用，而部署的这类系统的基础大部分接近退休年龄，统计上来看。
 
-做出这一更改时考虑了多个因素。例如，i486 没有 64 位原子操作，虽然可以在内核中模拟，但无法在用户空间中模拟。此外，32 位 amd64 库从一开始就是 i686。
+做出这一变更时考虑了多个因素。例如，i486 没有 64 位原子操作，虽然可以在内核中模拟，但无法在用户空间中模拟。此外，32 位 amd64 库从一开始就是 i686。
 
-由于大多数 32 位测试是由开发人员使用内核选项 `COMPAT_FREEBSD32` ，在 64 位硬件上使用 lib32 库进行的，这一更改确保了更好的覆盖率和用户体验。这也符合大多数 Linux® 发行版长期以来的做法。
+由于大多数 32 位测试是由开发人员使用内核选项 `COMPAT_FREEBSD32`，在 64 位硬件上使用 lib32 库进行的，这一变更确保了更好的覆盖率和用户体验。这也符合大多数 Linux® 发行版长期以来的做法。
 
 预计这将是 i386 默认 `CPUTYPE` 的最后一次升级。
 
->此更改不会影响 FreeBSD 12.x 系列的版本。 
+>此变更不会影响 FreeBSD 12.x 系列的版本。 

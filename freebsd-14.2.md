@@ -15,11 +15,11 @@ FreeBSD 14.2-RELEASE 发行说明总结了在 14-STABLE 开发分支上 FreeBSD 
 
 FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.FreeBSD.org/releases/](https://www.freebsd.org/releases/) 和其有关镜像下载。有关获取此版本（及其他版本）FreeBSD 的更多信息，请参阅 [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook//) 的 [FreeBSD 附录](https://docs.freebsd.org/en/books/handbook//mirrors)。
 
-建议在安装 FreeBSD 之前，用户先查阅下发行勘误文档。该文档包含在发行周期后期及发行后发现的“最新”信息，通常涵盖已知错误、安全公告以及文档修正。可在 FreeBSD 网站上找到最新的 FreeBSD 14.2-RELEASE 勘误文档。
+建议在安装 FreeBSD 之前，用户先查阅下发行勘误文档。该文档包含在发行周期后期及发行后发现的“最新”信息，通常涉及已知错误、安全公告以及文档修正。可在 FreeBSD 网站上找到最新的 FreeBSD 14.2-RELEASE 勘误文档。
 
-本文档总结了自 14.1-RELEASE 以来 FreeBSD 中对用户最为可见的新增和更改功能。一般来说，这些变更是 14-STABLE 分支的独有内容，除非特别标记为 MERGED 功能。
+本文档总结了自 14.1-RELEASE 以来 FreeBSD 中对用户最为可见的新增和变更功能。一般来说，这些变更是 14-STABLE 分支的独有内容，除非特别标记为 MERGED 功能。
 
-一般的发行说明内容包括自 14.1-RELEASE 之后发布的安全公告、新增的驱动程序/硬件支持、新命令/参数、主要的错误修复/外部软件更新。还可能列出主要 Ports/软件包和发行工程实践的更改。显然，发行说明无法详尽列出两个 FreeBSD 版本之间所做的每项更改；本文档主要聚焦于安全公告、用户可见的更改和重大架构改进。
+一般的发行说明内容包括自 14.1-RELEASE 之后发布的安全公告、新增的驱动程序/硬件支持、新命令/参数、主要的错误修复/外部软件更新。还可能列出主要 Ports/软件包和发行工程实践的变更。显然，发行说明无法详尽列出两个 FreeBSD 版本之间所做的每项变更；本文档主要聚焦于安全公告、用户可见的变更和重大架构改进。
 
 
 ### 从旧版 FreeBSD 更新
@@ -73,11 +73,11 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ## 用户空间
 
-本节介绍用户空间应用程序、贡献软件和系统工具的更改与新增内容。
+本节介绍用户空间应用程序、贡献软件和系统工具的变更与新增内容。
 
-### 用户空间应用程序的更改
+### 用户空间应用程序的变更
 
-[env(1)](https://man.freebsd.org/cgi/man.cgi?query=env&sektion=1&format=html) 增加了一个用于更改目录的参数。此功能类似于 GNU 版 `env` 的功能，但不支持长选项（**译者注：即 `--` 此类参数**）。[08e8554c4a39](https://cgit.freebsd.org/src/commit/?id=08e8554c4a39)（由 Klara, Inc. 赞助）
+[env(1)](https://man.freebsd.org/cgi/man.cgi?query=env&sektion=1&format=html) 增加了一个用于变更目录的参数。此功能类似于 GNU 版 `env` 的功能，但不支持长选项（**译者注：即 `--` 此类参数**）。[08e8554c4a39](https://cgit.freebsd.org/src/commit/?id=08e8554c4a39)（由 Klara, Inc. 赞助）
 
 
 
@@ -119,7 +119,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ## 设备与驱动程序
 
-本节介绍自 FreeBSD 14.1-RELEASE 以来设备和驱动程序的更改与新增内容。
+本节介绍自 FreeBSD 14.1-RELEASE 以来设备和驱动程序的变更与新增内容。
 
 
 ### 设备驱动程序
@@ -132,7 +132,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - 驱动 [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
 - 一款支持部分 Realtek 芯片组的新无线驱动已可用：[rtw89(4)](https://man.freebsd.org/cgi/man.cgi?query=rtw89&sektion=4&format=html)。[a2d1e07f6451](https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451)（由 FreeBSD 基金会赞助）
 - 对 Realtek 8156/8156B 的支持已从 [cdce(4)](https://man.freebsd.org/cgi/man.cgi?query=cdce&sektion=4&format=html) 迁移至 [ure(4)](https://man.freebsd.org/cgi/man.cgi?query=ure&sektion=4&format=html)，以提升性能和可靠性。[630077a84186](https://cgit.freebsd.org/src/commit/?id=630077a84186)（由 FreeBSD 基金会赞助）
-- 增加了对 ACPI GPIO \_AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
+- 增加了对 ACPI GPIO _AEI 对象的支持。[1db6ffb2a482](https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482)（由亚马逊赞助） 
 - 已在所有架构上启用 [nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html) 和 [nvmecontrol(8)](https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&sektion=8&format=html)。[24687a65dd7f](https://cgit.freebsd.org/src/commit/?id=24687a65dd7f)，[aba2d7f89dcf](https://cgit.freebsd.org/src/commit/?id=aba2d7f89dcf)（由 Chelsio Communications 和奈飞赞助）  
 
 
@@ -144,7 +144,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ## 存储
 
-本节介绍文件系统及其他本地和网络存储子系统的更改与新增内容。
+本节介绍文件系统及其他本地和网络存储子系统的变更与新增内容。
 
 
 ### ZFS
@@ -153,13 +153,13 @@ OpenZFS 已更新至版本 2.2.6。[755e773877e9](https://cgit.freebsd.org/src/c
 
 
 
-## 启动加载程序的更改
+## 启动加载程序的变更
 
-本节介绍启动加载程序、启动菜单及其他与启动相关的更改。
+本节介绍启动加载程序、启动菜单及其他与启动相关的变更。
 
 
 
-### 启动加载程序的更改
+### 启动加载程序的变更
 
 BIOS 引导加载程序重新添加了对 gzip 和 bzip2 的支持，但默认情况下移除了图形模式的支持，以解决大小问题。（EFI 引导加载程序未受影响，仍支持上述所有功能。）[4d3b05a8530e](https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e)（由奈飞赞助）
 
@@ -215,7 +215,7 @@ IOAPIC ID 最大值已增加至 255，修复了某些高核心数 AMD CPU 启动
 
 ## Ports 与软件包基础设施
 
-本节介绍 FreeBSD Ports、软件包基础设施以及软件包管理和安装工具的更改。
+本节介绍 FreeBSD Ports、软件包基础设施以及软件包管理和安装工具的变更。
 
 
 
@@ -225,14 +225,14 @@ FreeBSD 安装程序 [bsdinstall(8)](https://man.freebsd.org/cgi/man.cgi?query=b
 
 
 
-### 软件包更改
+### 软件包变更
 
 已将软件包 [net/wifi-firmware-kmod@release](https://cgit.freebsd.org/ports/tree/net/wifi-firmware-kmod/) 添加到 DVD 软件包中，以提供 WiFi 驱动所需固件。[8c6df7ead19c](https://cgit.freebsd.org/src/commit/?id=8c6df7ead19c)（由 FreeBSD 基金会赞助）  
 
 
 ## 关于后续 FreeBSD 版本的一般说明
 
-预计 FreeBSD 15.0 将不再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已被弃用并将被删除。但 64 位系统仍可运行旧的 32 位二进制文件。
+预计 FreeBSD 15.0 将不再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已弃用并将被删除。但 64 位系统仍可运行旧的 32 位二进制文件。
 
 FreeBSD 项目计划在 FreeBSD 15.0 和 stable/15 中将 armv7 作为二级（Tier 2）架构继续支持。然而，项目方预计 armv7 可能会在 FreeBSD 16.0 中被删除。FreeBSD 项目将会在 15.0 发布时更新在 15.x 和 16.x RELEASE 中 armv7 的支持状态。
 
@@ -242,6 +242,6 @@ FreeBSD 项目计划在 FreeBSD 15.0 和 stable/15 中将 armv7 作为二级（T
 
 FreeBSD stable/14 及更早分支将保留现有的 32 位内核和系统支持。在这些分支的支持期间，Ports 系统仍将支持为 32 位系统构建 Ports 和软件包。然而，所有 32 位平台均为二级、三级（Tier-2、Tier-3），因此随着上游停止对 32 位平台的支持，个别 Port 的支持可能会逐步下降。
 
-按照当前的支持计划，stable/14 的生命周期将在 FreeBSD 14.0-RELEASE 发布后约 5 年结束。stable/14 的生命周期结束（EOL）将标志着被弃用的 32 位平台支持的终结，包括源代码发布、预构建软件包和通过 Ports 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对被弃用的 32 位平台的支持将于 2028 年 11 月结束。
+按照当前的支持计划，stable/14 的生命周期将在 FreeBSD 14.0-RELEASE 发布后约 5 年结束。stable/14 的生命周期结束（EOL）将参数着被弃用的 32 位平台支持的终结，包括源代码发布、预构建软件包和通过 Ports 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对被弃用的 32 位平台的支持将于 2028 年 11 月结束。
 
 当 FreeBSD 15.0 发布时，FreeBSD 项目可能选择通过延续某些弃用平台的支持，调整这一计划。所有变更将根据社区反馈以及持续支持平台的努力来决定。

@@ -4,7 +4,7 @@
 
 ## 摘要
 
-FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 FreeBSD 基本系统所做更改的总结。本文列出了自上次发布以来发布的相关安全通告，并介绍了 FreeBSD 内核和用户空间的重大更改。还简要说明了从先前版本升级的相关事项。
+FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 FreeBSD 基本系统所做变更的总结。本文列出了自上次发布以来发布的相关安全通告，并介绍了 FreeBSD 内核和用户空间的重大变更。还简要说明了从先前版本升级的相关事项。
 
 ## 简介
 
@@ -18,9 +18,9 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 在安装 FreeBSD 之前，建议所有用户都先查阅下发行勘误文档。勘误文档会根据发布周期结束和发布后发现的“最后时刻”信息进行更新，通常包含已知的 bug、安全通告以及文档的更正。可以在 FreeBSD 网站上找到最新的 FreeBSD 13.3-RELEASE 勘误文档。
 
-本文档描述了 FreeBSD 13-STABLE 中自 13.2-RELEASE 以来最为用户可见的新特性或更改。请注意，本文中描述的某些更改也可以在 FreeBSD 14.0-RELEASE 中找到。
+本文档介绍了 FreeBSD 13-STABLE 中自 13.2-RELEASE 以来最为用户可见的新特性或变更。请注意，本文中描述的某些变更也可以在 FreeBSD 14.0-RELEASE 中找到。
 
-典型的发布说明项目记录了自 13.2-RELEASE 以来发布的安全通告、新的驱动程序和硬件支持、新的命令和参数、主要的 bug 修复，及第三方的软件升级。它们还可能列出主要 Port/包的更改和发布工程实践。显然，发布说明无法列出 FreeBSD 在两个版本之间做出的每一个更改；本文档主要关注安全通告、用户可见的更改以及主要的架构改进。
+典型的发布说明项目记录了自 13.2-RELEASE 以来发布的安全通告、新的驱动程序和硬件支持、新的命令和参数、主要的 bug 修复，及第三方的软件升级。它们还可能列出主要 Port/包的变更和发布工程实践。显然，发布说明无法列出 FreeBSD 在两个版本之间做出的每一个变更；本文档主要关注安全通告、用户可见的变更以及主要的架构改进。
 
 ## 从以前的 FreeBSD 版本升级
 
@@ -35,9 +35,9 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 ## 用户空间
 
-本节涵盖了对用户空间应用程序、贡献软件和系统实用程序的更改和新增功能。
+本节涉及对用户空间应用程序、贡献软件和系统实用程序的变更和新增功能。
 
-### 用户空间配置更改
+### 用户空间配置变更
 
 [libtacplus(3)](https://man.freebsd.org/cgi/man.cgi?query=libtacplus&sektion=3&format=html) 库已改进，现 [tacplus.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=tacplus.conf&sektion=5&format=html) 遵循 POSIX shell 语法规则。如果共享密钥包含单引号、双引号或反斜杠字符，且未正确引用和转义，可能会导致 `TACACS+` 认证失败。该库现在允许配置最多 255 个附加 AV 配对。[5761f8a7de9f](https://cgit.freebsd.org/src/commit/?id=5761f8a7de9f)（由 Klara, Inc. 赞助）
 
@@ -51,7 +51,7 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 现在，可以通过 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中的变量 `<服务>_umask` 为某个服务指定 `umask`，其中 `<服务>` 是服务名称。[2d6a03dd43c7](https://cgit.freebsd.org/src/commit/?id=2d6a03dd43c7)
 
-### 用户空间应用程序更改
+### 用户空间应用程序变更
 
 [head(1)](https://man.freebsd.org/cgi/man.cgi?query=head&sektion=1&format=html) 和 [tail(1)](https://man.freebsd.org/cgi/man.cgi?query=tail&sektion=1&format=html) 程序现在一致地支持参数 `-q`（安静）和 `-v`（详细）。数字参数现在可以使用 [expand_number(3)](https://man.freebsd.org/cgi/man.cgi?query=expand_number&sektion=3&format=html) 支持的 SI 后缀。[585762c3733f](https://cgit.freebsd.org/src/commit/?id=585762c3733f)
 
@@ -87,15 +87,15 @@ FreeBSD 13.3-RELEASE 的发布说明包含了对 13-STABLE 开发主线中的 Fr
 
 ## 内核
 
-本节涉及内核配置、系统调优以及未分类的系统控制参数的更改。
+本节涉及内核配置、系统调优以及未分类的系统控制参数的变更。
 
-### 一般内核更改
+### 一般内核变更
 
 [intro(9)](https://man.freebsd.org/cgi/man.cgi?query=intro&sektion=9&format=html) 核心编程接口介绍已完全重写。[5a0c410787b8](https://cgit.freebsd.org/src/commit/?id=5a0c410787b8)（由 FreeBSD 基金会赞助）
 
 ## 设备和驱动
 
-本节涉及自 13.2-RELEASE 以降设备和设备驱动的更改与新增。
+本节涉及自 13.2-RELEASE 以降设备和设备驱动的变更与新增。
 
 ### 设备驱动
 
@@ -113,19 +113,19 @@ USB 以太网适配器驱动 [smsc(4)](https://man.freebsd.org/cgi/man.cgi?query
 
 ## 存储
 
-本节涵盖了文件系统和其他存储子系统的更改与新增，包括本地存储和网络存储。
+本节涉及文件系统和其他存储子系统的变更与新增，包括本地存储和网络存储。
 
 ### 一般存储
 
 在调试和解决通用文件系统代码中与 vnode 回收相关的问题过程中，vnode 相关统计信息的 `sysctl` 已被分组到 `vfs.vnode` 下，以提高可见性。[77a8bd148796](https://cgit.freebsd.org/src/commit/?id=77a8bd148796)
 
-### NFS 更改
+### NFS 变更
 
 NFS 服务器（[nfsd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsd&sektion=8&format=html)、[nfsuserd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsuserd&sektion=8&format=html)、[mountd(8)](https://man.freebsd.org/cgi/man.cgi?query=mountd&sektion=8&format=html)、[gssd(8)](https://man.freebsd.org/cgi/man.cgi?query=gssd&sektion=8&format=html)、和 [rpc.tlsservd(8)](https://man.freebsd.org/cgi/man.cgi?query=rpc.tlsservd&sektion=8&format=html)) 现在可以在适当配置的 vnet jail 中运行。vnet jail 必须位于独立的文件系统上，设置了 jail 参数 `allow.nfsd`，并且 `enforce_statfs` 不能设置为 `0`。不允许使用 UDP 和 pNFS 服务器配置。请参见 [jail(8)](https://man.freebsd.org/cgi/man.cgi?query=jail&sektion=8&format=html)、[nfsd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsd&sektion=8&format=html) 和 [mountd(8)](https://man.freebsd.org/cgi/man.cgi?query=mountd&sektion=8&format=html)。[b4805d577787](https://cgit.freebsd.org/src/commit/?id=b4805d577787)
 
 现在有了一个新的挂载参数 `syskrb5`。能在没有 Kerberos 凭据（TGT 或 keytab）的情况下进行 Kerberized NFSv4.1/4.2 挂载。请参见 [mount_nfs(8)](https://man.freebsd.org/cgi/man.cgi?query=mount_nfs&sektion=8&format=html)。[0644746d5091](https://cgit.freebsd.org/src/commit/?id=0644746d5091)
 
-### ZFS 更改
+### ZFS 变更
 
 `OpenZFS` 已升级到 2.1.14 版本。[7005cd440405](https://cgit.freebsd.org/src/commit/?id=7005cd440405) [e6c1e181ba7f](https://cgit.freebsd.org/src/commit/?id=e6c1e181ba7f) [d9a61490b098](https://cgit.freebsd.org/src/commit/?id=d9a61490b098) [f5eac6541278](https://cgit.freebsd.org/src/commit/?id=f5eac6541278)
 
@@ -134,7 +134,7 @@ NFS 服务器（[nfsd(8)](https://man.freebsd.org/cgi/man.cgi?query=nfsd&sektion
 
 ## 网络
 
-本节简述了影响 FreeBSD 网络的更改。
+本节简述了影响 FreeBSD 网络的变更。
 
 ### 普通网络
 
@@ -148,7 +148,7 @@ netgraph 的 [ng_ipfw(4)](https://man.freebsd.org/cgi/man.cgi?query=ng_ipfw&sekt
 
 ## 硬件支持
 
-本节涉及物理机器、虚拟化环境和超管理程序的通用硬件支持，以及不适合其他部分的硬件更改和更新。
+本节涉及物理机器、虚拟化环境和超管理程序的通用硬件支持，以及不适合其他部分的硬件变更和更新。
 
 ### 硬件架构支持
 
@@ -161,7 +161,7 @@ BeagleBone Black（armv7）不再受支持；它与当前的启动文件（DTB�
 
 ## 关于后续 FreeBSD 版本的一般说明
 
-预计 FreeBSD 15.0 不会再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已被弃用，并会在以后移除。64 位系统仍然能够运行较旧的 32 位二进制文件。
+预计 FreeBSD 15.0 不会再支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已弃用，并会在以后移除。64 位系统仍然能够运行较旧的 32 位二进制文件。
 
 我们预计在 FreeBSD 15.0 和 stable/15 版本中，armv7 将作为二级架构继续得到支持。然而，我们也预见到 armv7 可能会在 FreeBSD 16.0 中被移除。我们将在 15.0 版本发布时，提供有关 armv7 在 15.x 和 16.x 中状态的更新。
 
@@ -171,7 +171,7 @@ BeagleBone Black（armv7）不再受支持；它与当前的启动文件（DTB�
 
 FreeBSD stable/14 及以前的分支将继续保留对现有的 32 位内核和世界环境的支持。只要这些分支得到 Ports 系统的支持，Ports 将继续支持为 32 位系统构建 port 和包。然而，所有 32 位平台将被视为二级/三级平台，随着上游对 32 位平台的弃用，单个 Port 的支持可能会逐渐下降。
 
-根据当前的支持计划，stable/14 将在 FreeBSD 14.0-RELEASE 发布后的 5 年内达到生命周期结束（EOL）。stable/14 的 EOL 将标志着对已弃用 32 位平台的支持结束，包括源代码发布、预构建包以及从 port 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对已弃用 32 位平台的支持将在 2028 年 11 月结束。
+根据当前的支持计划，stable/14 将在 FreeBSD 14.0-RELEASE 发布后的 5 年内达到生命周期结束（EOL）。stable/14 的 EOL 将参数着对已弃用 32 位平台的支持结束，包括源代码发布、预构建包以及从 port 构建应用程序的支持。随着 14.0-RELEASE 于 2023 年 11 月发布，对已弃用 32 位平台的支持将在 2028 年 11 月结束。
 
 该项目可能会选择在 FreeBSD 15.0 发布时调整此策略，通过在 15.0 及更高版本中对一个或多个已弃用平台提供某种级别的支持。任何调整都将根据社区反馈和为支持这些平台而作出的努力来决定。建议使用 FreeBSD 14.0-RELEASE 及其后续的次要版本，或 stable/14 分支，来迁移出 32 位平台。
 
