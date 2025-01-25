@@ -13,6 +13,7 @@
 * [FreeBSD 12.3-RELEASE 发行说明（2021 年 12 月 7 日）](12.3.md)
 * [FreeBSD 12.2-RELEASE 发行说明（2020 年 10 月 27 日）](12.2.md)
 * [FreeBSD 12.1-RELEASE 发行说明（2019 年 11 月 4 日）](12.1.md)
+* [FreeBSD 12.0-RELEASE 发行说明（2018 年 12 月 11 日）](12.0.md)
 * [FreeBSD 7.0 RELEASE 发行公告（2008 年 2 月 27 日）](7.0.md)
 * [FreeBSD 6.4 RELEASE amd64 发行公告（2008 年 11 月 28 日）](6.4-amd64.md)
 * [FreeBSD 6.3 RELEASE amd64 发行公告（2008 年 1 月 18 日）](6.3-amd64.md)
