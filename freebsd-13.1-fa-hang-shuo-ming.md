@@ -1,4 +1,4 @@
-# FreeBSD 13.1-RELEASE 发行说明
+# FreeBSD 13.1-RELEASE 发行说明（2022 年 5 月 16 日）
 
 - 原文链接 [FreeBSD 13.1-RELEASE Release Notes](https://www.freebsd.org/releases/13.1R/relnotes/)
 
