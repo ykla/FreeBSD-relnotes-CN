@@ -1,4 +1,4 @@
-# FreeBSD 14.0-RELEASE 发行说明
+# FreeBSD 14.0-RELEASE 发行说明（2023 年 11 月 20 日）
 
 
 - 原文链接：<https://www.freebsd.org/releases/14.0R/relnotes/>
