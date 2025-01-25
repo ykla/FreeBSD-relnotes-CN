@@ -1,4 +1,4 @@
-# FreeBSD 14.1-RELEASE 发行说明
+# FreeBSD 14.1-RELEASE 发行说明（2024 年 6 月 4 日）
 
 - 原文地址：<https://www.freebsd.org/releases/14.1R/relnotes/>
 
