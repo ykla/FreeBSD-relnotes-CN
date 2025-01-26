@@ -73,7 +73,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 
 ## 用户空间
 
-本节介绍用户空间应用程序、贡献软件和系统工具的变更与新增内容。
+本节介绍用户空间应用程序、第三方软件和系统工具的变更与新增内容。
 
 ### 用户空间应用程序的变更
 
@@ -127,7 +127,7 @@ FreeBSD 14.2-RELEASE 是个“RELEASE”发行版。可以通过 [https://www.Fr
 - `ena` 驱动已更新至 2.8.0。[6bf02434bd9a](https://cgit.freebsd.org/src/commit/?id=6bf02434bd9a)（由亚马逊赞助）  
 - `ice` 驱动已更新至 1.43.2-k。[38a1655adcb3](https://cgit.freebsd.org/src/commit/?id=38a1655adcb3)（由英特尔赞助）  
 - `ice_ddp` 已更新至 1.3.41.0。[a9d78bb714e3](https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3)（由英特尔赞助）
-- 驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html) （**译者注：man 页面没有 hda(4)，可能指 [snd_hda(4)](https://man.freebsd.org/cgi/man.cgi?snd_hda(4))**）新增了对 Tiger Lake-H 的支持。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
+- 驱动程序 [hda(4)](https://man.freebsd.org/cgi/man.cgi?query=hda&sektion=4&format=html)（**译者注：man 页面没有 hda(4)，可能指 [snd_hda(4)](https://man.freebsd.org/cgi/man.cgi?snd_hda(4))**）新增了对 Tiger Lake-H 的支持。[dbb6f488df6e](https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e)
 - 驱动程序 [ichsmb(4)](https://man.freebsd.org/cgi/man.cgi?query=ichsmb&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[14c22e28e4ee](https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee)（由 Framework Computer Inc 和 FreeBSD 基金会赞助）
 - 驱动 [ig4(4)](https://man.freebsd.org/cgi/man.cgi?query=ig4&sektion=4&format=html) 新增了对 Meteor Lake 的支持。[56f0fc0011c2](https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2)
 - 一款支持部分 Realtek 芯片组的新无线驱动已可用：[rtw89(4)](https://man.freebsd.org/cgi/man.cgi?query=rtw89&sektion=4&format=html)。[a2d1e07f6451](https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451)（由 FreeBSD 基金会赞助）
