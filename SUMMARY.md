@@ -28,6 +28,7 @@
 * [FreeBSD 9.2-RELEASE 发行说明（2013 年 9 月 30 日）](9.2.md)
 * [FreeBSD 9.1-RELEASE 发行说明（2012 年 12 月 30 日）](9.1.md)
 * [FreeBSD 9.0-RELEASE 发行说明（2012 年 1 月 12 日）](9.0.md)
+* [FreeBSD 7.1 RELEASE 发行公告（2009 年 1 月 4 日）](7.1.md)
 * [FreeBSD 7.0 RELEASE 发行公告（2008 年 2 月 27 日）](7.0.md)
 * [FreeBSD 6.4 RELEASE amd64 发行公告（2008 年 11 月 28 日）](6.4-amd64.md)
 * [FreeBSD 6.3 RELEASE amd64 发行公告（2008 年 1 月 18 日）](6.3-amd64.md)
