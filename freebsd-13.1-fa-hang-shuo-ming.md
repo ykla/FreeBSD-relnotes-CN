@@ -149,9 +149,9 @@ CAS 已变更为支持 Radix MMU。[cc8e726c85b](https://cgit.freebsd.org/src/co
 
 添加了 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&sektion=4&format=html) 驱动和一个 LinuxKPI 802.11 兼容层，用于支持较新的 Intel 无线芯片组，以补充 [iwm(4)](https://man.freebsd.org/cgi/man.cgi?query=iwm&sektion=4&format=html) 驱动。（由 FreeBSD 基金会赞助）
 
-当内核使用 `MMCCAM` 选项配置时，现在可以使用 `dwmmc` 控制器将内核崩溃转储保存到 SD 卡和 eMMC 模块。[79c3478e76c3](https://cgit.freebsd.org/src/commit/?id=79c3478e76c3)
+当内核使用选项 `MMCCAM` 配置时，现在可以使用 `dwmmc` 控制器将内核崩溃转储保存到 SD 卡和 eMMC 模块。[79c3478e76c3](https://cgit.freebsd.org/src/commit/?id=79c3478e76c3)
 
-当内核使用 `MMCCAM` 选项配置时，现在可以使用 `sdhci` 控制器将内核崩溃转储保存到 SD 卡。[8934d3e7b9b9](https://cgit.freebsd.org/src/commit/?id=8934d3e7b9b9)
+当内核使用选项 `MMCCAM` 配置时，现在可以使用 `sdhci` 控制器将内核崩溃转储保存到 SD 卡。[8934d3e7b9b9](https://cgit.freebsd.org/src/commit/?id=8934d3e7b9b9)
 
 ### 支持的平台
 
@@ -199,7 +199,7 @@ ZFS 已升级至 OpenZFS 2.1.4 版本。OpenZFS 的发行说明可参阅 [https:
 - **性能改进**：对 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html)、[nvme(4)](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html)、[random(4)](https://man.freebsd.org/cgi/man.cgi?query=random&sektion=4&format=html)、[rtsold(8)](https://man.freebsd.org/cgi/man.cgi?query=rtsold&sektion=8&format=html) 和 x86 时钟校准的性能进行了优化，这显著缩短了系统引导时间。此外，EC2 平台的配置变更进一步提高了性能，使得 13.1-RELEASE 的引导速度比 13.0-RELEASE 快了两倍以上。（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
 - **EC2 镜像默认使用 UEFI 引导**：  
-  EC2 镜像现在默认使用 UEFI 引导而非传统的 BIOS 引导。不过，基于 Xen 的 EC2 实例或 "bare metal" EC2 实例仍不支持 UEFI。[65f22ccf8247](https://cgit.freebsd.org/src/commit/?id=65f22ccf8247)（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
+  EC2 镜像现在默认使用 UEFI 引导而非传统的 BIOS 引导。不过，基于 Xen 的 EC2 实例或 `bare metal` EC2 实例仍不支持 UEFI。[65f22ccf8247](https://cgit.freebsd.org/src/commit/?id=65f22ccf8247)（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
 
 - **支持在 AWS Systems Manager 参数存储中记录 EC2 AMI ID**：  
   FreeBSD 在 AWS Systems Manager 参数存储中使用公共前缀 `/aws/service/freebsd`，生成类似 `/aws/service/freebsd/amd64/base/ufs/13.1/RELEASE` 的参数名称。[242d1c32e42c](https://cgit.freebsd.org/src/commit/?id=242d1c32e42c)（由 [https://www.patreon.com/cperciva](https://www.patreon.com/cperciva) 赞助）
@@ -213,7 +213,7 @@ ZFS 已升级至 OpenZFS 2.1.4 版本。OpenZFS 的发行说明可参阅 [https:
 - **IPv4 子网最低地址的处理变更**：  
   IPv4（子）网的最低地址（主机 0）的处理方式发生了变化，只有在该地址被设置为广播地址时，才会将数据包作为广播发送。这一变更使最低地址可用于主机。如果需要恢复旧行为，可以通过 sysctl 选项 `net.inet.ip.broadcast_lowest` 完成。背景信息参见 [https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/](https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/)。[3ee882bf21af](https://cgit.freebsd.org/src/commit/?id=3ee882bf21af)
 
-## 关于未来 FreeBSD 版本的说明
+## 关于后续  FreeBSD 版本的说明
 
 暂无具体变更内容。
 
