@@ -22,6 +22,7 @@
 * [FreeBSD 10.4-RELEASE 发行说明（2017 年 10 月 3 日）](10.4.md)
 * [FreeBSD 10.3-RELEASE 发行说明（2016 年 4 月 4 日）](10.3.md)
 * [FreeBSD 10.2-RELEASE 发行说明（2015 年 8 月 13 日）](10.2.md)
+* [FreeBSD 10.1-RELEASE 发行说明（2014 年 11 月 14 日）](10.1.md)
 * [FreeBSD 7.0 RELEASE 发行公告（2008 年 2 月 27 日）](7.0.md)
 * [FreeBSD 6.4 RELEASE amd64 发行公告（2008 年 11 月 28 日）](6.4-amd64.md)
 * [FreeBSD 6.3 RELEASE amd64 发行公告（2008 年 1 月 18 日）](6.3-amd64.md)
