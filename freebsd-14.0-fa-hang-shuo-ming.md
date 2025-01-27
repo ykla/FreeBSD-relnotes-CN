@@ -1,4 +1,4 @@
-# FreeBSD 14.0-RELEASE 发行说明
+# FreeBSD 14.0-RELEASE 发行说明（2023 年 11 月 20 日）
 
 
 - 原文链接：<https://www.freebsd.org/releases/14.0R/relnotes/>
@@ -8,11 +8,11 @@
 
 ## 摘要
 
-FreeBSD 14.0-RELEASE 发行说明总结了在 14-STABLE 开发线上对 FreeBSD 基本系统所做的更改。本文列出了自上一个 RELEASE 版本以来发行的适用的安全公告，以及对 FreeBSD 内核和用户空间的重大更改。同时也提供了关于升级的简要说明。
+FreeBSD 14.0-RELEASE 发行说明总结了在 14-STABLE 开发线上对 FreeBSD 基本系统所做的变更。本文列出了自上一个 RELEASE 版本以来发行的适用的安全公告，以及对 FreeBSD 内核和用户空间的重大变更。同时也提供了关于升级的简要说明。
 
 ## 介绍
 
-本文档包含了 FreeBSD 14.0-RELEASE 的发行说明。它说明了 FreeBSD 中最近添加、更改或删除的功能。同时还提供了有关从以前版本升级的一些建议。
+本文档包含了 FreeBSD 14.0-RELEASE 的发行说明。它说明了 FreeBSD 中最近添加、变更或删除的功能。同时还提供了有关从以前版本升级的一些建议。
 
 这份发行说明适用于 14-STABLE 开发分支创建以来的最新的 RELEASE 版本。可以在 [ https://www.FreeBSD.org/releases/ ](https://www.freebsd.org/releases/) 找到有关此分支上的预构建二进制发行版的信息。
 
@@ -22,9 +22,9 @@ FreeBSD 14.0-RELEASE 的这个发行版本是一个正式的 RELEASE 版本。�
 
 在安装 FreeBSD 之前，建议所有用户查阅发行勘误。发行勘误文档会在发行周期结束后或发行后发现的“迟到”的信息进行更新。通常，它包含已知错误、安全公告和对文档的更正。可以在 FreeBSD 网站上找到 FreeBSD 14.0-RELEASE 的最新发行勘误副本。
 
-本文档说明了自 13.2-RELEASE 以来 FreeBSD 中最为用户可见的新功能或更改。一般来说，这里所述的更改是独特于 14-STABLE 分支的，除非特别标记为 MERGED 功能。
+本文档说明了自 13.2-RELEASE 以来 FreeBSD 中最为用户可见的新功能或变更。一般来说，这里所述的变更是独特于 14-STABLE 分支的，除非特别标记为 MERGED 功能。
 
-一般的发行说明条目记录了自 13.2-RELEASE 后发行的安全公告、新的驱动程序或硬件支持、新的命令或参数、主要错误修复或贡献的软件升级。它们还可能列出对主要 Ports/软件包或发行工程实践的更改。显然，发行说明不能列出在版本之间对 FreeBSD 进行的每一项更改；这份文档主要关注安全公告、用户可见的更改和主要的架构改进。
+一般的发行说明条目记录了自 13.2-RELEASE 后发行的安全公告、新的驱动程序或硬件支持、新的命令或参数、主要错误修复或第三方软件软件升级。它们还可能列出对主要 Ports/软件包或发行工程实践的变更。显然，发行说明不能列出在版本之间对 FreeBSD 进行的每一项变更；这份文档主要关注安全公告、用户可见的变更和主要的架构改进。
 
 ## 从 FreeBSD 旧版本升级
 
@@ -35,14 +35,14 @@ FreeBSD 14.0-RELEASE 的这个发行版本是一个正式的 RELEASE 版本。�
 对于通过 EFI 引导的系统，请注意：EFI 系统分区（ESP）上有一个或多个引导加载程序的副本，由固件用于引导内核。如果根文件系统是 ZFS，则引导加载程序必须能够支持从 ZFS 引导文件系统读取。在系统升级后，但在执行 `zpool upgrade` 之前，必须更新 ESP 上的引导加载程序，否则系统可能无法引导。虽然不是强制性的，但在使用 UFS 作为根文件系统时也应遵循此更新过程。可以使用命令 `efibootmgr -v` 来确定正在使用的引导加载程序的位置。`BootCurrent` 显示的值应该是用于引导系统的当前引导配置的编号。输出的相应条目应该以 `+` 号开头，例如
 
 ```
-+Boot0000* FreeBSD HD(1,GPT,f859c46d-19ee-4e40-8975-3ad1ab00ac09,0x800,0x82000)/File(\EFI\freebsd\loader.efi) nda0p1:/EFI/freebsd/loader.efi (null)
++Boot0000* FreeBSD HD(1,GPT,f859c46d-19ee-4e40-8975-3ad1ab00ac09,0x800,0x82000)/File(EFIfreebsdloader.efi) nda0p1:/EFI/freebsd/loader.efi (null)
 ```
 
 ESP 可能已经挂载在 **/boot/efi** 上。如果没有，可以手动挂载分区，使用 `efibootmgr` 输出中列出的分区（在此情况下为 `nda0p1`）：`mount_msdosfs /dev/nda0p1 /boot/efi`。有关另一个示例，请参阅 [ loader.efi(8)  ](https://man.freebsd.org/cgi/man.cgi?query=loader.efi&sektion=8&format=html)。
 
-在 `efibootmgr -v` 输出的 `File` 字段中的值，例如 `\EFI\freebsd\loader.efi`，是 ESP 上正在使用的引导加载程序的 MS-DOS 名称。如果挂载点是 **/boot/efi**，则此文件将转换为 `/boot/efi/efi/freebsd/loader.efi`。 （在 MS-DOSFS 文件系统上大小写不敏感；FreeBSD 使用小写。）`File` 的另一个常见值可能是 `\EFI\boot\bootXXX.efi`，其中 `XXX` 是 amd64 的 `x64`、aarch64 的 `aa64` 或 riscv64 的 `riscv64`；如果未配置，则为默认引导加载程序。应该把 **/boot/loader.efi** 复制到 **/boot/efi** 中的正确路径来更新已配置和默认的引导加载程序。
+在 `efibootmgr -v` 输出的 `File` 字段中的值，例如 `EFIfreebsdloader.efi`，是 ESP 上正在使用的引导加载程序的 MS-DOS 名称。如果挂载点是 **/boot/efi**，则此文件将转换为 `/boot/efi/efi/freebsd/loader.efi`。 （在 MS-DOSFS 文件系统上大小写不敏感；FreeBSD 使用小写。）`File` 的另一个常见值可能是 `EFIbootbootXXX.efi`，其中 `XXX` 是 amd64 的 `x64`、aarch64 的 `aa64` 或 riscv64 的 `riscv64`；如果未配置，则为默认引导加载程序。应该把 **/boot/loader.efi** 复制到 **/boot/efi** 中的正确路径来更新已配置和默认的引导加载程序。
 
-> 仅在备份*所有*数据和配置文件后尝试升级 FreeBSD。
+> 仅在备份**所有**数据和配置文件后尝试升级 FreeBSD。
 
 ## 安全性和勘误
 
@@ -70,9 +70,9 @@ FreeBSD 14.0 包含了自 FreeBSD 13.0 发行以来两年半的开发工作。�
 
 `chroot` 工具现在支持非特权操作，并且 [ chroot(8)](https://man.freebsd.org/cgi/man.cgi?query=chroot&sektion=8&format=html) 程序可使用 `-n` 参数启用该功能。[ a40cf4175c90 ](https://cgit.freebsd.org/src/commit/?id=a40cf4175c90)（由 EPSRC 赞助）
 
-新增了 [ md5sum(1)  ](https://man.freebsd.org/cgi/man.cgi?query=md5sum&sektion=1&format=html) 和与 Linux 兼容的类似消息摘要程序，通过在程序名称以 `sum` 结尾时运行相应的 BSD 程序，并使用 `-r` 参数。[ 086feed850c3 ](https://cgit.freebsd.org/src/commit/?id=086feed850c3)（由 Netflix 赞助）
+新增了 [ md5sum(1)  ](https://man.freebsd.org/cgi/man.cgi?query=md5sum&sektion=1&format=html) 和与 Linux 兼容的类似消息摘要程序，通过在程序名称以 `sum` 结尾时运行相应的 BSD 程序，并使用 `-r` 参数。[ 086feed850c3 ](https://cgit.freebsd.org/src/commit/?id=086feed850c3)（由奈飞赞助）
 
-在 `ssh` 中启用了 FIDO/U2F 硬件验证器的支持，使用新的公钥类型 `ecdsa-sk` 和 `ed25519-sk`，以及相应的证书类型。FIDO/U2F 支持见 [ https://www.openssh.com/txt/release-8.2 ](https://www.openssh.com/txt/release-8.2)。[ e9a994639b2a ](https://cgit.freebsd.org/src/commit/?id=e9a994639b2a)（由 The FreeBSD Foundation 赞助）
+在 `ssh` 中启用了 FIDO/U2F 硬件验证器的支持，使用新的公钥类型 `ecdsa-sk` 和 `ed25519-sk`，以及相应的证书类型。FIDO/U2F 支持见 [ https://www.openssh.com/txt/release-8.2 ](https://www.openssh.com/txt/release-8.2)。[ e9a994639b2a ](https://cgit.freebsd.org/src/commit/?id=e9a994639b2a)（由 FreeBSD 基金会赞助）
 
 新增了 Intel I225 以太网控制器的 [ igc(4)  ](https://man.freebsd.org/cgi/man.cgi?query=igc&sektion=4&format=html) 驱动程序，支持 2.5 Gbps 网卡。[ 517904de5cca ](https://cgit.freebsd.org/src/commit/?id=517904de5cca)（由 Rubicon Communications, LLC ("Netgate") 赞助）
 
@@ -86,11 +86,11 @@ FreeBSD 14.0 包含了自 FreeBSD 13.0 发行以来两年半的开发工作。�
 
 [ nvme(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nvme&sektion=4&format=html) 错误处理得到了显著改进。
 
-IPv4（子）网的最小地址（主机 0）的处理方式已更改，以便在未设置为广播地址的情况下，不将数据包发送为广播。这使得最小地址可用于主机。可以使用 sysctl 参数  `net.inet.ip.broadcast_lowest` 恢复旧的行为。有关背景信息，请参阅 [https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/](https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/)。[ fd0765933c3c ](https://cgit.freebsd.org/src/commit/?id=fd0765933c3c)
+IPv4（子）网的最小地址（主机 0）的处理方式已变更，以便在未设置为广播地址的情况下，不将数据包发送为广播。这使得最小地址可用于主机。可以使用 sysctl 参数  `net.inet.ip.broadcast_lowest` 恢复旧的行为。有关背景信息，请参阅 [https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/](https://datatracker.ietf.org/doc/draft-schoen-intarea-unicast-lowest-address/)。[ fd0765933c3c ](https://cgit.freebsd.org/src/commit/?id=fd0765933c3c)
 
-启动脚本 [ growfs(7)  ](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html) 现在在扩展根文件系统的同时，如果可能，会添加一个交换分区（如果之前不存在）。这在在 SD 卡上使用 RAW 镜像安装时特别有用。新增了一个 [ rc.conf(5)  ](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 变量——`growfs_swap_size`，它可以控制必要时的添加。有关详细信息，请参阅 [ growfs(7)  ](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html)。
+启动脚本 [ growfs(7)  ](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html) 现在在扩展根文件系统的同时，如果可能，会添加一个交换分区（如果之前不存在）。这在在 SD 卡上使用 RAW 镜像安装时特别有用。新增了 [ rc.conf(5)  ](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 变量——`growfs_swap_size`，它可以控制必要时的添加。有关详细信息，请参阅 [ growfs(7)  ](https://man.freebsd.org/cgi/man.cgi?query=growfs&sektion=7&format=html)。
 
-新增了一个名为 `zpoolreguid` 的 RC 脚本，它将为一个或多个 zpool 分配一个新的 GUID，在共享数据集的虚拟化环境中很有用。
+新增了名为 `zpoolreguid` 的 RC 脚本，它将为一个或多个 zpool 分配一个新的 GUID，在共享数据集的虚拟化环境中很有用。
 
 如果没有 **/etc/hostid** 文件或来自硬件的有效 UUID，则 `hostid` 启动脚本现在将生成一个随机的（版本 4）UUID。此外，如果没有 **/etc/machine-id** 文件，`hostid_save` 脚本将在 **/etc/machine-id** 中存储主机的紧凑版本（没有连字符）。GLib 等库使用此文件。[ 62a149bf6219 ](https://cgit.freebsd.org/src/commit/?id=62a149bf6219)​[ 862aab6281a5 ](https://cgit.freebsd.org/src/commit/?id=862aab6281a5)​[ baf1e9713969 ](https://cgit.freebsd.org/src/commit/?id=baf1e9713969)​[ ecad3f5c4d92 ](https://cgit.freebsd.org/src/commit/?id=ecad3f5c4d92)​[ d6852eed98ed ](https://cgit.freebsd.org/src/commit/?id=d6852eed98ed)
 
@@ -120,7 +120,7 @@ arm64 的[ linux(4)  ](https://man.freebsd.org/cgi/man.cgi?query=linux&sektion=4
 
 已经重新集成内核的[ wg(4)  ](https://man.freebsd.org/cgi/man.cgi?query=wg&sektion=4&format=html) WireGuard 驱动程序；它提供了使用 WireGuard 协议的虚拟专用网络（VPN）接口。[ 744bfb213144 ](https://cgit.freebsd.org/src/commit/?id=744bfb213144)（由 Rubicon Communications, LLC ("Netgate")和 FreeBSD 基金会赞助）
 
-KTLS（内核 TLS 实现）已为 TLS 1.3 添加了接收卸载支持。现在支持 TLS 1.1 到 1.3 的接收卸载；对于 TLS 1.0 到 1.3，支持发送卸载。[ 05a1d0f5d7ac ](https://cgit.freebsd.org/src/commit/?id=05a1d0f5d7ac)（由 Netflix 赞助）
+KTLS（内核 TLS 实现）已为 TLS 1.3 添加了接收卸载支持。现在支持 TLS 1.1 到 1.3 的接收卸载；对于 TLS 1.0 到 1.3，支持发送卸载。[ 05a1d0f5d7ac ](https://cgit.freebsd.org/src/commit/?id=05a1d0f5d7ac)（由奈飞赞助）
 
 Radix 表和查找现在在[ ipfw(4)  ](https://man.freebsd.org/cgi/man.cgi?query=ipfw&sektion=4&format=html)中支持 MAC 地址。这允许构建和用于过滤的 MAC 地址表。[ 81cac3906eb9 ](https://cgit.freebsd.org/src/commit/?id=81cac3906eb9)
 
@@ -128,7 +128,7 @@ Radix 表和查找现在在[ ipfw(4)  ](https://man.freebsd.org/cgi/man.cgi?quer
 
 ## 用户空间
 
-此部分包括了用户空间应用程序、贡献的软件和系统工具的变化和新增内容。
+此部分包括了用户空间应用程序、第三方软件和系统工具的变化和新增内容。
 
 ### 用户空间配置变更
 
@@ -140,7 +140,7 @@ root 用户的默认 shell 现在是 [ sh(1)  ](https://man.freebsd.org/cgi/man.
 
 [ jail(8)  ](https://man.freebsd.org/cgi/man.cgi?query=jail&sektion=8&format=html)现在在[ jail.conf(5)  ](https://man.freebsd.org/cgi/man.cgi?query=jail.conf&sektion=5&format=html)文件中支持 `.include` 指令，并支持文件名通配。 [ e82a62943529 ](https://cgit.freebsd.org/src/commit/?id=e82a62943529)
 
-一次性密码设施 OPIE，[ opie(4)  ](https://man.freebsd.org/cgi/man.cgi?query=opie&sektion=4&format=html)，已从基本系统中移除。如果仍然希望使用它，请安装 Port [ security/opie ](https://cgit.freebsd.org/ports/tree/security/opie/)。否则，请确保从您的 PAM 策略中删除或注释掉对 `pam_opie` 和 `pam_opieaccess` 的任何提及。 [ etcupdate(8)  ](https://man.freebsd.org/cgi/man.cgi?query=etcupdate&sektion=8&format=html)通常会处理已存储的策略。 [ 0aa2700123e2 ](https://cgit.freebsd.org/src/commit/?id=0aa2700123e2)
+一次性密码设施 OPIE，[ opie(4)  ](https://man.freebsd.org/cgi/man.cgi?query=opie&sektion=4&format=html)，已从基本系统中移除。如果仍然希望使用它，请安装 Port [ security/opie ](https://cgit.freebsd.org/ports/tree/security/opie/)。否则，请确保从你的 PAM 策略中删除或注释掉对 `pam_opie` 和 `pam_opieaccess` 的任何提及。 [ etcupdate(8)  ](https://man.freebsd.org/cgi/man.cgi?query=etcupdate&sektion=8&format=html)通常会处理已存储的策略。 [ 0aa2700123e2 ](https://cgit.freebsd.org/src/commit/?id=0aa2700123e2)
 
 已删除构建配置参数 `SHARED_TOOLCHAIN`。仍然可以使用通用的参数 `NO_SHARED` 构建静态链接的工具链。 [ 77f6be448408 ](https://cgit.freebsd.org/src/commit/?id=77f6be448408)（由 FreeBSD 基金会赞助）
 
@@ -192,9 +192,9 @@ root 用户的默认 shell 现在是 [ sh(1)  ](https://man.freebsd.org/cgi/man.
 
 [ sockstat(1)  ](https://man.freebsd.org/cgi/man.cgi?query=sockstat&sektion=1&format=html) 工具现在在 capsicum 中运行。 [ 94dc57159532 ](https://cgit.freebsd.org/src/commit/?id=94dc57159532)​[ c5a2d8c5f517 ](https://cgit.freebsd.org/src/commit/?id=c5a2d8c5f517)
 
-[ systat(1)  ](https://man.freebsd.org/cgi/man.cgi?query=systat&sektion=1&format=html) 工具有一个新命令 `iolat`，可报告由 CAM I/O 调度程序计算的 I/O 延迟。 [ 22054f88914b ](https://cgit.freebsd.org/src/commit/?id=22054f88914b)（由 Netflix 赞助）
+[ systat(1)  ](https://man.freebsd.org/cgi/man.cgi?query=systat&sektion=1&format=html) 工具有一个新命令 `iolat`，可报告由 CAM I/O 调度程序计算的 I/O 延迟。 [ 22054f88914b ](https://cgit.freebsd.org/src/commit/?id=22054f88914b)（由奈飞赞助）
 
-一个新的工具，[ tcpsso(8)  ](https://man.freebsd.org/cgi/man.cgi?query=tcpsso&sektion=8&format=html)，能够将套接字参数应用于现有的 TCP 端点，例如更改拥塞控制模块或 TCP 栈。 [ 881631a2a371 ](https://cgit.freebsd.org/src/commit/?id=881631a2a371)（由 Netflix 赞助）
+一个新的工具，[ tcpsso(8)  ](https://man.freebsd.org/cgi/man.cgi?query=tcpsso&sektion=8&format=html)，能够将套接字参数应用于现有的 TCP 端点，例如变更拥塞控制模块或 TCP 栈。 [ 881631a2a371 ](https://cgit.freebsd.org/src/commit/?id=881631a2a371)（由奈飞赞助）
 
 Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=telnetd&sektion=8&format=html)，已被移除。如果需要，可以使用 Port [ net/freebsd-telnetd ](https://cgit.freebsd.org/ports/tree/net/freebsd-telnetd/)。客户端不受影响。 [ 0eea46fb1f83 ](https://cgit.freebsd.org/src/commit/?id=0eea46fb1f83)
 
@@ -206,7 +206,7 @@ Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=
 
 ### 第三方软件更新
 
-**One True Awk**（[ awk(1)  ](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新到 20210727，这是第 1 版。 （第 2 版将包含在 14.1-RELEASE 中。）现在除一个 FreeBSD 补丁外，所有的 FreeBSD 补丁都已被上游采纳或丢弃。值得注意的变化包括：不再使用地区（locale）进行范围选择；与 `gawk` 和 `mawk` 有更好的兼容性。请注意，十六进制字符串的解释与早期的 FreeBSD 版本一样被解释为数字。这将在 FreeBSD 15 中更改以符合上游和当前的 POSIX 标准。 [ f39dd6a97844 ](https://cgit.freebsd.org/src/commit/?id=f39dd6a97844)​[ 23f24377b1a9 ](https://cgit.freebsd.org/src/commit/?id=23f24377b1a9)​[ 628bd30ab5a4 ](https://cgit.freebsd.org/src/commit/?id=628bd30ab5a4)
+**One True Awk**（[ awk(1)  ](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新到 20210727，这是第 1 版。 （第 2 版将包含在 14.1-RELEASE 中。）现在除一个 FreeBSD 补丁外，所有的 FreeBSD 补丁都已被上游采纳或丢弃。值得注意的变化包括：不再使用地区（locale）进行范围选择；与 `gawk` 和 `mawk` 有更好的兼容性。请注意，十六进制字符串的解释与早期的 FreeBSD 版本一样被解释为数字。这将在 FreeBSD 15 中变更以符合上游和当前的 POSIX 标准。 [ f39dd6a97844 ](https://cgit.freebsd.org/src/commit/?id=f39dd6a97844)​[ 23f24377b1a9 ](https://cgit.freebsd.org/src/commit/?id=23f24377b1a9)​[ 628bd30ab5a4 ](https://cgit.freebsd.org/src/commit/?id=628bd30ab5a4)
 
 [ bc(1)  ](https://man.freebsd.org/cgi/man.cgi?query=bc&sektion=1&format=html) 和 [ dc(1)  ](https://man.freebsd.org/cgi/man.cgi?query=dc&sektion=1&format=html) 命令已更新到版本 6.6.0，修复了与行编辑和包含多个 read()命令的复杂脚本的问题，并在 `bc` 的（非标准）扩展数学库中添加了一些功能。
 
@@ -246,7 +246,7 @@ Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=
 
 ### 运行时库和 API
 
-`libncursesw` 库（参见 [ ncurses(3X)  ](https://man.freebsd.org/cgi/man.cgi?query=ncurses&sektion=3X&format=html)）已拆分为 `libtinfow` 和 `libncursesw`。链接脚本应使其对使用者透明。现在安装了 [ pkg-config(8)  ](https://man.freebsd.org/cgi/man.cgi?query=pkg-config&sektion=8&format=html) 文件，以便使 Port 能够从基础系统检测 `ncurses` 的设置。 [ 396851c20aeb ](https://cgit.freebsd.org/src/commit/?id=396851c20aeb)
+`libncursesw` 库（参见 [ ncurses(3X)  ](https://man.freebsd.org/cgi/man.cgi?query=ncurses&sektion=3X&format=html)）已拆分为 `libtinfow` 和 `libncursesw`。链接脚本应使其对使用者透明。现在安装了 [ pkg-config(8)  ](https://man.freebsd.org/cgi/man.cgi?query=pkg-config&sektion=8&format=html) 文件，以便使 Port 能够从基本系统检测 `ncurses` 的设置。 [ 396851c20aeb ](https://cgit.freebsd.org/src/commit/?id=396851c20aeb)
 
 [ ncurses(3X)  ](https://man.freebsd.org/cgi/man.cgi?query=ncurses&sektion=3X&format=html)库现在能够使用 [ terminfo(5)  ](https://man.freebsd.org/cgi/man.cgi?query=terminfo&sektion=5&format=html) 以及 [ termcap(5)  ](https://man.freebsd.org/cgi/man.cgi?query=termcap&sektion=5&format=html)，并首选使用 terminfo。 [ 61f66a1f4403 ](https://cgit.freebsd.org/src/commit/?id=61f66a1f4403)
 
@@ -258,7 +258,7 @@ Telnet 守护程序，[ telnetd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=
 
 ## 云支持
 
-本节涵盖了对云环境的支持的更改。
+本节涉及对云环境的支持的变更。
 
 FreeBSD 现在在 AWS 上提供实验性的 ZFS 根文件系统 EC2 AMI。 （由 [ https://www.patreon.com/cperciva ](https://www.patreon.com/cperciva) 赞助）
 
@@ -272,7 +272,7 @@ Google Virtual NIC（[ gve(4)  ](https://man.freebsd.org/cgi/man.cgi?query=gve&s
 
 ### 内核
 
-本节介绍了对内核配置、系统调优和系统控制参数的更改，这些更改没有被分类到其他地方。
+本节介绍了对内核配置、系统调优和系统控制参数的变更，这些变更没有被分类到其他地方。
 
 ### 通用内核变更
 
@@ -304,7 +304,7 @@ FreeBSD 现在重新启动更快。添加了 sysctl  `kern.reboot_wait_time` 以
 
 添加了一个本机 [ timerfd(2)  ](https://man.freebsd.org/cgi/man.cgi?query=timerfd&sektion=2&format=html) 设施，以便轻松移植使用 timerfd 的 Linux 程序。以前，timerfd 仅在 Linux 仿真下可用。对于仅为 FreeBSD 编写的程序，首选使用 [ kqueue(2)  ](https://man.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2&format=html) EVFILT_TIMER 过滤器来建立任意计时器。 [ af93fea71038 ](https://cgit.freebsd.org/src/commit/?id=af93fea71038)
 
-由 `security.bsd.see_jail_proc`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 开关控制的进程可见性策略已经过加固，防止未经授权的用户尝试随机杀死、更改优先级或调试同一子 jail 中具有相同（实际）UID 的进程，即使这些进程对其不可见也会成功。它也可以被 MAC 策略覆盖，就像其他进程可见性策略一样。 [ 7e21c691f295 ](https://cgit.freebsd.org/src/commit/?id=7e21c691f295)​[ 63c01c18a8d3 ](https://cgit.freebsd.org/src/commit/?id=63c01c18a8d3)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
+由 `security.bsd.see_jail_proc`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 开关控制的进程可见性策略已经过加固，防止未经授权的用户尝试随机杀死、变更优先级或调试同一子 jail 中具有相同（实际）UID 的进程，即使这些进程对其不可见也会成功。它也可以被 MAC 策略覆盖，就像其他进程可见性策略一样。 [ 7e21c691f295 ](https://cgit.freebsd.org/src/commit/?id=7e21c691f295)​[ 63c01c18a8d3 ](https://cgit.freebsd.org/src/commit/?id=63c01c18a8d3)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
 
 由 `security.bsd.see_other_gids`​[ sysctl(8)  ](https://man.freebsd.org/cgi/man.cgi?query=sysctl&sektion=8&format=html) 开关控制的进程可见性策略已修复，以考虑进程的实际组而不是其有效组，以确定试图访问进程的用户是否是进程组的成员。其原理是，某些用户应该继续看到它们启动的进程，即使它们通过设置组 ID 位而获得更高的权限，而它们不应该看到由特权用户启动的临时进入用户的主组的进程。这种新行为与 `security.bsd.see_other_uids` 一直在为用户 ID 执行的操作相一致（即，考虑一些进程的实际用户 ID 而不是有效 ID）。 [ 26ff4836c888 ](https://cgit.freebsd.org/src/commit/?id=26ff4836c888)（由 Kumacom, SAS 赞助）（由 FreeBSD 基金会赞助）
 
@@ -312,13 +312,13 @@ FreeBSD 现在重新启动更快。添加了 sysctl  `kern.reboot_wait_time` 以
 
 ## 设备和驱动程序
 
-本节包括了自 13.2-RELEASE 以来对设备和设备驱动程序的更改和添加。
+本节包括了自 13.2-RELEASE 以来对设备和设备驱动程序的变更和添加。
 
 ### 设备驱动程序
 
-串行通信在引导加载程序、内核和用户空间中的默认速度现在为 115200 bps。请注意，早期的 x86 BIOS 引导加载程序（即 `boot0sio`）不支持 9600 bps 以上的速率，并且没有更改。 `boot0sio` 用户可以设置 `BOOT_COMCONSOLE_SPEED=9600`，以便在所有引导组件中使用 9600，或者使用标准的 `boot0`，并且 `boot2` 阶段的串行端口速率为 115200。 [ 4722ceb7d53e ](https://cgit.freebsd.org/src/commit/?id=4722ceb7d53e)（由 FreeBSD 基金会赞助）
+串行通信在引导加载程序、内核和用户空间中的默认速度现在为 115200 bps。请注意，早期的 x86 BIOS 引导加载程序（即 `boot0sio`）不支持 9600 bps 以上的速率，并且没有变更。 `boot0sio` 用户可以设置 `BOOT_COMCONSOLE_SPEED=9600`，以便在所有引导组件中使用 9600，或者使用标准的 `boot0`，并且 `boot2` 阶段的串行端口速率为 115200。 [ 4722ceb7d53e ](https://cgit.freebsd.org/src/commit/?id=4722ceb7d53e)（由 FreeBSD 基金会赞助）
 
-默认的响铃音频现在为 800Hz。可以使用 [ kbdcontrol(1)  ](https://man.freebsd.org/cgi/man.cgi?query=kbdcontrol&sektion=1&format=html) 进行设置。对于希望使用声卡进行蜂鸣的用户，与 [ devd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=devd&sektion=8&format=html) 集成。 [ ba48d52ca6c8 ](https://cgit.freebsd.org/src/commit/?id=ba48d52ca6c8)​[ 4ac3d08a9693 ](https://cgit.freebsd.org/src/commit/?id=4ac3d08a9693)​[ 2533eca1c2b9 ](https://cgit.freebsd.org/src/commit/?id=2533eca1c2b9)（由 Netflix 赞助）
+默认的响铃音频现在为 800Hz。可以使用 [ kbdcontrol(1)  ](https://man.freebsd.org/cgi/man.cgi?query=kbdcontrol&sektion=1&format=html) 进行设置。对于希望使用声卡进行蜂鸣的用户，与 [ devd(8)  ](https://man.freebsd.org/cgi/man.cgi?query=devd&sektion=8&format=html) 集成。 [ ba48d52ca6c8 ](https://cgit.freebsd.org/src/commit/?id=ba48d52ca6c8)​[ 4ac3d08a9693 ](https://cgit.freebsd.org/src/commit/?id=4ac3d08a9693)​[ 2533eca1c2b9 ](https://cgit.freebsd.org/src/commit/?id=2533eca1c2b9)（由奈飞赞助）
 
 在使用默认的 [ vt(4)  ](https://man.freebsd.org/cgi/man.cgi?query=vt&sektion=4&format=html) 控制台时，默认情况下不再启用可听的响铃。可以使用以下命令启用它：`sysctl kern.vt.enable_bell=1` 和 `kbdcontrol -b normal`。 [ 225639e7db68 ](https://cgit.freebsd.org/src/commit/?id=225639e7db68)
 
@@ -336,9 +336,9 @@ Realtek 无线 PCI 接口的 [ rtw88(4)  ](https://man.freebsd.org/cgi/man.cgi?q
 
 对 Linux 设备驱动程序的 KPI 进行了稳定性修复和增强，以及无线驱动程序的 net80211 层。 (由 FreeBSD 基金会赞助)
 
-现在，默认情况下，NVMe 磁盘是 `nda` 设备，例如 `nda0`；参见 [ nda(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nda&sektion=4&format=html)。在 **/dev** 中为先前的 [ nvd(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nvd&sektion=4&format=html) 设备名称创建了符号链接。但是，配置（例如 [ fstab(5)  ](https://man.freebsd.org/cgi/man.cgi?query=fstab&sektion=5&format=html)）应更新为引用新的设备名称。控制使用 `nda` 设备和符号链接的参数在 [ nda(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nda&sektion=4&format=html) 中有描述。 [ bdc81eeda05d ](https://cgit.freebsd.org/src/commit/?id=bdc81eeda05d)（由 Netflix 赞助）
+现在，默认情况下，NVMe 磁盘是 `nda` 设备，例如 `nda0`；参见 [ nda(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nda&sektion=4&format=html)。在 **/dev** 中为先前的 [ nvd(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nvd&sektion=4&format=html) 设备名称创建了符号链接。但是，配置（例如 [ fstab(5)  ](https://man.freebsd.org/cgi/man.cgi?query=fstab&sektion=5&format=html)）应更新为引用新的设备名称。控制使用 `nda` 设备和符号链接的参数在 [ nda(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nda&sektion=4&format=html) 中有描述。 [ bdc81eeda05d ](https://cgit.freebsd.org/src/commit/?id=bdc81eeda05d)（由奈飞赞助）
 
-先前的 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html) 驱动程序已替换为 Intel 的 QAT 驱动程序。新版本提供了与芯片组的加密和压缩卸载功能的额外接口。对于大多数用户，这将没有可见的更改；但是，新驱动程序不支持 Atom C2000 芯片组。为了保留对这些芯片组的支持，旧的驱动程序已重命名为 `qat_c2xxx`。因此，在 C2000 硬件上使用 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html) 的用户需要确保加载的是 [ qat_c2xxx(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat_c2xxx&sektion=4&format=html) 而不是 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html)。 [ 78ee8d1c4cda ](https://cgit.freebsd.org/src/commit/?id=78ee8d1c4cda)​[ f4f56ff43dbd ](https://cgit.freebsd.org/src/commit/?id=f4f56ff43dbd)（由 Intel Corporation 赞助）
+先前的 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html) 驱动程序已替换为 Intel 的 QAT 驱动程序。新版本提供了与芯片组的加密和压缩卸载功能的额外接口。对于大多数用户，这将没有可见的变更；但是，新驱动程序不支持 Atom C2000 芯片组。为了保留对这些芯片组的支持，旧的驱动程序已重命名为 `qat_c2xxx`。因此，在 C2000 硬件上使用 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html) 的用户需要确保加载的是 [ qat_c2xxx(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat_c2xxx&sektion=4&format=html) 而不是 [ qat(4)  ](https://man.freebsd.org/cgi/man.cgi?query=qat&sektion=4&format=html)。 [ 78ee8d1c4cda ](https://cgit.freebsd.org/src/commit/?id=78ee8d1c4cda)​[ f4f56ff43dbd ](https://cgit.freebsd.org/src/commit/?id=f4f56ff43dbd)（由英特尔公司赞助）
 
 ### 弃用和删除的驱动程序
 
@@ -350,19 +350,19 @@ x86 `GENERIC` 和 `MINIMAL` 内核配置中已删除了 VESA 参数。它仍然�
 
 从 [ ath(4)  ](https://man.freebsd.org/cgi/man.cgi?query=ath&sektion=4&format=html) 中删除了 AHB 总线前端，因为它仅被 MIPS 使用。 [ 37c8ee8847fa ](https://cgit.freebsd.org/src/commit/?id=37c8ee8847fa)
 
-已删除了弃用的 [ amr(4)  ](https://man.freebsd.org/cgi/man.cgi?query=amr&sektion=4&format=html) 驱动程序。 [ 60de2867c9fc ](https://cgit.freebsd.org/src/commit/?id=60de2867c9fc)（由 Netflix 赞助）
+已删除了弃用的 [ amr(4)  ](https://man.freebsd.org/cgi/man.cgi?query=amr&sektion=4&format=html) 驱动程序。 [ 60de2867c9fc ](https://cgit.freebsd.org/src/commit/?id=60de2867c9fc)（由奈飞赞助）
 
 已删除过时的 [ iscsi_initiator(4)  ](https://man.freebsd.org/cgi/man.cgi?query=iscsi_initiator&sektion=4&format=html)。它的替代品 [ iscsi(4)  ](https://man.freebsd.org/cgi/man.cgi?query=iscsi&sektion=4&format=html) 在几个主要版本之前引入。 [ 48cb3fee2586 ](https://cgit.freebsd.org/src/commit/?id=48cb3fee2586)（由 FreeBSD 基金会赞助）
 
-已删除了弃用的 [ iir(4)  ](https://man.freebsd.org/cgi/man.cgi?query=iir&sektion=4&format=html) 驱动程序。 [ 399188a2c60c ](https://cgit.freebsd.org/src/commit/?id=399188a2c60c)（由 Netflix 赞助）
+已删除了弃用的 [ iir(4)  ](https://man.freebsd.org/cgi/man.cgi?query=iir&sektion=4&format=html) 驱动程序。 [ 399188a2c60c ](https://cgit.freebsd.org/src/commit/?id=399188a2c60c)（由奈飞赞助）
 
 已删除了弃用的 [ mn(4)  ](https://man.freebsd.org/cgi/man.cgi?query=mn&sektion=4&format=html) 同步串行驱动程序。 [ 0cff00ae682a ](https://cgit.freebsd.org/src/commit/?id=0cff00ae682a)（由 FreeBSD 基金会赞助）
 
-已删除了弃用的 [ mly(4)  ](https://man.freebsd.org/cgi/man.cgi?query=mly&sektion=4&format=html) 驱动程序。 [ a9620045a5b9 ](https://cgit.freebsd.org/src/commit/?id=a9620045a5b9)（由 Netflix 赞助）
+已删除了弃用的 [ mly(4)  ](https://man.freebsd.org/cgi/man.cgi?query=mly&sektion=4&format=html) 驱动程序。 [ a9620045a5b9 ](https://cgit.freebsd.org/src/commit/?id=a9620045a5b9)（由奈飞赞助）
 
 已弃用的[ nlmrsa(4)  ](https://man.freebsd.org/cgi/man.cgi?query=nlmrsa&sektion=4&format=html)驱动程序已被移除。[ 6a06b00a0d1f ](https://cgit.freebsd.org/src/commit/?id=6a06b00a0d1f)（由 Chelsio Communications 赞助）
 
-已弃用的[ twa(4)  ](https://man.freebsd.org/cgi/man.cgi?query=twa&sektion=4&format=html)驱动程序已被移除。[ 8722e05ae149 ](https://cgit.freebsd.org/src/commit/?id=8722e05ae149)（由 Netflix 赞助）
+已弃用的[ twa(4)  ](https://man.freebsd.org/cgi/man.cgi?query=twa&sektion=4&format=html)驱动程序已被移除。[ 8722e05ae149 ](https://cgit.freebsd.org/src/commit/?id=8722e05ae149)（由奈飞赞助）
 
 ## 存储
 
@@ -372,7 +372,7 @@ x86 `GENERIC` 和 `MINIMAL` 内核配置中已删除了 VESA 参数。它仍然�
 
 [ gconcat(8)  ](https://man.freebsd.org/cgi/man.cgi?query=gconcat&sektion=8&format=html)及其内核支持现在具有将在创建 gconcat 设备时不存在的设备追加到连接设备的能力。[ d575e81fbcfa ](https://cgit.freebsd.org/src/commit/?id=d575e81fbcfa)
 
-一个新的[ gunion(8)  ](https://man.freebsd.org/cgi/man.cgi?query=gunion&sektion=8&format=html)工具跟踪对可写磁盘上只读磁盘的更改。这对于对磁盘进行临时更改（如文件系统修复或软件升级）并随后提交或还原更改非常有用。[ c7996ddf8000 ](https://cgit.freebsd.org/src/commit/?id=c7996ddf8000)（由 Netflix 赞助）
+一个新的[ gunion(8)  ](https://man.freebsd.org/cgi/man.cgi?query=gunion&sektion=8&format=html)工具跟踪对可写磁盘上只读磁盘的变更。这对于对磁盘进行临时变更（如文件系统修复或软件升级）并随后提交或还原变更非常有用。[ c7996ddf8000 ](https://cgit.freebsd.org/src/commit/?id=c7996ddf8000)（由奈飞赞助）
 
 在调试和解决通用文件系统代码中 vnode 回收问题的过程中，与 vnode 相关的统计信息的 sysctl 现在已经分组到 `vfs.vnode` 下，以提高可见性。[ d3e647891243 ](https://cgit.freebsd.org/src/commit/?id=d3e647891243)
 
@@ -398,7 +398,7 @@ NFSv4.1/4.2 挂载使用挂载参数 `intr` 现在基本可用，尽管不是 10
 
 已向超级块、柱组映射和 inode 添加了校验散列，以检测错误。对于超级块（120）和柱组（20），进行的检查远比以前进行的魔数检查要广泛得多。（由 FreeBSD 基金会赞助）
 
-[ libufs(3)  ](https://man.freebsd.org/cgi/man.cgi?query=libufs&sektion=3&format=html)库已更新以包含这些检查，以便所有文件系统工具现在都会执行这些检查。检查在一个内核文件中实现，该文件也被 libufs 包含。对 libufs 的另一个更改是，查找备用超级块的代码已从[ fsck_ffs(8)  ](https://man.freebsd.org/cgi/man.cgi?query=fsck_ffs&sektion=8&format=html)移到了共享文件中，因此它现在可以在内核加载器中使用，以及所有文件系统工具。 （由 FreeBSD 基金会赞助）
+[ libufs(3)  ](https://man.freebsd.org/cgi/man.cgi?query=libufs&sektion=3&format=html)库已更新以包含这些检查，以便所有文件系统工具现在都会执行这些检查。检查在一个内核文件中实现，该文件也被 libufs 包含。对 libufs 的另一个变更是，查找备用超级块的代码已从[ fsck_ffs(8)  ](https://man.freebsd.org/cgi/man.cgi?query=fsck_ffs&sektion=8&format=html)移到了共享文件中，因此它现在可以在内核加载器中使用，以及所有文件系统工具。 （由 FreeBSD 基金会赞助）
 
 ### ZFS 变更
 
@@ -431,7 +431,7 @@ OpenZFS 已升级到 2.2 版。新功能包括：
 
 ## 引导变更
 
-本节包括了引导加载程序、引导菜单和其他与引导相关的更改。
+本节包括了引导加载程序、引导菜单和其他与引导相关的变更。
 
 ### 引导加载程序变更
 
@@ -441,7 +441,7 @@ EC2 实例现在在可用的情况下使用 UEFI 引导，大大加速了引导�
 
 ## 网络
 
-本节说明了影响 FreeBSD 网络的更改。
+本节说明了影响 FreeBSD 网络的变更。
 
 ### 通用网络
 
@@ -473,11 +473,11 @@ IPv6 `nodeinfo`（RFC 4620）的处理现已默认禁用。[ b73183d1a243 ](http
 
 TCP 的默认拥塞控制机制现在是 CUBIC。对于长时间的数据传输，CUBIC 在与 NewReno 竞争时得到了稍微更高的可用带宽的成绩。[ bb1d472d79f7 ](https://cgit.freebsd.org/src/commit/?id=bb1d472d79f7)（由 NetApp, Inc.赞助）
 
-IPv4 已更改为不广播子网上的最小地址（主机 0），除非它配置为广播地址。这允许子网上的最小地址用于主机。[ fd0765933c3c ](https://cgit.freebsd.org/src/commit/?id=fd0765933c3c)
+IPv4 已变更为不广播子网上的最小地址（主机 0），除非它配置为广播地址。这允许子网上的最小地址用于主机。[ fd0765933c3c ](https://cgit.freebsd.org/src/commit/?id=fd0765933c3c)
 
 ### 硬件支持
 
-该部分包括了对物理机器、虚拟机监视器和虚拟化环境的一般硬件支持，以及不适用于本文其他部分的硬件更改和更新。
+该部分包括了对物理机器、虚拟机监视器和虚拟化环境的一般硬件支持，以及不适用于本文其他部分的硬件变更和更新。
 
 请查看[ 14.0-RELEASE 支持的硬件列表 ](https://www.freebsd.org/releases/14.0R/hardware)，以及[ 平台页面 ](https://www.freebsd.org/platforms/)以获取支持的完整 CPU 架构列表。
 
@@ -493,7 +493,7 @@ IPv4 已更改为不广播子网上的最小地址（主机 0），除非它配�
 
 ## 文档
 
-该部分包括了随基本系统一起提供的手册页面（[ man(1)  ](https://man.freebsd.org/cgi/man.cgi?query=man&sektion=1&format=html)）和其他文档的更改。
+该部分包括了随基本系统一起提供的手册页面（[ man(1)  ](https://man.freebsd.org/cgi/man.cgi?query=man&sektion=1&format=html)）和其他文档的变更。
 
 ### Man 页面
 
@@ -511,11 +511,11 @@ IPv4 已更改为不广播子网上的最小地址（主机 0），除非它配�
 
 ## Ports 和软件包基础设施
 
-该部分包括了 FreeBSD Ports、软件包基础设施以及软件包维护和安装程序的更改。
+该部分包括了 FreeBSD Ports、软件包基础设施以及软件包维护和安装程序的变更。
 
-### 安装程序更改
+### 安装程序变更
 
-## 有关未来 FreeBSD 版本的一般说明
+## 有关后续  FreeBSD 版本的一般说明
 
 FreeBSD 15.0 预计将不包括对 armv7 以外的 32 位平台的支持。armv6、i386 和 powerpc 平台已被淘汰，并将被移除。64 位系统仍将能够运行较旧的 32 位二进制文件。
 
@@ -527,9 +527,9 @@ Ports 将不包括对 FreeBSD 15.0 和以后版本的淘汰 32 位平台的支�
 
 FreeBSD stable/14 和更早版本的分支将保留现有的 32 位内核和系统支持。在 ports 系统支持的情况下，Ports 将保留对在 stable/14 和更早版本分支上为 32 位系统构建 ports 和软件包的支持。但是，所有 32 位平台都是 2 级 或 3 级，应预期随着上游淘汰 32 位平台，对个别 Port 的支持将降级。
 
-按照当前的支持计划，stable/14 将在 FreeBSD 14.0-RELEASE 发行后的 5 年后达到生命周期结束（EOL）。stable/14 的 EOL 将标志着对淘汰的 32 位平台的支持结束，包括源代码发行、预构建软件包和从 Ports 构建应用程序的支持。随着 2023 年 11 月发行 FreeBSD 14.0-RELEASE，对淘汰的 32 位平台的支持将于 2028 年 11 月结束。
+按照当前的支持计划，stable/14 将在 FreeBSD 14.0-RELEASE 发行后的 5 年后达到生命周期结束（EOL）。stable/14 的 EOL 将参数着对淘汰的 32 位平台的支持结束，包括源代码发行、预构建软件包和从 Ports 构建应用程序的支持。随着 2023 年 11 月发行 FreeBSD 14.0-RELEASE，对淘汰的 32 位平台的支持将于 2028 年 11 月结束。
 
-本项目可能会选择在 FreeBSD 15.0 发行时通过在 15.0 或以后扩展对一个或多个淘汰平台的某种程度的支持来更改此方法。任何更改将由社区反馈和支持这些平台的承诺驱动。使用 FreeBSD 14.0-RELEASE 和随后的版本，或者 stable/14 分支，以迁移至 32 位平台。
+本项目可能会选择在 FreeBSD 15.0 发行时通过在 15.0 或以后扩展对一个或多个淘汰平台的某种程度的支持来变更此方法。任何变更将由社区反馈和支持这些平台的承诺驱动。使用 FreeBSD 14.0-RELEASE 和随后的版本，或者 stable/14 分支，以迁移至 32 位平台。
 
 ---
 

@@ -1,4 +1,4 @@
-# FreeBSD 14.1-RELEASE 发行说明
+# FreeBSD 14.1-RELEASE 发行说明（2024 年 6 月 4 日）
 
 - 原文地址：<https://www.freebsd.org/releases/14.1R/relnotes/>
 
@@ -8,7 +8,7 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 ## 介绍
 
-本文档是 FreeBSD 14.1-RELEASE 的发行说明。它说明了最近增加、更改、删除的 FreeBSD 特性。还包含了一些旧版本升级的相关注意事项。
+本文档是 FreeBSD 14.1-RELEASE 的发行说明。它说明了最近增加、变更、删除的 FreeBSD 特性。还包含了一些旧版本升级的相关注意事项。
 
 这些发行说明适用于“RELEASE”发行版，代表了自 14-STABLE 分支创建以来的最新状态。有关基于此分支的预构建二进制“RELEASE”的发行信息，请访问 <https://www.FreeBSD.org/releases/>。
 
@@ -18,9 +18,9 @@ FreeBSD 14.1-RELEASE 发行说明概述了由 14-STABLE 开发线衍生的 FreeB
 
 在安装 FreeBSD 前，建议所有用户都看一下发行勘误。勘误文档会在发行周期后期，随发行后发现的“最新”信息进行更新。通常涉及勘误、安全公告和文档更正的相关信息。可在 FreeBSD 网站上找到 FreeBSD 14.1-RELEASE 的最新勘误信息。
 
-本文档说明了自 14.0-RELEASE 以降，在 FreeBSD 中最具用户可见性的新特性和更改。一般来说，除非其明确标记为 MERGED 特性，否则此处所述的更改独立于 14-STABLE 分支。
+本文档说明了自 14.0-RELEASE 以降，在 FreeBSD 中最具用户可见性的新特性和变更。一般来说，除非其明确标记为 MERGED 特性，否则此处所述的变更独立于 14-STABLE 分支。
 
-标准的发行说明项目记载了在 14.0-RELEASE 后发行的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的更改。显然，发行说明无法枚举在不同版本之间对 FreeBSD 所做的所有更改；该文档主要关注安全公告，用户可见的更改及重大架构改进。
+标准的发行说明项目记载了在 14.0-RELEASE 后发行的最新安全公告，新的驱动程序和硬件支持，新的命令（选项），重大错误修复（含第三方）的软件升级。可能还列出了对主要软件（包）和发行工程实践的变更。显然，发行说明无法枚举在不同版本之间对 FreeBSD 所做的所有变更；该文档主要关注安全公告，用户可见的变更及重大架构改进。
 
 ## 从旧版 FreeBSD 升级
 
@@ -48,13 +48,13 @@ RELEASE 版本（以及各种安全分支的快照）使用工具 [freebsd-updat
 
 ## 用户空间
 
-此部分涉及了对用户空间工具、第三方软件和系统工具的更改和增补。
+此部分涉及了对用户空间工具、第三方软件和系统工具的变更和增补。
 
-### 用户空间配置更改
+### 用户空间配置变更
 
 新增变量 `kdc_restart`，能用来管理 daemon(8) 下的 [kdc(8)](https://man.freebsd.org/cgi/man.cgi?query=kdc&sektion=8&format=html)（`krb5kdc`）。在 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中，设置 `kdc_restart="YES"`：能自动重启 kdc，来解决其异常停止问题。`kdc_restart_delay="N"` 可设定在重启 kdc 前的延迟（秒）。[abc4b3088941](https://cgit.freebsd.org/src/commit/?id=abc4b3088941)
 
-在默认情況下，电子邮件中由工具 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 展现变更信息，为了减少输出大小，通过 daily 脚本比以前的上下文输出要少。此行为由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 所控制。同样地，安全脚本显示的更改亦比以前少，由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `security_status_diff_flags` 控制。[538994626b9f](https://cgit.freebsd.org/src/commit/?id=538994626b9f), [37dc394170a5](https://cgit.freebsd.org/src/commit/?id=37dc394170a5), [128e78ffb084](https://cgit.freebsd.org/src/commit/?id=128e78ffb084)
+在默认情況下，电子邮件中由工具 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 展现变更信息，为了减少输出大小，通过 daily 脚本比以前的上下文输出要少。此行为由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 所控制。同样地，安全脚本显示的变更亦比以前少，由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `security_status_diff_flags` 控制。[538994626b9f](https://cgit.freebsd.org/src/commit/?id=538994626b9f), [37dc394170a5](https://cgit.freebsd.org/src/commit/?id=37dc394170a5), [128e78ffb084](https://cgit.freebsd.org/src/commit/?id=128e78ffb084)
 
 ### 用户空间工具的变更
 
@@ -94,21 +94,21 @@ Clang/LLVM 已升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/s
 
 ## 云端
 
-本节涉及了对云端的更改。
+本节涉及了对云端的变更。
 
 14.1-RELEASE 已支持 cloudinit，可支持启动脚本 `nuageinit`，对 `config-drive` 的分区支持。能兼容 OpenStack 和许多托管设施。请参阅 [cloud-init](https://cloud-init.io/) 网站和提交信息，[16a6da44e28d](https://cgit.freebsd.org/src/commit/?id=16a6da44e28d) [227e7a205edf](https://cgit.freebsd.org/src/commit/?id=227e7a205edf)。（由 OVHCloud 赞助）
 
 ## 内核
 
-本节涉及了对内核配置、系统调优和系统控制参数的更改，这些更改未分类。
+本节涉及了对内核配置、系统调优和系统控制参数的变更，这些变更未分类。
 
-### 通用内核更改
+### 通用内核变更
 
 powerpc 已实现例程 `fpu_kern_enter` 和 `fpu_kern_leave`，能在使用浮点和矢量寄存器的内核中调用加密函数 [ossl(4)](https://man.freebsd.org/cgi/man.cgi?query=ossl&sektion=4&format=html)。[91e53779b4fc](https://cgit.freebsd.org/src/commit/?id=91e53779b4fc)
 
 ## 设备和驱动程序
 
-本节内容涉及自 14.0-RELEASE 以降的设备和设备驱动程序的更改和增加。
+本节内容涉及自 14.0-RELEASE 以降的设备和设备驱动程序的变更和增加。
 
 ### 设备驱动程序
 
@@ -126,7 +126,7 @@ Intel E800 系列（[ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sekti
 
 ## 存储
 
-此部分涉及了对文件系统和其他存储子系统（包括本地和网络存储）的更改和增补。
+此部分涉及了对文件系统和其他存储子系统（包括本地和网络存储）的变更和增补。
 
 ### NFS
 
@@ -142,23 +142,23 @@ Intel E800 系列（[ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sekti
 
 OpenZFS 已升级至版本 2.2.4. [78c9d8f1ce65](https://cgit.freebsd.org/src/commit/?id=78c9d8f1ce65)
 
-## 引导加载程序更改
+## 引导加载程序变更
 
-本节涉及了引导加载程序、引导菜单和其他与引导相关的更改。
+本节涉及了引导加载程序、引导菜单和其他与引导相关的变更。
 
-### 引导加载程序更改
+### 引导加载程序变更
 
 现在 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 会在读取其他配置文件后，读取变量 `local_loader_conf_files` 中列出的本地配置文件， 默认为 `/boot/loader.conf.local`。[a25531db0fc2](https://cgit.freebsd.org/src/commit/?id=a25531db0fc2)
 
 现在可以配置 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html)，以便根据 SMBIOS 中的变量 planar maker、planar product、system product 和 uboot m_product 读取特定的配置文件。目前，最好的文档是 git 提交信息，[3eb3a802a31b](https://cgit.freebsd.org/src/commit/?id=3eb3a802a31b)。
 
-对于 EFI 设备，[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的控制台检测得到了改进。如果没有变量 ConOut，会检查变量 ConIn。如果找到多个设备，则首选串行。[20a6f4779ac6](https://cgit.freebsd.org/src/commit/?id=20a6f4779ac6)（由 Netflix 赞助）
+对于 EFI 设备，[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的控制台检测得到了改进。如果没有变量 ConOut，会检查变量 ConIn。如果找到多个设备，则首选串行。[20a6f4779ac6](https://cgit.freebsd.org/src/commit/?id=20a6f4779ac6)（由奈飞赞助）
 
-[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的帧缓冲区现在支持使用仅文本的视频驱动程序，从而节省空间。[57ca2848c0aa](https://cgit.freebsd.org/src/commit/?id=05cf4dda599a)（由 Netflix 赞助）
+[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的帧缓冲区现在支持使用仅文本的视频驱动程序，从而节省空间。[57ca2848c0aa](https://cgit.freebsd.org/src/commit/?id=05cf4dda599a)（由奈飞赞助）
 
 arm64 设备上的 [loader.efi(8)](https://man.freebsd.org/cgi/man.cgi?query=loader.efi&sektion=8&format=html)，会更早地完成 ACPI 检测。对于基于 ACPI 的 arm64 设备，应更新 EFI 分区上的 `loader.efi` 文件。[05cf4dda599a](https://cgit.freebsd.org/src/commit/?id=05cf4dda599a) [16c09de80135](https://cgit.freebsd.org/src/commit/?id=16c09de80135)
 
-引导加载程序 LinuxBoot 可用于从 Linux 引导 FreeBSD。（aarch64、amd64），[46010641267](https://cgit.freebsd.org/src/commit/?id=46010641267)（由 Netflix 赞助）
+引导加载程序 LinuxBoot 可用于从 Linux 引导 FreeBSD。（aarch64、amd64），[46010641267](https://cgit.freebsd.org/src/commit/?id=46010641267)（由奈飞赞助）
 
 ## 网络
 
@@ -174,13 +174,13 @@ netgraph 模块 ng_ipfw(4) 不再将 cookie 截断为 16 位，可使用完整�
 
 ## 硬件支持
 
-本节涉及了物理机、虚拟化环境的一般硬件支持，以及不兼容于本文档其他部分的硬件更改和更新。
+本节涉及了物理机、虚拟化环境的一般硬件支持，以及不兼容于本文档其他部分的硬件变更和更新。
 
 请查看 14.1-RELEASE[ 硬件支持列表](https://www.freebsd.org/releases/14.1R/hardware)，以及受支持的 CPU [架构完整列表页](https://www.freebsd.org/platforms/)。
 
 ## 文档
 
-本节涉及了与基本系统一起提供的手册（[man(1)](https://man.freebsd.org/cgi/man.cgi?query=man&sektion=1&format=html)）页和其他文档的更改。
+本节涉及了与基本系统一起提供的手册（[man(1)](https://man.freebsd.org/cgi/man.cgi?query=man&sektion=1&format=html)）页和其他文档的变更。
 
 ### 手册页
 
@@ -188,7 +188,7 @@ netgraph 模块 ng_ipfw(4) 不再将 cookie 截断为 16 位，可使用完整�
 
 ## 后续 FreeBSD 版本发行的一般注意事项
 
-预计 FreeBSD 15.0 不会支持除 armv7 以外的 32 位平台。 armv6、i386 和 powerpc 平台已被弃用并将被移除。 64 位系统仍可运行旧款 32 位二进制文件。
+预计 FreeBSD 15.0 不会支持除 armv7 以外的 32 位平台。 armv6、i386 和 powerpc 平台已弃用并将被移除。 64 位系统仍可运行旧款 32 位二进制文件。
 
 预计我们将在 FreeBSD 15.0 及 stable/15 中，把 armv7 作为第二级架构。然而，我们也预计可能会在 FreeBSD 16.0 中移除 armv7。我们将在发行 15.0 时提供 armv7 在 15.x 和 16.x 中状态的相关更新。
 
@@ -198,7 +198,7 @@ netgraph 模块 ng_ipfw(4) 不再将 cookie 截断为 16 位，可使用完整�
 
 FreeBSD stable/14 和更早版本分支将保留对现有的 32 位内核和系统支持。只要这些分支仍受 ports 系统支持，Ports 将保留对在 stable/14 和早期版本分支上构建 ports 和软件包的支持。但是，所有 32 位平台都是二级、三级，应该预期：个别的 ports 支持将随着上游废弃 32 位平台而降级。
 
-根据当前的生命周期，stable/14 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。stable/14 的生命周期终点标志着对包括源代码发行、预构建软件包以及从 ports 构建应用程序的弃用 32 位平台的支持结束。随着 2023 年 11 月 14.0-RELEASE 的发行，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
+根据当前的生命周期，stable/14 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。stable/14 的生命周期终点参数着对包括源代码发行、预构建软件包以及从 ports 构建应用程序的弃用 32 位平台的支持结束。随着 2023 年 11 月 14.0-RELEASE 的发行，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
 
 FreeBSD 项目可能会在 FreeBSD 15.0 发行时改变这种方法，在 15.0（或更高版本）中延长对一个（或多个）要废弃平台的支持。任何改变都将根据社区的反馈和支持这些平台的努力来决定。使用 FreeBSD 14.0-RELEASE 和后续的次发行版本，或 stable/14 分支，来迁移 32 位平台。
 
