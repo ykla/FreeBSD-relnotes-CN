@@ -1,5 +1,7 @@
 # FreeBSD 中文版发行说明翻译项目
 
+- 发行说明原文：<https://www.freebsd.org/releases/>
+- 版本发布计划：<https://www.freebsd.org/releng/>
 
 ## 翻译项目一览表
 
