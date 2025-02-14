@@ -3,15 +3,18 @@
 - 发行说明原文：<https://www.freebsd.org/releases/>
 - 版本发布计划：<https://www.freebsd.org/releng/>
 
-## 翻译项目一览表
+---
 
-|                                     标题                                     | 临时预览网址 |
-| :-----------------------------------------------------------------------------: | :------------: |
-|                                 FreeBSD 手册                                 |       [https://tphil.gitbook.io/handbook/](https://tphil.gitbook.io/handbook/)       |
-|                            FreeBSD Port 开发者手册                            |       [https://tphil.gitbook.io/porters-handbook/](https://tphil.gitbook.io/porters-handbook/)       |
-|                               FreeBSD 官方文章                               |       [https://tphil.gitbook.io/articles/](https://tphil.gitbook.io/articles/)       |
-| 《FreeBSD 项目模型》、《FreeBSD 常见问题解答》、《4.4BSD 操作系统设计与实现》 |       [https://tphil.gitbook.io/book/](https://tphil.gitbook.io/book/)       |
-|                               FreeBSD 架构手册                               |       [https://tphil.gitbook.io/arch-handbook/](https://tphil.gitbook.io/arch-handbook/)       |
-|                              FreeBSD 开发者手册                              |       [https://tphil.gitbook.io/developers-handbook/](https://tphil.gitbook.io/developers-handbook/)       |
-|                               FreeBSD 发行说明                               |       [https://tphil.gitbook.io/release/](https://tphil.gitbook.io/release/)       |
-|                               FreeBSD 状态报告                               |       [https://tphil.gitbook.io/status/](https://tphil.gitbook.io/status/)       |
+| 日期          | 事件         | 信息                                                         |
+| ------------- | ------------ | ------------------------------------------------------------ |
+| 2025 年 3 月  | FreeBSD 13.5 | [目标计划](https://www.freebsd.org/releases/13.5R/schedule/) |
+| 2025 年 6 月  | FreeBSD 14.3 | [目标计划](https://www.freebsd.org/releases/14.3R/schedule/) |
+| 2025 年 12 月 | FreeBSD 15.0 |                                                              |
+| 2026 年 3 月  | FreeBSD 14.4 |                                                              |
+| 2026 年 6 月  | FreeBSD 15.1 |                                                              |
+| 2026 年 9 月  | FreeBSD 14.5 |                                                              |
+| 2026 年 12 月 | FreeBSD 15.2 |                                                              |
+| 2027 年 3 月  | FreeBSD 14.6 |                                                              |
+| 2027 年 6 月  | FreeBSD 15.3 |                                                              |
+
+——[发布工程信息](https://www.freebsd.org/releng/)
