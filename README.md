@@ -26,6 +26,5 @@
 | releng/14.2 | 14.2-RELEASE | 2024 年 12 月 3 日   | 2025 年 9 月 30 日  |
 | stable/13   | 不适用        | 不适用                | 2026 年 4 月 30 日  |
 | releng/13.5 | 13.5-RELEASE | 2025 年 3 月 11 日   | 2026 年 4 月 30 日  |
-| releng/13.4 | 13.4-RELEASE | 2024 年 9 月 17 日   | 2025 年 6 月 30 日  |
 
 ——[FreeBSD 安全信息](https://www.freebsd.org/security/#sup)
