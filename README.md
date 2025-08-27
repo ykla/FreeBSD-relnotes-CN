@@ -51,6 +51,17 @@
 | 64 位 RISC-V        | [riscv64](https://wiki.freebsd.org/riscv)                      | 二级                                                                        | 二级                                                                        | 二级                                                                           |
 | 64 位 RISC-V 软浮点   | [riscv64sf](https://wiki.freebsd.org/riscv)                    | 二级                                                                        | 不支持                                                                       | 不支持                                                                          |
 
+
+| 平台名称             | 目标架构 | 最后支持的发行版                                          |
+| ---------------- | ------------ | ------------------------------------------------- |
+| Alpha            | alpha        | [6.4](https://www.freebsd.org/releases/#rel6-4)   |
+| 32 位小端 ARM v4/v5 | arm          | [12.4](https://www.freebsd.org/releases/#rel12-4) |
+| 32 位大端 ARM       | armeb        | [11.4](https://www.freebsd.org/releases/#rel11-4) |
+| Intel IA-64      | ia64         | [10.4](https://www.freebsd.org/releases/#rel10-4) |
+| PC98             | pc98         | [11.4](https://www.freebsd.org/releases/#rel11-4) |
+| 64 位 SPARCv9     | sparc64      | [12.4](https://www.freebsd.org/releases/#rel12-4) |
+
+
 ——[Supported Platforms](https://www.freebsd.org/platforms/)
 
 ### 21. 多架构支持
