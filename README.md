@@ -51,7 +51,7 @@
 | 64 位 RISC-V        | [riscv64](https://wiki.freebsd.org/riscv)                      | 二级                                                                        | 二级                                                                        | 二级                                                                           |
 | 64 位 RISC-V 软浮点   | [riscv64sf](https://wiki.freebsd.org/riscv)                    | 二级                                                                        | 不支持                                                                       | 不支持                                                                          |
 
-——[https://www.freebsd.org/platforms/#:~:text=Platforms-,Supported%20Platforms,-Here%20is%20a](https://www.freebsd.org/platforms/)
+——[Supported Platforms](https://www.freebsd.org/platforms/)
 
 ### 21. 多架构支持
 
