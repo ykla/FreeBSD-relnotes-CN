@@ -9,7 +9,6 @@
 镜像实时构建状态：
 
 - <https://ci.freebsd.org/tinderbox/>
-- <https://ci.freebsd.org>
 
 --- 
 
