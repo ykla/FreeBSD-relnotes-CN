@@ -6,6 +6,10 @@
 >
 >本项目目前处于低维护状态，主要维护者因精力所限仅处理 PR。欢迎社区通过 PR 贡献力量。
 
+镜像实时构建状态：
+
+- <https://ci.freebsd.org/tinderbox/>
+- <https://ci.freebsd.org>
 
 - 发行说明原文：<https://www.freebsd.org/releases/>
 - 版本发布计划：<https://www.freebsd.org/releng/>
