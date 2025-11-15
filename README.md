@@ -11,6 +11,8 @@
 - <https://ci.freebsd.org/tinderbox/>
 - <https://ci.freebsd.org>
 
+--- 
+
 - 发行说明原文：<https://www.freebsd.org/releases/>
 - 版本发布计划：<https://www.freebsd.org/releng/>
 
