@@ -103,7 +103,7 @@ FreeBSD 项目将平台目标分为四个层级。每个层级都包含用户可
 
 FreeBSD 内核本身也使用一种 ABI（有时称为内核二进制接口：Kernel Binary Interfac，KBI），它包括公共数据结构的语义和布局，以及传递给内核内部公共函数的参数的布局和语义。
 
-单个 FreeBSD 内核可能支持多个用户空间 ABI。例如，FreeBSD 的 amd64 内核支持 FreeBSD amd64 与 i386 用户空间 ABI，同时也支持 Linux x86\_64 和 i386 用户空间 ABI。FreeBSD 内核应支持一个“原生” ABI 作为默认 ABI。原生 ABI 通常与内核 ABI 共享某些特性，例如 C 调用约定、基本类型的大小等。
+单个 FreeBSD 内核可能支持多个用户空间 ABI。例如，FreeBSD 的 amd64 内核支持 FreeBSD amd64 与 i386 用户空间 ABI，同时也支持 Linux x86\_64 和 i386 用户空间 ABI。FreeBSD 内核应支持一个“原生”ABI 作为默认 ABI。原生 ABI 通常与内核 ABI 共享某些特性，例如 C 调用约定、基本类型的大小等。
 
 层级同时针对内核和用户空间 ABI 定义。在常见情况下，一个平台的内核和 FreeBSD ABI 会被分配到相同的层级。
 
