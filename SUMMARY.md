@@ -5,6 +5,7 @@
 
 ***
 
+* [FreeBSD 15.1-RELEASE 发行说明（2026 年 6 月 16 日）](15.1.md)
 * [FreeBSD 14.4-RELEASE 发行说明（2026 年 3 月 10 日）](14.4.md)
 * [FreeBSD 15.0-RELEASE 发行说明（2025 年 12 月 2 日）](15.0.md)
 * [FreeBSD 14.3-RELEASE 发行说明（2025 年 6 月 10 日）](14.3.md)
@@ -95,4 +96,3 @@
 * [FreeBSD 1.1.5-RELEASE 发行说明](1.1.5.md)
 * [FreeBSD 1.1 RELEASE 发行说明（1994 年 5 月）](1.1.md)
 * [FreeBSD 1.0 RELEASE 发行公告（1993 年 11 月）](1.0.md)
-
