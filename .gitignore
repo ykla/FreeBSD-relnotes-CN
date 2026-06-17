@@ -225,3 +225,6 @@ $RECYCLE.BIN/
 *.html
 *.adoc
 *.ps1
+*.pyc
+*.json
+/script

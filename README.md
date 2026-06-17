@@ -1,82 +1,78 @@
 # FreeBSD 中文版发行说明
 
->**技巧**
+> **技巧**
 >
->那些关注实时开发状态或使用 CURRENT 的用户应该关注 [freebsd-src/UPDATING](https://github.com/freebsd/freebsd-src/blob/main/UPDATING) 及 [freebsd-src/RELNOTES](https://github.com/freebsd/freebsd-src/blob/main/RELNOTES)。
+> 那些关注实时开发状态或使用 CURRENT 的用户应该关注 [freebsd-src/UPDATING](https://github.com/freebsd/freebsd-src/blob/main/UPDATING) 及 [freebsd-src/RELNOTES](https://github.com/freebsd/freebsd-src/blob/main/RELNOTES)。
 >
->否则仅建议你使用在生命周期内最新的 RELEASE 版本。
+> 否则仅建议你使用在生命周期内最新的 RELEASE 版本。
 
->**警告**
+> **警告**
 >
->除已校对部分外，本项目目前翻译错漏百出，不适合用于生产。但译者已经尽力修正。
+> 除已校对部分外，本项目目前翻译错漏百出，不适合用于生产。但译者已经尽力修正。
 >
->本项目目前处于低维护状态，主要维护者因精力所限仅处理 PR。欢迎社区通过 PR 贡献力量。
+> 本项目目前处于低维护状态，主要维护者因精力所限仅处理 PR。欢迎社区通过 PR 贡献力量。
 
 镜像实时构建状态：
 
 - <https://ci.freebsd.org/tinderbox/>
 
----
-
 - 发行说明原文：<https://www.freebsd.org/releases/>
 - 版本发布计划：<https://www.freebsd.org/releng/>
 
----
-
-|日期|事件|信息|
-|:------------|:----------:|:----------------------------------------------------------:|
-|2026 年 6 月|FreeBSD 15.1|[参见此处](https://www.freebsd.org/releases/15.1R/schedule/)|
-|2026 年 9 月|FreeBSD 14.5||
-|2026 年 12 月|FreeBSD 15.2||
-|2027 年 3 月|FreeBSD 14.6||
-|2027 年 6 月|FreeBSD 15.3||
-|2027 年 12 月|FreeBSD 16.0||
+| 日期 | 事件 | 信息 |
+| ---- | ---- | ---- |
+| 2026 年 6 月 | FreeBSD 15.1 | [参见此处](https://www.freebsd.org/releases/15.1R/schedule/) |
+| 2026 年 9 月 | FreeBSD 14.5 | |
+| 2026 年 12 月 | FreeBSD 15.2 | |
+| 2027 年 3 月 | FreeBSD 14.6 | |
+| 2027 年 6 月 | FreeBSD 15.3 | |
+| 2027 年 12 月 | FreeBSD 16.0 | |
 
 ——[发布工程信息](https://www.freebsd.org/releng/)
 
 ## 安全支持与生命周期
 
-|分支|发行版本|发布日期|预计结束|
-|:----------|:-----------|:-----------------|:------------------|
-|stable/15|不适用|不适用|2029 年 12 月 31 日|
-|releng/15.0|15.0-RELEASE|2025 年 12 月 2 日|2026 年 9 月 30 日|
-|stable/14|不适用|不适用|2028 年 11 月 30 日|
-|releng/14.4|14.4-RELEASE|2026 年 3 月 10 日|2026 年 12 月 31 日|
-|releng/14.3|14.3-RELEASE|2025 年 6 月 10 日|2026 年 6 月 30 日|
-|stable/13|不适用|不适用|2026 年 4 月 30 日|
-|releng/13.5|13.5-RELEASE|2025 年 3 月 11 日|2026 年 4 月 30 日|
+| 分支 | 发行版本 | 发布日期 | 预计结束 |
+| ---- | -------- | -------- | -------- |
+| stable/15 | 不适用 | 不适用 | 2029 年 12 月 31 日 |
+| releng/15.0 | 15.0-RELEASE | 2025 年 12 月 2 日 | 2026 年 9 月 30 日 |
+| stable/14 | 不适用 | 不适用 | 2028 年 11 月 30 日 |
+| releng/14.4 | 14.4-RELEASE | 2026 年 3 月 10 日 | 2026 年 12 月 31 日 |
+| releng/14.3 | 14.3-RELEASE | 2025 年 6 月 10 日 | 2026 年 6 月 30 日 |
+| stable/13 | 不适用 | 不适用 | 2026 年 4 月 30 日 |
+| releng/13.5 | 13.5-RELEASE | 2025 年 3 月 11 日 | 2026 年 4 月 30 日 |
 
 ——[FreeBSD 安全信息](https://www.freebsd.org/security/#sup)
 
 ## 平台支持
 
-|平台名称|目标架构|13.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs)|14.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs)|15.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs)|预计 16.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs)|
-|:---------------------:|:------------------------------------------------------------:|:---------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
-|64 位 x86|[amd64](https://www.freebsd.org/platforms/amd64)|一级|一级|一级|一级|
-|32 位 x86|[i386](https://www.freebsd.org/platforms/i386)|二级|二级|不支持|不支持|
-|64 位 ARMv8|[aarch64](https://www.freebsd.org/platforms/arm)|一级|一级|一级|一级|
-|32 位 ARMv6|[armv6](https://www.freebsd.org/platforms/arm)|二级|三级|不支持|不支持|
-|32 位 ARMv7|[armv7](https://www.freebsd.org/platforms/arm)|二级|二级|二级|二级|
-|32 位 MIPS 软浮点|[mips, mipsel](https://www.freebsd.org/platforms/mips)|二级|不支持|不支持|不支持|
-|32 位 MIPS 硬浮点|[mipshf, mipselhf](https://www.freebsd.org/platforms/mips)|二级|不支持|不支持|不支持|
-|32 位 MIPS n32|[mipsn32](https://www.freebsd.org/platforms/mips)|二级|不支持|不支持|不支持|
-|64 位 MIPS 软浮点|[mips64, mips64el](https://www.freebsd.org/platforms/mips)|二级|不支持|不支持|不支持|
-|64 位 MIPS 硬浮点|[mips64hf, mips64elhf](https://www.freebsd.org/platforms/mips)|二级|不支持|不支持|不支持|
-|32 位 PowerPC|[powerpc](https://www.freebsd.org/platforms/ppc)|二级|二级|不支持|不支持|
-|带 SPE 的 32 位 PowerPC|[powerpcspe](https://www.freebsd.org/platforms/ppc)|二级|二级|不支持|不支持|
-|64 位 PowerPC 大端序|[powerpc64](https://www.freebsd.org/platforms/ppc)|二级|二级|二级|二级|
-|64 位 PowerPC 小端序|[powerpc64le](https://www.freebsd.org/platforms/ppc)|二级|二级|二级|二级|
-|64 位 RISC-V|[riscv64](https://wiki.freebsd.org/riscv)|二级|二级|二级|二级|
-|64 位 RISC-V 软浮点|[riscv64sf](https://wiki.freebsd.org/riscv)|二级|不支持|不支持|不支持|
+| 平台名称 | 目标架构 | 13.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs) | 14.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs) | 15.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs) | 预计 16.x [支持等级](https://docs.freebsd.org/en/articles/committers-guide/#archs) |
+| :------: | :------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
+| 64 位 x86 | [amd64](https://www.freebsd.org/platforms/amd64) | 一级 | 一级 | 一级 | 一级 |
+| 32 位 x86 | [i386](https://www.freebsd.org/platforms/i386) | 二级 | 二级 | 不支持 | 不支持 |
+| 64 位 ARMv8 | [aarch64](https://www.freebsd.org/platforms/arm) | 一级 | 一级 | 一级 | 一级 |
+| 32 位 ARMv6 | [armv6](https://www.freebsd.org/platforms/arm) | 二级 | 三级 | 不支持 | 不支持 |
+| 32 位 ARMv7 | [armv7](https://www.freebsd.org/platforms/arm) | 二级 | 二级 | 二级 | 二级 |
+| 32 位 MIPS 软浮点 | [mips, mipsel](https://www.freebsd.org/platforms/mips) | 二级 | 不支持 | 不支持 | 不支持 |
+| 32 位 MIPS 硬浮点 | [mipshf, mipselhf](https://www.freebsd.org/platforms/mips) | 二级 | 不支持 | 不支持 | 不支持 |
+| 32 位 MIPS n32 | [mipsn32](https://www.freebsd.org/platforms/mips) | 二级 | 不支持 | 不支持 | 不支持 |
+| 64 位 MIPS 软浮点 | [mips64, mips64el](https://www.freebsd.org/platforms/mips) | 二级 | 不支持 | 不支持 | 不支持 |
+| 64 位 MIPS 硬浮点 | [mips64hf, mips64elhf](https://www.freebsd.org/platforms/mips) | 二级 | 不支持 | 不支持 | 不支持 |
+| 32 位 PowerPC | [powerpc](https://www.freebsd.org/platforms/ppc) | 二级 | 二级 | 不支持 | 不支持 |
+| 带 SPE 的 32 位 PowerPC | [powerpcspe](https://www.freebsd.org/platforms/ppc) | 二级 | 二级 | 不支持 | 不支持 |
+| 64 位 PowerPC 大端序 | [powerpc64](https://www.freebsd.org/platforms/ppc) | 二级 | 二级 | 二级 | 二级 |
+| 64 位 PowerPC 小端序 | [powerpc64le](https://www.freebsd.org/platforms/ppc) | 二级 | 二级 | 二级 | 二级 |
+| 64 位 RISC-V | [riscv64](https://wiki.freebsd.org/riscv) | 二级 | 二级 | 二级 | 二级 |
+| 64 位 RISC-V 软浮点 | [riscv64sf](https://wiki.freebsd.org/riscv) | 二级 | 不支持 | 不支持 | 不支持 |
 
-|平台名称|目标架构|最后支持的 RELEASE 版本|
-|:-----------------:|:------:|:-----------------------------------------------:|
-|Alpha|alpha|[6.4](https://www.freebsd.org/releases/#rel6-4)|
-|32 位小端 ARM v4/v5|arm|[12.4](https://www.freebsd.org/releases/#rel12-4)|
-|32 位大端 ARM|armeb|[11.4](https://www.freebsd.org/releases/#rel11-4)|
-|Intel IA-64|ia64|[10.4](https://www.freebsd.org/releases/#rel10-4)|
-|PC98|pc98|[11.4](https://www.freebsd.org/releases/#rel11-4)|
-|64 位 SPARCv9|sparc64|[12.4](https://www.freebsd.org/releases/#rel12-4)|
+| 平台名称 | 目标架构 | 最后支持的 RELEASE 版本 |
+| :------: | :------: | :---------------------: |
+| Alpha | alpha | [6.4](https://www.freebsd.org/releases/#rel6-4) |
+| 32 位小端 ARM v4/v5 | arm | [12.4](https://www.freebsd.org/releases/#rel12-4) |
+| 32 位大端 ARM | armeb | [11.4](https://www.freebsd.org/releases/#rel11-4) |
+| Intel IA-64 | ia64 | [10.4](https://www.freebsd.org/releases/#rel10-4) |
+| PC98 | pc98 | [11.4](https://www.freebsd.org/releases/#rel11-4) |
+| 64 位 SPARCv9 | sparc64 | [12.4](https://www.freebsd.org/releases/#rel12-4) |
 
 ——[Supported Platforms](https://www.freebsd.org/platforms/)
 
