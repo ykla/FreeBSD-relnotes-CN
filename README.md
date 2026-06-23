@@ -170,3 +170,35 @@ FreeBSD 项目对三级平台用户不提供任何保证，也不承诺维持开
 其他平台在任何形式下都不受项目支持。此前项目将这些称为四级系统。
 
 在某个平台转变为不支持状态后，将从源代码树、ports 和文档树中移除对该平台的所有支持。注意，只要该平台在某个受 ports 支持的分支中仍然受支持，ports 支持应继续保留。
+
+## 许可证
+
+```text
+Copyright 1994-2026 The FreeBSD Project.
+
+Redistribution and use in source (AsciiDoc) and 'compiled' forms (HTML, PDF,
+EPUB and so forth) with or without modification, are permitted provided that
+the following conditions are met:
+
+1. Redistributions of source code (AsciiDoc) must retain the above copyright
+   notice, this list of conditions and the following disclaimer as the first
+   lines of this file unmodified.
+
+2. Redistributions in compiled form (converted to PDF, EPUB and other formats)
+   must reproduce the above copyright notice, this list of conditions and the
+   following disclaimer in the documentation and/or other materials provided
+   with the distribution.
+
+THIS DOCUMENTATION IS PROVIDED BY THE FREEBSD DOCUMENTATION PROJECT "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE FREEBSD DOCUMENTATION PROJECT BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+本翻译项目遵循 BSD 2 条款许可。
