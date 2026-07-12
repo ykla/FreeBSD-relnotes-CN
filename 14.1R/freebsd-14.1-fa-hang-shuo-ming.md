@@ -76,9 +76,9 @@ RELEASE 版本之间（以及各种安全分支的快照）的二进制升级，
 
 ### 用户空间配置变更
 
-新增的变量 `kdc_restart` 能用来管理 [daemon(8)](https://man.freebsd.org/cgi/man.cgi?query=daemon&sektion=8&format=html) 下的 [kdc(8)](https://man.freebsd.org/cgi/man.cgi?query=kdc&sektion=8&format=html)（`krb5kdc`）。在 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中，设置 `kdc_restart="YES"`：能自动重启 kdc，来解决其异常停止问题。`kdc_restart_delay="N"` 可设定在重启 kdc 前的延迟（秒）。[abc4b3088941](https://cgit.freebsd.org/src/commit/?id=abc4b3088941)
+新增的变量 `kdc_restart` 能用来管理 [daemon(8)](https://man.freebsd.org/cgi/man.cgi?query=daemon&sektion=8&format=html) 下的 [kdc(8)](https://man.freebsd.org/cgi/man.cgi?query=kdc&sektion=8&format=html)（`krb5kdc`）。在 [rc.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=rc.conf&sektion=5&format=html) 中设置 `kdc_restart="YES"`，可在 kdc 异常终止时自动重启。`kdc_restart_delay="N"` 可设定在重启 kdc 前的延迟（秒）。[abc4b3088941](https://cgit.freebsd.org/src/commit/?id=abc4b3088941)
 
-在默认情况下，由 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 工具通过 daily 脚本在电子邮件中展示的变更信息，其上下文输出比以前更少，以减小输出大小。此行为由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 所控制。同样地，安全脚本显示的变更亦比以前少，由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `security_status_diff_flags` 控制。[538994626b9f](https://cgit.freebsd.org/src/commit/?id=538994626b9f), [37dc394170a5](https://cgit.freebsd.org/src/commit/?id=37dc394170a5), [128e78ffb084](https://cgit.freebsd.org/src/commit/?id=128e78ffb084)
+在默认情况下，由 [periodic(8)](https://man.freebsd.org/cgi/man.cgi?query=periodic&sektion=8&format=html) 工具通过 `daily` 脚本在电子邮件中展示的变更信息，其上下文输出比以前更少，以减小输出大小。此行为由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `daily_diff_flags` 所控制。同样地，安全脚本显示的变更亦比以前少，由 [periodic.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&sektion=5&format=html) 中的变量 `security_status_diff_flags` 控制。[538994626b9f](https://cgit.freebsd.org/src/commit/?id=538994626b9f)、[37dc394170a5](https://cgit.freebsd.org/src/commit/?id=37dc394170a5)、[128e78ffb084](https://cgit.freebsd.org/src/commit/?id=128e78ffb084)
 
 ### 用户空间应用程序变更
 
@@ -92,25 +92,25 @@ RELEASE 版本之间（以及各种安全分支的快照）的二进制升级，
 
 工具 [ldconfig(8)](https://man.freebsd.org/cgi/man.cgi?query=ldconfig&sektion=8&format=html) 现在支持任一字节序的 hints 文件。默认格式是主机的本地字节序。[fa7b31166ddb](https://cgit.freebsd.org/src/commit/?id=fa7b31166ddb)
 
-OpenSSH 已升级至版本 9.7p1。完整的发行说明请参见 <https://www.openssh.com/txt/release-9.7> 和 <https://www.openssh.com/txt/release-9.6>。[a25789646d71](https://cgit.freebsd.org/src/commit/?id=a25789646d71), [464fa66f639b](https://cgit.freebsd.org/src/commit/?id=464fa66f639b)（由 FreeBSD 基金会赞助）
+OpenSSH 升级至版本 9.7p1。完整的发行说明请参见 <https://www.openssh.com/txt/release-9.7> 和 <https://www.openssh.com/txt/release-9.6>。[a25789646d71](https://cgit.freebsd.org/src/commit/?id=a25789646d71)、[464fa66f639b](https://cgit.freebsd.org/src/commit/?id=464fa66f639b)（由 FreeBSD 基金会赞助）
 
 工具 [usbconfig(8)](https://man.freebsd.org/cgi/man.cgi?query=usbconfig&sektion=8&format=html) 现在在可用时，从 **/usr/share/misc/usb_vendors** 读取 usb 的 vendor 和 products 描述，类似于 [pciconf(8)](https://man.freebsd.org/cgi/man.cgi?query=pciconf&sektion=8&format=html) 的行为。[7b9a772f9f64](https://cgit.freebsd.org/src/commit/?id=7b9a772f9f64)
 
 ### 第三方软件
 
-One True Awk（[awk(1)](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）已更新至第二版，新增了 `-csv` 和 UTF-8 支持。[daf917daba9c](https://cgit.freebsd.org/src/commit/?id=daf917daba9c)
+One True Awk（[awk(1)](https://man.freebsd.org/cgi/man.cgi?query=awk&sektion=1&format=html)）更新至第二版，新增了 `-csv` 和 UTF-8 支持。[daf917daba9c](https://cgit.freebsd.org/src/commit/?id=daf917daba9c)
 
-Clang/LLVM 已升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/src/commit/?id=90a5e985e5f4)
+Clang/LLVM 升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/src/commit/?id=90a5e985e5f4)
 
-[libarchive(3)](https://man.freebsd.org/cgi/man.cgi?query=libarchive&sektion=3&format=html) 库已升级至版本 3.7.4。[8774c92e32b2](https://cgit.freebsd.org/src/commit/?id=8774c92e32b2)
+[libarchive(3)](https://man.freebsd.org/cgi/man.cgi?query=libarchive&sektion=3&format=html) 库升级至版本 3.7.4。[8774c92e32b2](https://cgit.freebsd.org/src/commit/?id=8774c92e32b2)
 
-[sendmail(8)](https://man.freebsd.org/cgi/man.cgi?query=sendmail&sektion=8&format=html) 套件已升级至版本 8.18.1，修复了漏洞 CVE-2023-51765。[58ae50f31e95](https://cgit.freebsd.org/src/commit/?id=58ae50f31e95)
+[sendmail(8)](https://man.freebsd.org/cgi/man.cgi?query=sendmail&sektion=8&format=html) 套件升级至版本 8.18.1，修复了漏洞 CVE-2023-51765。[58ae50f31e95](https://cgit.freebsd.org/src/commit/?id=58ae50f31e95)
 
-解析器 [unbound(8)](https://man.freebsd.org/cgi/man.cgi?query=unbound&sektion=8&format=html) 已升级至版本 1.20.0，并修复了“DNSBomb”漏洞（CVE-2024-33655）。[dcde37c4170b](https://cgit.freebsd.org/src/commit/?id=dcde37c4170b)
+解析器 [unbound(8)](https://man.freebsd.org/cgi/man.cgi?query=unbound&sektion=8&format=html) 升级至版本 1.20.0，并修复了“DNSBomb”漏洞（CVE-2024-33655）。[dcde37c4170b](https://cgit.freebsd.org/src/commit/?id=dcde37c4170b)
 
 ### 运行时库和 API
 
-`libutil` 中的 [setusercontext(3)](https://man.freebsd.org/cgi/man.cgi?query=setusercontext&sektion=3&format=html) 例程可依据一定的条件从家目录下的 **.login.conf** 文件以及系统 [login.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=login.conf&sektion=5&format=html) 设置进程优先级（nice）。优先级可以取值 `inherit`，意味着优先级会保持与父进程相同。umask 亦可以取值 `inherit`。[6f6186e19fe5](https://cgit.freebsd.org/src/commit/?id=6f6186e19fe5)、[a8c273b3c97f](https://cgit.freebsd.org/src/commit/?id=a8c273b3c97f), [d2d66fedc418](https://cgit.freebsd.org/src/commit/?id=d2d66fedc418)（由 Kumacom SAS 赞助）
+`libutil` 中的 [setusercontext(3)](https://man.freebsd.org/cgi/man.cgi?query=setusercontext&sektion=3&format=html) 例程可依据一定的条件从家目录下的 **.login.conf** 文件以及系统 [login.conf(5)](https://man.freebsd.org/cgi/man.cgi?query=login.conf&sektion=5&format=html) 设置进程优先级（nice）。优先级可以取值 `inherit`，意味着优先级会保持与父进程相同。umask 亦可以取值 `inherit`。[6f6186e19fe5](https://cgit.freebsd.org/src/commit/?id=6f6186e19fe5)、[a8c273b3c97f](https://cgit.freebsd.org/src/commit/?id=a8c273b3c97f)、[d2d66fedc418](https://cgit.freebsd.org/src/commit/?id=d2d66fedc418)（由 Kumacom SAS 赞助）
 
 在 amd64 系统上可用时，C 库中的许多字符串和内存操作现在使用 SIMD（单指令多数据）扩展来提高性能；请参阅 [simd(7)](https://man.freebsd.org/cgi/man.cgi?query=simd&sektion=7&format=html)。（由 FreeBSD 基金会赞助）
 
@@ -128,7 +128,7 @@ Clang/LLVM 已升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/s
 
 ### 内核通用变更
 
-已为 powerpc 实现例程 `fpu_kern_enter` 和 `fpu_kern_leave`，允许在内核中调用使用浮点和矢量寄存器的 [ossl(4)](https://man.freebsd.org/cgi/man.cgi?query=ossl&sektion=4&format=html) 加密函数。[91e53779b4fc](https://cgit.freebsd.org/src/commit/?id=91e53779b4fc)
+为 powerpc 实现了例程 `fpu_kern_enter` 和 `fpu_kern_leave`，允许在内核中调用使用浮点和矢量寄存器的 [ossl(4)](https://man.freebsd.org/cgi/man.cgi?query=ossl&sektion=4&format=html) 加密函数。[91e53779b4fc](https://cgit.freebsd.org/src/commit/?id=91e53779b4fc)
 
 ## 设备与驱动
 
@@ -136,7 +136,7 @@ Clang/LLVM 已升级至版本 18.1.5。[90a5e985e5f4](https://cgit.freebsd.org/s
 
 ### 设备驱动程序
 
-Intel E800 系列（[ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sektion=4&format=html) 以太网网络控制器）现有驱动程序，该系列控制器可支持 100 Gb/s 速率。该驱动程序已升级至版本 1.39.13-k。[71d104536b51](https://cgit.freebsd.org/src/commit/?id=71d104536b51) [f6de0a7c94e9](https://cgit.freebsd.org/src/commit/?id=f6de0a7c94e9)（由 Intel Corporation 赞助）。
+Intel E800 系列（[ice(4)](https://man.freebsd.org/cgi/man.cgi?query=ice&sektion=4&format=html) 以太网网络控制器）有可用的驱动程序，该系列控制器可支持 100 Gb/s 速率。该驱动程序升级至版本 1.39.13-k。[71d104536b51](https://cgit.freebsd.org/src/commit/?id=71d104536b51) [f6de0a7c94e9](https://cgit.freebsd.org/src/commit/?id=f6de0a7c94e9)（由 Intel Corporation 赞助）。
 
 Intel Wi-Fi 设备的 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&sektion=4&format=html) 驱动程序进行了许多稳定性改进。（由 FreeBSD 基金会赞助）
 
@@ -144,7 +144,7 @@ Intel Wi-Fi 设备的 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwl
 
 以太网驱动程序 [smsc(4)](https://man.freebsd.org/cgi/man.cgi?query=smsc&sektion=4&format=html) 现在能获取某些树莓派型号传递的 `smsc95xx.macaddr` 值，并将其用于 MAC 地址。即使在 EEPROM 中没有 MAC 地址，它也将始终使用稳定的 MAC 地址。[028e4c6548e4](https://cgit.freebsd.org/src/commit/?id=028e4c6548e4)
 
-已从声音子系统中移除 `snd_clone` 框架（及相关 sysctl），从而简化了系统：不再创建各通道节点（**/dev/dspX.Y**），仅创建主设备（**/dev/dspX**）。[e6c51f6db8d7](https://cgit.freebsd.org/src/commit/?id=e6c51f6db8d7)（由 FreeBSD 基金会赞助）
+从声音子系统中移除了 `snd_clone` 框架（及相关 sysctl），从而简化了系统：不再创建各通道节点（**/dev/dspX.Y**），仅创建主设备（**/dev/dspX**）。[e6c51f6db8d7](https://cgit.freebsd.org/src/commit/?id=e6c51f6db8d7)（由 FreeBSD 基金会赞助）
 
 音频现在支持异步设备分离（asynchronous device detach）。这极大地简化了诸如 USB 耳机之类的热插拔行为，且在操作系统需要休眠和唤醒（挂起和恢复）时，使用 PulseAudio 会更为轻松。[d692c314d29a](https://cgit.freebsd.org/src/commit/?id=d692c314d29a)（由 FreeBSD 基金会赞助）
 
@@ -164,7 +164,7 @@ Intel Wi-Fi 设备的 [iwlwifi(4)](https://man.freebsd.org/cgi/man.cgi?query=iwl
 
 ### ZFS
 
-OpenZFS 已升级至版本 2.2.4。[78c9d8f1ce65](https://cgit.freebsd.org/src/commit/?id=78c9d8f1ce65)
+OpenZFS 升级至版本 2.2.4。[78c9d8f1ce65](https://cgit.freebsd.org/src/commit/?id=78c9d8f1ce65)
 
 ## 引导加载程序变更
 
@@ -174,9 +174,9 @@ OpenZFS 已升级至版本 2.2.4。[78c9d8f1ce65](https://cgit.freebsd.org/src/c
 
 现在 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 会在读取其他配置文件后，读取变量 `local_loader_conf_files` 中列出的本地配置文件，默认为 **/boot/loader.conf.local**。[a25531db0fc2](https://cgit.freebsd.org/src/commit/?id=a25531db0fc2)
 
-现在可以配置 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html)，以便根据 SMBIOS 中的变量 planar maker、planar product、system product 和 uboot m_product 读取特定的配置文件。目前，最好的文档是 git 提交信息，[3eb3a802a31b](https://cgit.freebsd.org/src/commit/?id=3eb3a802a31b)。
+现在可以配置 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html)，以便根据 SMBIOS 中的变量 `planar maker`、`planar product`、`system product` 和 `uboot m_product` 读取特定的配置文件。目前，最好的文档是 git 提交信息，[3eb3a802a31b](https://cgit.freebsd.org/src/commit/?id=3eb3a802a31b)。
 
-对于 EFI 系统，[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的控制台检测得到了改进。如果没有变量 ConOut，会检查变量 ConIn。如果找到多个设备，则首选串行。[20a6f4779ac6](https://cgit.freebsd.org/src/commit/?id=20a6f4779ac6)（由 Netflix 赞助）
+对于 EFI 系统，[loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的控制台检测得到了改进。如果没有变量 `ConOut`，会检查变量 `ConIn`。如果找到多个设备，则首选串行。[20a6f4779ac6](https://cgit.freebsd.org/src/commit/?id=20a6f4779ac6)（由 Netflix 赞助）
 
 [loader(8)](https://man.freebsd.org/cgi/man.cgi?query=loader&sektion=8&format=html) 中的帧缓冲区现在支持使用仅文本的视频驱动程序，从而节省空间。[57ca2848c0aa](https://cgit.freebsd.org/src/commit/?id=57ca2848c0aa)（由 Netflix 赞助）
 
@@ -190,9 +190,9 @@ arm64 系统上的 [loader.efi(8)](https://man.freebsd.org/cgi/man.cgi?query=loa
 
 ### 通用网络
 
-已恢复 ARP（[arp(4)](https://man.freebsd.org/cgi/man.cgi?query=arp&sektion=4&format=html)）对 802 标准网络的支持；该支持曾随 FDDI 支持被意外移除（这与以太网标准封装不同）。[d776dd5fbd48](https://cgit.freebsd.org/src/commit/?id=d776dd5fbd48)
+恢复了 ARP（[arp(4)](https://man.freebsd.org/cgi/man.cgi?query=arp&sektion=4&format=html)）对 802 标准网络的支持；该支持曾随 FDDI 支持被意外移除（这与以太网标准封装不同）。[d776dd5fbd48](https://cgit.freebsd.org/src/commit/?id=d776dd5fbd48)
 
-现在可以构建仅支持 IPv6（**INET6**）而不支持 IPv4（**INET**）的内核。[6df9fa1c6b83](https://cgit.freebsd.org/src/commit/?id=6df9fa1c6b83) 和其他
+现在可以构建仅支持 IPv6（`INET6`）而不支持 IPv4（`INET`）的内核。[6df9fa1c6b83](https://cgit.freebsd.org/src/commit/?id=6df9fa1c6b83) 和其他
 
 netgraph 模块 [ng_ipfw(4)](https://man.freebsd.org/cgi/man.cgi?query=ng_ipfw&sektion=4&format=html) 不再将 cookie 截断为 16 位，可使用完整的 32 位。[dadf64c5586e](https://cgit.freebsd.org/src/commit/?id=dadf64c5586e)
 
@@ -214,14 +214,14 @@ netgraph 模块 [ng_ipfw(4)](https://man.freebsd.org/cgi/man.cgi?query=ng_ipfw&s
 
 预计 FreeBSD 15.0 不会支持除 armv7 以外的 32 位平台。armv6、i386 和 powerpc 平台已弃用并将被移除。64 位系统仍可运行旧款 32 位二进制文件。
 
-预计我们将在 FreeBSD 15.0 及 stable/15 中，把 armv7 作为 Tier 2 架构。然而，我们也预计可能会在 FreeBSD 16.0 中移除 armv7。我们将在发行 15.0 时提供 armv7 在 15.x 和 16.x 中状态的相关更新。
+预计我们将在 FreeBSD 15.0 及 **stable/15** 中，把 armv7 作为 Tier 2 架构。然而，我们也预计可能会在 FreeBSD 16.0 中移除 armv7。我们将在发行 15.0 时提供 armv7 在 15.x 和 16.x 中状态的相关更新。
 
-对于在 64 位平台上执行 32 位二进制文件的支持（选项 **COMPAT_FREEBSD32**）将至少在 stable/15 和 stable/16 分支上延续。至少在 stable/15 分支上，还将继续支持使用 `cc -m32` 编译单个 32 位应用程序，其中包括 **/usr/include** 中的相应头文件和 **/usr/lib32** 中的库。
+对于在 64 位平台上执行 32 位二进制文件的支持（选项 `COMPAT_FREEBSD32`）将至少在 **stable/15** 和 **stable/16** 分支上延续。至少在 **stable/15** 分支上，还将继续支持使用 `cc -m32` 编译单个 32 位应用程序，其中包括 **/usr/include** 中的相应头文件和 **/usr/lib32** 中的库。
 
 对于 FreeBSD 15.0 及后续版本，Ports 将不再支持已弃用的 32 位平台。这些后续版本将不包含二进制软件包，也不支持从 Ports 为已弃用的 32 位平台构建软件包。
 
-FreeBSD stable/14 和更早分支将保留对现有的 32 位内核和 world 支持。只要这些分支仍受 Ports 支持，Ports 将保留对在 stable/14 和更早分支上构建 Ports 和软件包的支持。但是，所有 32 位平台都是 Tier-2 或 Tier-3，对个别 Port 的支持预计将随着上游弃用 32 位平台而降级。
+FreeBSD **stable/14** 和更早分支将保留对现有的 32 位内核和 world 支持。只要这些分支仍受 Ports 支持，Ports 将保留对在 **stable/14** 和更早分支上构建 Ports 和软件包的支持。但是，所有 32 位平台都是 Tier-2 或 Tier-3，对个别 Port 的支持预计将随着上游弃用 32 位平台而降级。
 
-根据当前的生命周期，stable/14 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。stable/14 的生命周期终点标志着对已弃用 32 位平台支持的结束，包括源代码发行、预构建软件包以及从 Ports 构建应用程序的支持。随着 2023 年 11 月 14.0-RELEASE 的发行，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
+根据当前的生命周期，**stable/14** 将在 FreeBSD 14.0-RELEASE 发行 5 年后结束生命周期（EOL）。**stable/14** 的生命周期终点标志着对已弃用 32 位平台支持的结束，包括源代码发行、预构建软件包以及从 Ports 构建应用程序的支持。随着 2023 年 11 月 14.0-RELEASE 的发行，对已弃用的 32 位平台支持将在 2028 年 11 月结束。
 
-FreeBSD 项目可能会在 FreeBSD 15.0 发行时改变这种方法，在 15.0（或更高版本）中延长对一个（或多个）已弃用平台的支持。任何改变都将根据社区的反馈和支持这些平台的努力来决定。使用 FreeBSD 14.0-RELEASE 和后续的次发行版本，或 stable/14 分支，从 32 位平台迁移。
+FreeBSD 项目可能会在 FreeBSD 15.0 发行时改变这种方法，在 15.0（或更高版本）中延长对一个（或多个）已弃用平台的支持。任何改变都将根据社区的反馈和支持这些平台的努力来决定。使用 FreeBSD 14.0-RELEASE 和后续的次发行版本，或 **stable/14** 分支，从 32 位平台迁移。
